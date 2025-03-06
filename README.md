@@ -60,6 +60,7 @@ codeit-FE14-Fandom-K
 │    │    ├── footer/
 │    │    ├── header/
 │    │    ├── idol/
+│    │    ├── layout/
 │    │    └── modal/
 │    │
 │    ├── costants/   # 상수 값 관리
