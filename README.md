@@ -42,19 +42,19 @@
 ```bash
 codeit-FE14-Fandom-K
 │
-├── .github				# Github 설정
+├── .github          # Github 설정
 │
-├── public/				# 정적 파일들을 저장
+├── public/          # 정적 파일들을 저장
 │    └── vite.svg			
 │
-├── src/					# 소스 코드를 저장하는 디렉터리
-│    ├── apis/				#API 요청
+├── src/             # 소스 코드를 저장하는 디렉터리
+│    ├── apis/       # API 요청
 │    │
-│    ├── assets/			# 이미지, 폰트 등 저장
+│    ├── assets/     # 이미지, 폰트 등 저장
 │    │    ├── icons/
 │    │    └── images/
 │    │
-│    ├── components/		# 재사용 가능한 UI 컴포넌트
+│    ├── components/ # 재사용 가능한 UI 컴포넌트
 │    │    ├── custom_button/
 │    │    ├── error/
 │    │    ├── footer/
@@ -62,21 +62,21 @@ codeit-FE14-Fandom-K
 │    │    ├── idol/
 │    │    └── modal/
 │    │
-│    ├── costants/			# 상수 값 관리
+│    ├── costants/   # 상수 값 관리
 │    │
-│    ├── contexts/			# React Context API 관련 파일
+│    ├── contexts/   # React Context API 관련 파일
 │    │
-│    ├── hooks/			# 커스텀 훅
+│    ├── hooks/      # 커스텀 훅
 │    │
-│    ├── pages/			# 라우트 단위 페이지 컴포넌트
+│    ├── pages/      # 라우트 단위 페이지 컴포넌트
 │    │    ├── landing_page/
 │    │    ├── list/
 │    │    ├── mypage/
 │    │    └── not_found_page/
 │    │
-│    ├── styles/			# 공통 GlolbalStyle & Theme 관리
+│    ├── styles/     # 공통 GlolbalStyle & Theme 관리
 │    │
-│    └── utils/              	# 유틸리티 함수 모음
+│    └── utils/      # 유틸리티 함수 모음
 │
 ├── package-lock.json
 │
