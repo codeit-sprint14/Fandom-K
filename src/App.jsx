@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./pages/landing/Landing";
 import List from "./pages/list/List";
 import Mypage from "./pages/mypage/Mypage";
-import NotFound from "./pages/notfound/Mypage";
+import NotFound from "./pages/notfound/Notfound";
 
 function App() {
   return (
