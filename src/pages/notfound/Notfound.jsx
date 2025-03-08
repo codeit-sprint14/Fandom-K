@@ -1,6 +1,14 @@
 import styled from "styled-components";
 import typography from "../../utils/typography.js";
 import colors from "../../utils/colors.js";
+import ProfileIco from "../../components/profiles/ProfileIco.jsx";
+import BtnArrow from "../../components/buttons/BtnArrow.jsx";
+
+const Bg = styled.div`
+  background: ${colors("blackDark")};
+  width: 100vw;
+  height: 100vh;
+`;
 
 const Title = styled.h1`
   ${typography("b24")};
@@ -8,10 +16,22 @@ const Title = styled.h1`
   background: ${colors("primaryGradient90")};
 `;
 
+const Cover = styled.div`
+  width: 100px;
+  height: 100px;
+  display: flex;
+`;
+
 function NotFound() {
   return (
     <>
-      <Title>NotFound</Title>
+      <Bg>
+        <BtnArrow isRight />
+        <Cover>
+          <ProfileIco checked />
+        </Cover>
+        {/* <Title>NotFound</Title> */}
+      </Bg>
     </>
   );
 }
