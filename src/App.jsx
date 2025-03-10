@@ -3,6 +3,7 @@ import Landing from "./pages/landing/Landing";
 import List from "./pages/list/List";
 import Mypage from "./pages/mypage/Mypage";
 import NotFound from "./pages/notfound/Notfound";
+import BtnQuantity from "./components/buttons/BtnQuantity";
 
 function App() {
   return (
@@ -16,6 +17,12 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+      >
+        <BtnQuantity onClick={() => alert("버튼 클릭!")}>+1,000</BtnQuantity>
+      </div>
     </>
   );
 }
