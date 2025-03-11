@@ -14,6 +14,7 @@ const Button = styled.div`
   &:hover {
     background: rgba(18, 18, 18, 0.8);
     color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
   }
 `;
 
@@ -21,9 +22,9 @@ const Svg = styled.svg`
   stroke: currentColor;
 `;
 
-function BtnArrow({ isRight = false }) {
+function BtnArrow({ isRight = false, onClick }) {
   return (
-    <Button>
+    <Button onClick={onClick}>
       <Svg width="40" height="78" viewBox="0 0 40 78" fill="none">
         {isRight ? (
           <path

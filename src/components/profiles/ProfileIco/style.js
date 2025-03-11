@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import colors from "../../utils/colors";
+import colors from "../../../utils/colors";
 
 const Ring = styled.div`
   position: relative;
@@ -37,8 +37,7 @@ const Img = styled.div`
   height: 88%;
   border-radius: 50%;
   aspect-ratio: 1/1;
-  background: url("src/assets/images/img-sq-girl-01.jpg") center / cover
-    no-repeat;
+  background: url(${(props) => props.img}) center / cover no-repeat;
 `;
 
 const Svg = styled.img`
@@ -56,18 +55,4 @@ const Checked = styled.div`
   z-index: 2;
 `;
 
-function ProfileIco({ checked = false }) {
-  return (
-    <Ring>
-      {checked && (
-        <Checked>
-          <CheckedBackground />
-          <Svg src="src/assets/icons/ic_check.svg" />
-        </Checked>
-      )}
-      <Img />
-    </Ring>
-  );
-}
-
-export default ProfileIco;
+export {Ring, CheckedBackground, Img, Svg, Checked};
