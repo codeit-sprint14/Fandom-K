@@ -3,8 +3,6 @@ import Landing from "./pages/landing/Landing";
 import List from "./pages/list/List";
 import Mypage from "./pages/mypage/Mypage";
 import NotFound from "./pages/notfound/Notfound";
-import BtnQuantity from "./components/buttons/BtnQuantity";
-import { useState } from "react";
 
 function App() {
   const [value, setValue] = useState(1000);
@@ -24,11 +22,6 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-
-      <div>
-        <input type="text" value={value} readOnly />
-        <BtnQuantity clickHandler={handleIncrease}>+1,000</BtnQuantity>
-      </div>
     </>
   );
 }
