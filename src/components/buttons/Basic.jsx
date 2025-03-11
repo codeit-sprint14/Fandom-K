@@ -1,7 +1,7 @@
-import { BasicBtn } from "./btn.styles";
+import { BtnBasic } from "./btn.styles";
 
 const Basic = ({ onClick, text = "더보기" }) => {
-    return <BasicBtn onClick={onClick}>{text}</BasicBtn>;
+    return <BtnBasic onClick={onClick}>{text}</BtnBasic>;
 };
 
 export default Basic;
