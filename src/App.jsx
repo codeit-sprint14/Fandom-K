@@ -5,12 +5,6 @@ import Mypage from "./pages/mypage/Mypage";
 import NotFound from "./pages/notfound/Notfound";
 
 function App() {
-  const [value, setValue] = useState(1000);
-
-  const handleIncrease = () => {
-    setValue((prev) => prev + 1000);
-  };
-
   return (
     <>
       <BrowserRouter>
