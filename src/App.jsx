@@ -4,8 +4,15 @@ import List from "./pages/list/List";
 import Mypage from "./pages/mypage/Mypage";
 import NotFound from "./pages/notfound/Notfound";
 import BtnQuantity from "./components/buttons/BtnQuantity";
+import { useState } from "react";
 
 function App() {
+  const [value, setValue] = useState(1000);
+
+  const handleIncrease = () => {
+    setValue((prev) => prev + 1000);
+  };
+
   return (
     <>
       <BrowserRouter>
@@ -18,10 +25,9 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-      <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
-      >
-        <BtnQuantity onClick={() => alert("버튼 클릭!")}>+1,000</BtnQuantity>
+      <div>
+        <input type="text" value={value} readOnly />
+        <BtnQuantity clickHandler={handleIncrease}>+1,000</BtnQuantity>
       </div>
     </>
   );
