@@ -89,7 +89,7 @@ const theme = {
     whiteLight: '#F7F7F8',
     primaryOrange: '#F96D69',
     primaryPink: '#FE5493',
-    primaryGradient: 'linear-gradient(0deg, #F96D69, #FE5493)',
+    primaryGradient: 'linear-gradient(0deg, #FE5493, #F96D69)',
     primaryGradient90: 'linear-gradient(90deg, #F96D69, #FE5493)',
   },
 };
