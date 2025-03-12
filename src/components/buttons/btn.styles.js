@@ -1,13 +1,14 @@
 import styled from "styled-components";
+import typography from "../../utils/typography";
 
 // 공통 스타일
-export const BaseBtn = styled.button`
+export const BtnBase = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
     
-    min-width: 295px;
-    width: auto;
+    min-width: 120px;
+    width: ${(props) => props.width || "295px"};
     max-width: 100%;
     height: 42px;
     gap: 10px;
@@ -15,17 +16,14 @@ export const BaseBtn = styled.button`
     border-radius: 8px;
     padding: 8px;
 
-    font-family: "Pretendard", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 26px;
+    ${typography("b14")}
     text-align: center;
 
     cursor: pointer;
 `;
 
 // Btn과 BtnIco 스타일
-export const StyledBtn = styled(BaseBtn)`
+export const BtnStyled = styled(BtnBase)`
     background: ${(props) =>
         props.variant === "gray"
             ? "linear-gradient(90deg, rgba(130, 130, 130, 1) 0%, rgba(130, 130, 130, 1) 100%)"
@@ -42,7 +40,7 @@ export const StyledBtn = styled(BaseBtn)`
 `;
 
 //Basic 스타일
-export const BasicBtn = styled(BaseBtn)`
+export const BtnBasic = styled(BtnBase)`
     min-width: 327px;
     background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
