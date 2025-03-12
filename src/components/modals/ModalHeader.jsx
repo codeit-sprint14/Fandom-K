@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import BtnX from "../buttons/BtnX";
+import typography from "../../utils/typography";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -10,10 +11,12 @@ const HeaderContainer = styled.div`
   background: transparent;
   position: relative;
   width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: ${({ showBorder }) =>
+    showBorder ? "1px solid rgba(255, 255, 255, 0.1)" : "none"};
+  box-sizing: border-box;
 
   @media (max-width: 768px) {
-    flex-direcsion: column;
+    flex-direction: column;
     padding: 8px 16px;
   }
 `;
@@ -32,7 +35,7 @@ const HandleBar = styled.div`
 `;
 
 const Title = styled.h2`
-  font: sb18;
+  ${typography("sb18")};
   margin: 0;
   color: white;
 `;

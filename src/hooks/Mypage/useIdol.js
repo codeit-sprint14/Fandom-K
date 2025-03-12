@@ -15,7 +15,6 @@ export function useIdol() {
 
   // 관심 아이돌 추가 함수
   const addIdol = (idol) => {
-    console.log("➕ 아이돌 추가:", idol);
     if (!favoriteIdols.some((fav) => fav.id === idol.id)) {
       const updatedIdols = [...favoriteIdols, idol];
       setFavoriteIdols(updatedIdols);
@@ -25,7 +24,6 @@ export function useIdol() {
 
   // 관심 아이돌 삭제 함수
   const removeIdol = (idolId) => {
-    console.log("❌ 아이돌 삭제:", idolId);
     const updatedIdols = favoriteIdols.filter((idol) => idol.id !== idolId);
     setFavoriteIdols(updatedIdols);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedIdols)); // localStorage 업데이트

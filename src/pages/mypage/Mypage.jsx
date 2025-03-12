@@ -1,10 +1,10 @@
 import React from "react";
-import { useIdol } from "../../hooks/useIdol.js";
+import { useIdol } from "../../hooks/Mypage/useIdol.js";
 
 function Mypage() {
-  const { favoriteIdols, addIdol, removeIdol } = useIdol();
+  const { favoriteIdols, removeIdol } = useIdol();
 
-  return <div></div>;
+  return <></>;
 }
 
 export default Mypage;

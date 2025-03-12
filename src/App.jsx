@@ -14,7 +14,6 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/list" element={<List />} />
           <Route path="/mypage" element={<Mypage />} />
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
