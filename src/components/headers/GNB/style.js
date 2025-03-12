@@ -98,7 +98,7 @@ const GNBContainer = styled.nav`
 `;
 
 const Ambient = styled.div`
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   z-index: 0;
