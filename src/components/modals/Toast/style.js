@@ -26,7 +26,7 @@ const pop = keyframes`
 `;
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 150px;
   left: 50%;
   display: inline-flex;

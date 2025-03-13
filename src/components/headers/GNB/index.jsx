@@ -32,7 +32,7 @@ function GNB() {
           <div className="left" onClick={() => handleModal(true)}>
             <img src="src/assets/icons/ic-credit.svg" alt="" srcSet="" />
             <span>
-              {window.localStorage.getItem("credit").toLocaleString()}
+              {Number(window.localStorage.getItem("credit")).toLocaleString()}
             </span>
           </div>
           <Link to="/list" className="center">

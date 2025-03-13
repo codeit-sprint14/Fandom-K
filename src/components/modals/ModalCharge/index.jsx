@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 
 import * as S from "./style";
+import ModalHeader from "../ModalHeader";
 
 const QuantityList = ({ children, onClick, value }) => {
+  const [e, i] = value;
+
   return (
-    <li onClick={onClick} value={value}>
+    <li onClick={onClick} value={e}>
+      <img
+        className="thumbnail"
+        src={`src/assets/images/img-credits-0${i + 1}.jpeg`}
+        alt=""
+      />
       <span style={{ flexGrow: 1 }} />
       <S.CreditIco>
         <img src="src/assets/icons/ic-credit.svg" />
@@ -33,7 +41,7 @@ function ModalCharge({ onClick, onOpen }) {
     const credit = window.localStorage.getItem("credit");
     const quantity = e.target.value;
     window.localStorage.setItem("credit", +credit + quantity);
-    onClick(`${quantity} 크레딧을 충전했어요 🎉`);
+    onClick(`${quantity.toLocaleString()} 크레딧을 충전했어요 🎉`);
 
     setIsExiting(true);
   };
@@ -41,11 +49,14 @@ function ModalCharge({ onClick, onOpen }) {
   return (
     <>
       <S.Container isExiting={isExiting}>
-        <header />
+        <ModalHeader
+          title={"크레딧 충전하기"}
+          onClose={() => setIsExiting(true)}
+        />
         <S.ModalChargeQuantity>
           {[100, 500, 1000].map((e, i) => (
-            <QuantityList value={e} key={i} onClick={handleClick}>
-              {e}
+            <QuantityList value={[e, i]} key={i} onClick={handleClick}>
+              {`${e.toLocaleString()}개`}
             </QuantityList>
           ))}
         </S.ModalChargeQuantity>
