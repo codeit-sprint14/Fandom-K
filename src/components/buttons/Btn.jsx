@@ -1,8 +1,8 @@
 import { BtnStyled } from "./btn.styles";
 
-const Btn = ({ variant, text = "충전하기", onClick }) => {
+const Btn = ({ disabled = false, text = "충전하기", onClick, ...rest }) => {
     return (
-        <BtnStyled variant={variant} onClick={onClick}>
+        <BtnStyled disabled={disabled} onClick={onClick} {...rest}>
             {text}
         </BtnStyled>
     );
