@@ -15,6 +15,8 @@ export const BtnBase = styled.button`
     border-radius: 8px;
     padding: 8px;
 
+    box-sizing: border-box;
+
     ${typography("b14")}
     text-align: center;
 
