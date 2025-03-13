@@ -24,24 +24,21 @@ export const BtnBase = styled.button`
 // Btn과 BtnIco 스타일
 export const BtnStyled = styled(BtnBase)`
     background: ${(props) =>
-        props.variant === "gray"
-            ? colors("gray")(props)
-            : "linear-gradient(90deg, rgba(249, 109, 105, 1) 0%, rgba(254, 84, 147, 1) 100%)"};
-    color: #f7f7f8;
+        props.disabled === 'disabled' ? colors("gray")(props) : colors("primaryGradient90")(props)};
+    color: ${colors("whiteLight")};
 
     &:hover {
         background: ${(props) =>
-            props.variant === "gray"
-                ? colors("gray")(props)
-                : "linear-gradient(90deg, rgba(249, 109, 105, 0.8) 0%, rgba(254, 84, 147, 0.8) 100%)"};
-        color: #ffffff;
+            props.disabled === 'disabled' ? colors("gray")(props) : colors("primaryGradient90")(props)};
+        filter: brightness(0.8);
+        color: ${colors("whiteLight")};
     }
 `;
 
 //Basic 스타일
-export const BtnBasic = styled(BtnBase)`
+export const BasicStyled = styled(BtnBase)`
     background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    color: ${colors("whiteLight")};
 
     &:hover {
         background: rgba(255, 255, 255, 0.07);
