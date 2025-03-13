@@ -4,8 +4,6 @@ import List from "./pages/list/List";
 import Mypage from "./pages/mypage/Mypage";
 import NotFound from "./pages/notfound/Notfound";
 
-import ChartContainer from "./pages/list/ChartContainer";
-
 function App() {
   return (
     <>
@@ -13,9 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/list" element={<List />} />
-          <Route path="/ChartContainer" element={<ChartContainer />} />
           <Route path="/mypage" element={<Mypage />} />
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
