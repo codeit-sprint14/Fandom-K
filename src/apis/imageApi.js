@@ -3,7 +3,7 @@ import instance from "./axiosInstance";
 const BASE_URL = "/image/upload";
 
 // [POST] 이미지 업로드
-export const voteIdol = async (file) => {
+export const uploadImage = async (file) => {
   try {
     const formData = new FormData(); // 파일을 서버에 보낼 수 있는 FormData 객체 생성
     formData.append("image", file); // image 키로 파일을 FormData에 추가

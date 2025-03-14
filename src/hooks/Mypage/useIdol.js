@@ -1,33 +1,56 @@
 import { useState, useEffect } from "react";
-
-const STORAGE_KEY = "favoriteIdols"; // localStorage 키 값
+import { fetchIdols } from "../../apis/idolApi";
+import {
+  getStoredIdols,
+  saveIdolsToStorage,
+  removeIdolFromStorage,
+} from "../../utils/localStorage";
 
 export function useIdol() {
-  const [favoriteIdols, setFavoriteIdols] = useState([]);
+  const [idols, setIdols] = useState([]);
+  const [favoriteIdols, setFavoriteIdols] = useState(getStoredIdols());
 
-  // localStorage에서 관심 아이돌 불러오기
+  // 전체 아이돌 불러오기 (API 호출)
   useEffect(() => {
-    const storedIdols = localStorage.getItem(STORAGE_KEY);
-    if (storedIdols) {
-      setFavoriteIdols(JSON.parse(storedIdols)); // 문자열을 배열로 변환
-    }
+    const loadIdols = async () => {
+      try {
+        const response = await fetchIdols();
+        if (response) {
+          setIdols(
+            response.map((idol) => ({
+              id: idol.id,
+              name: idol.name,
+              gender: idol.gender,
+              image: idol.profilePicture,
+              group: idol.group,
+            }))
+          );
+        }
+      } catch (error) {
+        console.error("아이돌 목록 불러오기 실패: ", error);
+      }
+    };
+
+    loadIdols();
   }, []);
+
+  // LocalStorage 변경 감지 후 상태 업데이트
+  useEffect(() => {
+    setFavoriteIdols(getStoredIdols());
+  }, [localStorage.getItem("favoriteIdols")]);
 
   // 관심 아이돌 추가 함수
   const addIdol = (idol) => {
-    if (!favoriteIdols.some((fav) => fav.id === idol.id)) {
-      const updatedIdols = [...favoriteIdols, idol];
-      setFavoriteIdols(updatedIdols);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedIdols));
-    }
+    const updated = [...favoriteIdols, idol];
+    saveIdolsToStorage(updated);
+    setFavoriteIdols(updated);
   };
 
-  // 관심 아이돌 삭제 함수
   const removeIdol = (idolId) => {
     const updatedIdols = favoriteIdols.filter((idol) => idol.id !== idolId);
     setFavoriteIdols(updatedIdols);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedIdols)); // localStorage 업데이트
+    saveIdolsToStorage(updatedIdols);
   };
 
-  return { favoriteIdols, addIdol, removeIdol };
+  return { idols, favoriteIdols, addIdol, removeIdol };
 }
