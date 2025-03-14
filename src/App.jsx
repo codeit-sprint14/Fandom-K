@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Landing from "./pages/landing/Landing";
+import Landing from "./pages/landing";
 import List from "./pages/list/List";
 import Mypage from "./pages/mypage/Mypage";
 import NotFound from "./pages/notfound/Notfound";

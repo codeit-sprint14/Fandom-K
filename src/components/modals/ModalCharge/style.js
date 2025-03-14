@@ -35,7 +35,7 @@ const Container = styled.div`
   flex-direction: column;
   width: 335px;
   overflow: hidden;
-  padding: 24px 16px 32px 16px;
+  padding: 24px 32px 32px 32px;
   border-radius: 8px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background: ${colors("blackLight")};
@@ -49,7 +49,7 @@ const Container = styled.div`
 
 const ModalChargeQuantity = styled.ul`
   display: flex;
-  padding: 24px 0px;
+  padding-top: 24px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -65,20 +65,22 @@ const ModalChargeQuantity = styled.ul`
     transition: all 0.1s ease-out;
     border: 2px solid transparent;
     gap: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 23px;
-    box-sizing: border-box;
+    padding: 6px 23px 6px 8px;
     width: 295px;
     height: 100px;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.05);
     color: ${colors("whiteLight")};
     ${typography("b20")}
+    cursor: pointer;
 
     &:hover {
       background: rgba(255, 255, 255, 0.03);
+    }
+
+    .thumbnail {
+      height: 100%;
+      mix-blend-mode: screen;
     }
   }
 `;

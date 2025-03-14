@@ -1,14 +1,11 @@
-import { useState } from "react";
 import { BtnStyled } from "./btn.styles";
 
-const Btn = ({ variant, text = "충전하기", width }) => {
-    const [isCharged, setIsCharged] = useState(false);
-
-    return (
-        <BtnStyled variant={variant} width={width} onClick={() => setIsCharged(true)}>
-            {text}
-        </BtnStyled>
-    );
+const Btn = ({ disabled = false, text = "충전하기", onClick, ...rest }) => {
+  return (
+    <BtnStyled disabled={disabled} onClick={onClick} {...rest}>
+      {text}
+    </BtnStyled>
+  );
 };
 
 export default Btn;

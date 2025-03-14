@@ -6,7 +6,7 @@ function ProfileIco({ checked = false, onMouseEnter, onMouseLeave, img }) {
       {checked && (
         <S.Checked>
           <S.CheckedBackground />
-          <S.Svg src="src/assets/icons/ic_check.svg" />
+          <S.Svg src="src/assets/icons/ic-check.svg" />
         </S.Checked>
       )}
       <S.Img img={img} />

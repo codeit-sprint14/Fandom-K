@@ -3,6 +3,8 @@ import axios from "axios";
 
 import ProfileIco from "../../profiles/ProfileIco";
 import * as S from "./style";
+import BtnX from "../../buttons/BtnX";
+import Btn from "../../buttons/Btn";
 
 function Skeletons() {
   return (
@@ -62,7 +64,7 @@ function ModalVote({ onClick, onOpen }) {
     }
   }, [isExiting, onOpen]);
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     vote(select);
     const credit = window.localStorage.getItem("credit");
     window.localStorage.setItem("credit", +credit - 1000);
@@ -117,14 +119,28 @@ function ModalVote({ onClick, onOpen }) {
     <>
       <S.Container isExiting={isExiting}>
         <header>
-          <select id="" onChange={(e) => setGender(e.target.value)}>
-            <option value="female">이달의 여자 아이돌</option>
-            <option value="male">이달의 남자 아이돌</option>
-          </select>
-          <img />
+          <div className="left">
+            <select
+              id=""
+              onChange={(e) => {
+                setGender(e.target.value);
+                setData(null);
+              }}
+            >
+              <option value="female">이달의 여자 아이돌</option>
+              <option value="male">이달의 남자 아이돌</option>
+            </select>
+            <span className="description">
+              내 크래딧:{" "}
+              <strong>
+                {Number(window.localStorage.getItem("credit")).toLocaleString()}
+              </strong>{" "}
+            </span>
+          </div>
+          <BtnX clickHandler={() => setIsExiting(true)} />
         </header>
         <S.ModalChargeQuantity>
-          <div />
+          <div className="edge" />
           {data
             ? data.map((e, i) => (
                 <QuantityList
@@ -141,7 +157,11 @@ function ModalVote({ onClick, onOpen }) {
                 .fill(null)
                 .map(() => <Skeletons />)}
         </S.ModalChargeQuantity>
-        <S.Btn onClick={handleClick}>투표하기</S.Btn>
+        <Btn text="투표하기" onClick={handleClick} />
+        <span className="description">
+          투표에 <strong>1,000 크레딧</strong>을 사용해요
+        </span>
+        {/* <S.Btn onClick={handleClick}>투표하기</S.Btn> */}
       </S.Container>
       <S.Shade isExiting={isExiting} onClick={() => setIsExiting(true)} />
     </>
