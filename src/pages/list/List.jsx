@@ -1,5 +1,13 @@
-<<<<<<< refs/remotes/origin/feature/list-page-je
-=======
+window. localStorage.setItem("30000", 30000);
+
+function List() {
+  return <div>List</div>;
+}
+
+export default List;
+
+
+/*
 import React, { useState, useEffect } from "react";
 import * as S from "./ListChart.styles";
 import BtnIco from "../../components/buttons/BtnIco";
@@ -23,7 +31,6 @@ async function getIdolList(gender) {
   }
 }
 
->>>>>>> local
 function List() {
   const [isFemale, setIsFemale] = useState(true);
   const [idols, setIdols] = useState([]);
@@ -35,18 +42,14 @@ function List() {
     loadIdols(); // 성별 변경 시 아이돌 목록 새로 불러오기
   }, [isFemale]);
 
-  const loadIdols = async () => {
+  async function loadIdols() {
     setLoading(true);
     const gender = isFemale ? "female" : "male";
     const idolData = await getIdolList(gender);
     setIdols(idolData);
-    setDisplayCount(10); // 성별 변경 시 다시 10위까지만 보이도록 초기화
+    setDisplayCount(10); // 성별 변경 시 다시 10위까지만
     setLoading(false);
-  };
-
-  const loadMoreIdols = () => {
-    setDisplayCount((prev) => prev + 10); // 10개씩 더 보기
-  };
+  }
 
   return (
     <>
@@ -57,45 +60,39 @@ function List() {
           <div style={{ width: "148px" }}>
             <BtnIco text="차트 투표하기" icon="ic-chart.svg" onClick={() => setIsModalOpen(true)} />
           </div>
-          {isModalOpen && <ModalVote onOpen={setIsModalOpen} onClick={(msg) => alert(msg)} />}
+          {isModalOpen && <ModalVote close={() => setIsModalOpen(false)} />}
         </S.TitleBtn>
 
-        <S.ButtonGroup>
+        <S.ButtonContainer>
           <S.TabButton active={isFemale} onClick={() => setIsFemale(true)}>
             이달의 여자 아이돌
           </S.TabButton>
           <S.TabButton active={!isFemale} onClick={() => setIsFemale(false)}>
             이달의 남자 아이돌
           </S.TabButton>
-        </S.ButtonGroup>
+        </S.ButtonContainer>
 
         <S.RankingGrid>
           {loading ? (
-            <p></p>
+            <S.LoadingText>로딩 중...</S.RankingGrid>
           ) : (
             idols.slice(0, displayCount).map((idol, index) => (
               <S.RankingItem key={idol.id}>
                 <S.ProfileIcoContainer>
-                  <ProfileIco img={idol.profilePicture}/>
+                  <ProfileIco img={idol.profilePicture} />
                 </S.ProfileIcoContainer>
-                <S.RankingNumber>{index + 1}</S.RankingNumber>
+                <S.RankNumber>{index + 1}</S.RankingNumber>
                 <S.IdolText>{idol.group} {idol.name}</S.IdolText>
                 <S.VoteCount>{idol.totalVotes.toLocaleString("ko-KR")}표</S.VoteCount>
               </S.RankingItem>
             ))
           )}
-        </S.RankingGrid>
-
-        {displayCount < idols.length && !loading && (
-          <S.BasicParent>
-            <div style={{ width: "327px" }}>
-              <BtnBasic onClick={loadMoreIdols}>더 보기</BtnBasic>
-            </div>
-          </S.BasicParent>
-        )}
+        </S.ButtonContainer>
       </S.StyledSection>
     </>
   );
 }
 
 export default List;
+
+*/
