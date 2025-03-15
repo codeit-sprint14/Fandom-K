@@ -4,6 +4,9 @@ import Toast from "../../modals/Toast";
 import ModalCharge from "../../modals/ModalCharge";
 import * as S from "./style";
 
+import creditIcon from "../../../assets/icons/ic-credit.svg";
+import logoIcon from "../../../assets/icons/logo.svg";
+
 function GNB() {
   const [showToast, setShowToast] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
@@ -30,13 +33,13 @@ function GNB() {
       <S.GNBContainer>
         <div className="container">
           <div className="left" onClick={() => handleModal(true)}>
-            <img src="src/assets/icons/ic-credit.svg" alt="" srcSet="" />
+            <img src={creditIcon} alt="" srcSet="" />
             <span>
               {Number(window.localStorage.getItem("credit")).toLocaleString()}
             </span>
           </div>
           <Link to="/list" className="center">
-            <img src="src/assets/icons/logo.svg" alt="" srcSet="" />
+            <img src={logoIcon} alt="" srcSet="" />
           </Link>
           <Link to="/mypage" className="right">
             <div>

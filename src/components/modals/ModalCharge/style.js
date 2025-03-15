@@ -27,7 +27,7 @@ const popOut = keyframes`
 `;
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -94,7 +94,7 @@ const CreditIco = styled.span`
 `;
 
 const Shade = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 
