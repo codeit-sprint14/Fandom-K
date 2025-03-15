@@ -1,27 +1,26 @@
 import { useEffect, useState } from "react";
+import Credit01 from "../../../assets/images/img-credits-01.jpeg";
+import Credit02 from "../../../assets/images/img-credits-02.jpeg";
+import Credit03 from "../../../assets/images/img-credits-03.jpeg";
+import CreditIcon from "../../../assets/icons/ic-credit.svg";
+import ArrowIcon from "../../../assets/icons/ic-arrow.svg";
 
 import * as S from "./style";
 import ModalHeader from "../ModalHeader";
 
 const QuantityList = ({ children, onClick, value }) => {
   const [e, i] = value;
+  const creditImages = [Credit01, Credit02, Credit03];
 
   return (
     <li onClick={onClick} value={e}>
-      <img
-        className="thumbnail"
-        src={`src/assets/images/img-credits-0${i + 1}.jpeg`}
-        alt=""
-      />
+      <img className="thumbnail" src={creditImages[i]} alt="" />
       <span style={{ flexGrow: 1 }} />
       <S.CreditIco>
-        <img src="src/assets/icons/ic-credit.svg" />
+        <img src={CreditIcon} />
       </S.CreditIco>
       {children}
-      <img
-        style={{ transform: "scaleX(-100%)" }}
-        src="src/assets/icons/ic-arrow.svg"
-      />
+      <img style={{ transform: "scaleX(-100%)" }} src={ArrowIcon} />
     </li>
   );
 };

@@ -109,12 +109,12 @@ function Landing() {
     [0, videoDuration2]
   );
 
-  const E_1_S = useTransform(scrollYProgress, [dv * 3, dv * 4], [0, 1]);
-  const E_2_S = useTransform(scrollYProgress, [dv * 3, dv * 4], [0, 0.8]);
-  const E_3_S = useTransform(scrollYProgress, [dv * 3, dv * 4], [0, 0.5]);
-  const E_4_S = useTransform(scrollYProgress, [dv * 3, dv * 4], [0, 0.5]);
-  const E_5_S = useTransform(scrollYProgress, [dv * 3, dv * 4], [0, 0.8]);
-  const E_6_S = useTransform(scrollYProgress, [dv * 3, dv * 4], [0, 0.4]);
+  const E_1_S = useTransform(scrollYProgress, [dv * 3, dv * 4.2], [0, 1]);
+  const E_2_S = useTransform(scrollYProgress, [dv * 3, dv * 4.2], [0, 0.8]);
+  const E_3_S = useTransform(scrollYProgress, [dv * 3, dv * 4.2], [0, 0.5]);
+  const E_4_S = useTransform(scrollYProgress, [dv * 3, dv * 4.2], [0, 0.5]);
+  const E_5_S = useTransform(scrollYProgress, [dv * 3, dv * 4.2], [0, 0.8]);
+  const E_6_S = useTransform(scrollYProgress, [dv * 3, dv * 4.2], [0, 0.4]);
 
   const throttledVideoHandler = (videoRef) =>
     throttle((target) => videoUpdater(videoRef, target), 0.016);
