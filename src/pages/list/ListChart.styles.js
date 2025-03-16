@@ -2,16 +2,6 @@ import styled, { createGlobalStyle } from "styled-components";
 import typography from "../../utils/typography";
 import colors from "../../utils/colors";
 
-// 전역 스타일 
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: #02000e;
-    color: ${colors("whiteLight")};
-    margin: 0;
-    padding: 0;
-  }
-`;
-
 // 스타일 컴포넌트 정의
 export const StyledSection = styled.section`
     white-space: nowrap;
