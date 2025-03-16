@@ -1,15 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
-import colors from "../../../../utils/colors";
-
-// 전역 스타일
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: #02000e;
-    color: ${colors("whiteLight")};
-    margin: 0;
-    padding: 0;
-  }
-`;
+import styled from "styled-components";
 
 // 전체 후원 페이지 컨테이너
 export const PageContainer = styled.div`
@@ -19,9 +8,9 @@ export const PageContainer = styled.div`
   justify-content: center;
   width: 100%;
   min-width: 1200px;
-  padding: 40px 20px;
+  padding: 90px 20px;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 70px;
 `;
 
 // '후원을 기다리는 조공' 제목
