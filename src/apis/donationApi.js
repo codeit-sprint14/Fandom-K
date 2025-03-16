@@ -14,7 +14,7 @@ export const fetchDonations = async (cursor = 0, pageSize = 8) => {
     // console.log("후원 목록 가져오기 성공:", response.data);
     // console.log("📌 API 응답 데이터 확인:", response.data);
     // console.log("📌 각 후원 진행률 데이터:", response.data.list);
-    console.log(response.data);
+    // console.log(response.data);
 
     return {
       nextCursor: response.data.nextCursor, // 다음 요청 시 사용할 cursor 값

@@ -59,32 +59,35 @@ const DonationPage = () => {
   };
 
   return (
-    <S.PageContainer>
-      <S.Header>후원을 기다리는 조공</S.Header>
-      <S.CarouselContainer>
-        {currentPage > 0 && <BtnArrow onClick={prevSlide} />}
-        <S.CardGrid
-          $cardWidth={cardWidth}
-          $itemsPerPage={itemsPerPage}
-          ref={carouselRef}
-        >
-          {loading ? (
-            Array.from({ length: itemsPerPage }).map((_, index) => (
-              <Card key={index} isLoading={true} />
-            ))
-          ) : donations.length > 0 ? (
-            donations.map((donation) => (
-              <Card key={donation.id} donation={donation} />
-            ))
-          ) : (
-            <p>등록된 후원이 없습니다.</p>
+    <>
+      <S.GlobalStyle />
+      <S.PageContainer>
+        <S.Header>후원을 기다리는 조공</S.Header>
+        <S.CarouselContainer>
+          {currentPage > 0 && <BtnArrow onClick={prevSlide} />}
+          <S.CardGrid
+            $cardWidth={cardWidth}
+            $itemsPerPage={itemsPerPage}
+            ref={carouselRef}
+          >
+            {loading ? (
+              Array.from({ length: itemsPerPage }).map((_, index) => (
+                <Card key={index} isLoading={true} />
+              ))
+            ) : donations.length > 0 ? (
+              donations.map((donation) => (
+                <Card key={donation.id} donation={donation} />
+              ))
+            ) : (
+              <p>등록된 후원이 없습니다.</p>
+            )}
+          </S.CardGrid>
+          {currentPage < totalPages - 1 && (
+            <BtnArrow isRight onClick={nextSlide} />
           )}
-        </S.CardGrid>
-        {currentPage < totalPages - 1 && (
-          <BtnArrow isRight onClick={nextSlide} />
-        )}
-      </S.CarouselContainer>
-    </S.PageContainer>
+        </S.CarouselContainer>
+      </S.PageContainer>
+    </>
   );
 };
 
