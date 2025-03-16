@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled, { createGlobalStyle } from "styled-components";
+import typography from "../../utils/typography";
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -14,8 +15,10 @@ const PageContainer = styled.div`
   background: #02000e;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  white-space: nowrap;
 `;
 
 const SlideContainer = styled.div `
@@ -65,6 +68,38 @@ const SlideContainer = styled.div `
         left: calc(50% + -400px);
     }
     
+    .cta{
+        position: absolute;
+        ${typography("b16")}
+        border: 2px solid white;
+        border-radius: 100px;
+        padding: 12px 46px 12px 56px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+        transition: all 0.2s ease-out;
+        text-shadow: 0 0 50px black;
+        background: #00000040;
+        backdrop-filter: blur(30px);
+        
+
+        img {
+            color: gray;
+            transform: scaleX(-100%);
+            transition: all 0.2s ease-out;
+        }
+
+        &:hover {
+            background: #ffffff40;
+
+            img {
+                transform: scaleX(-100%) translateX(-10px);
+            }
+        }
+    }
+
     .slide-01{
         font-size: 80px;
         line-height: 100px;
@@ -105,6 +140,31 @@ const SlideContainer = styled.div `
 
     .vid-credit{
         width: 900px;
+    }
+
+    .vid-credit, .vid-crown {
+        transform: 'translate3d(0,0,0)'; // gpu
+        backface-visibility: 'hidden';
+        image-rendering: -webkit-optimize-contrast;
+        transform: translateZ(0);
+        will-change: transform;
+        pointer-events: none;
+    }
+
+
+
+    .slide-03{
+        font-size: 80px;
+        line-height: 100px;
+        text-shadow: 0 0 100px black;
+    }
+    .slide-04{
+        font-size: 80px;
+        line-height: 100px;
+    }
+    .slide-05{
+        font-size: 80px;
+        line-height: 100px;
     }
 `;
 
