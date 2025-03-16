@@ -10,7 +10,6 @@ import Toast from "../../components/modals/Toast";
 function DonateContainer({ item, dday }) {
   const [donate, setDonate] = useState(0);
   const [invalidInput, setInvalidInput] = useState(false);
-  const loadingMsg = "Loading...";
   const [showToast, setShowToast] = useState(0);
 
   const handleToast = (msg) => {

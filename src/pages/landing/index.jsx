@@ -46,6 +46,7 @@ function Landing() {
 
   const [videoDuration, setVideoDuration] = useState(0);
   const [videoDuration2, setVideoDuration2] = useState(0);
+  const [winH, setWinH] = useState(window.innerHeight);
 
   const { scrollYProgress } = useScroll({
     container: targetRef,
@@ -68,11 +69,22 @@ function Landing() {
     }
   }, []);
 
-  const dv = (1 / 5).toFixed(3);
-  const A_1_Y = useTransform(scrollYProgress, [0, dv / 2], [0, -800]);
+  useEffect(() => {
+    const handleResize = () => {
+      setWinH(window.innerHeight);
+    };
 
-  const B_1_Y = useTransform(scrollYProgress, [0, dv], [-100, 0]);
-  const B_1_S = useTransform(scrollYProgress, [0, dv], [2, 1]);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const dv = (1 / 5).toFixed(3);
+  const A_1_Y = useTransform(scrollYProgress, [0, dv / 2], [0, -80]);
+
+  const B_1_Y = useTransform(scrollYProgress, [0, dv], [winH / 2.5, 0]);
+  const B_1_S = useTransform(scrollYProgress, [0, dv], [winH / 1, winH / 2.5]);
   const B_1_B = useTransform(
     scrollYProgress,
     [0, dv],
@@ -80,14 +92,14 @@ function Landing() {
   );
 
   const B_2_X = useTransform(scrollYProgress, [0, dv * 1.2], [0, -400]);
-  const B_2_Y = useTransform(scrollYProgress, [0, dv], [-100, 50]);
+  const B_2_Y = useTransform(scrollYProgress, [0, dv], [winH / 2.5, winH / 30]);
   const B_2_R = useTransform(scrollYProgress, [0, dv], [0, -7]);
 
   const B_3_X = useTransform(scrollYProgress, [0, dv * 1.2], [0, 400]);
   const B_3_R = useTransform(scrollYProgress, [0, dv], [0, 7]);
 
   const B_4_X = useTransform(scrollYProgress, [0, dv * 1.2], [0, -800]);
-  const B_4_Y = useTransform(scrollYProgress, [0, dv], [-100, 200]);
+  const B_4_Y = useTransform(scrollYProgress, [0, dv], [winH / 2.5, winH / 10]);
   const B_4_R = useTransform(scrollYProgress, [0, dv], [0, -14]);
 
   const B_5_X = useTransform(scrollYProgress, [0, dv * 1.2], [0, 800]);
@@ -133,7 +145,7 @@ function Landing() {
             .map((_, i) => {
               return (
                 <motion.img
-                  className={`images img-01-0${i + 1}`}
+                  className={`images doodles img-01-0${i + 1}`}
                   initial={{ x: "-50%", y: "-50%" }}
                   style={{
                     translateY: A_1_Y,
@@ -144,23 +156,23 @@ function Landing() {
                 />
               );
             })}
-          <p>
+          <p className="slide-00__title">
             내 최애에게
             <br />한 걸음 더<br />
             다가가는 법
           </p>
-          <Link to="/list" className="cta" style={{ top: "calc(50% + 270px)" }}>
+          <Link to="/list" className="cta cta--00">
             시작하기
             <img src="src/assets/icons/ic-arrow.svg" />
           </Link>
         </S.SlideContainer>
-        <S.SlideContainer index={1}>
+        <S.SlideContainer index={1} className="slide-01">
           <motion.img
             className={`images img-card-01`}
-            initial={{ x: "-50%", y: "-50%" }}
+            initial={{ x: "-50%" }}
             style={{
               translateY: B_1_Y,
-              scale: B_1_S,
+              width: B_1_S,
               filter: B_1_B,
             }}
             src={`src/assets/images/landing/img-landing-card-01.png`}
@@ -168,12 +180,12 @@ function Landing() {
           />
           <motion.img
             className={`images img-card-02`}
-            initial={{ x: "-50%", y: "-50%" }}
+            initial={{ x: "-50%" }}
             style={{
               translateX: B_2_X,
               translateY: B_2_Y,
               rotate: B_2_R,
-              scale: B_1_S,
+              width: B_1_S,
               filter: B_1_B,
             }}
             src={`src/assets/images/landing/img-landing-card-02.png`}
@@ -181,12 +193,12 @@ function Landing() {
           />
           <motion.img
             className={`images img-card-03`}
-            initial={{ x: "-50%", y: "-50%" }}
+            initial={{ x: "-50%" }}
             style={{
               translateX: B_3_X,
               translateY: B_2_Y,
               rotate: B_3_R,
-              scale: B_1_S,
+              width: B_1_S,
               filter: B_1_B,
             }}
             src={`src/assets/images/landing/img-landing-card-03.png`}
@@ -194,12 +206,12 @@ function Landing() {
           />
           <motion.img
             className={`images img-card-04`}
-            initial={{ x: "-50%", y: "-50%" }}
+            initial={{ x: "-50%" }}
             style={{
               translateX: B_4_X,
               translateY: B_4_Y,
               rotate: B_4_R,
-              scale: B_1_S,
+              width: B_1_S,
               filter: B_1_B,
             }}
             src={`src/assets/images/landing/img-landing-card-04.png`}
@@ -207,23 +219,23 @@ function Landing() {
           />
           <motion.img
             className={`images img-card-05`}
-            initial={{ x: "-50%", y: "-50%" }}
+            initial={{ x: "-50%" }}
             style={{
               translateX: B_5_X,
               translateY: B_4_Y,
               rotate: B_5_R,
-              scale: B_1_S,
+              width: B_1_S,
               filter: B_1_B,
             }}
             src={`src/assets/images/landing/img-landing-card-05.png`}
             alt=""
           />
-          <p className="slide-01">
+          <h2 className="slide-01__title">
             잊지 못할 순간을
             <br />
             후원으로 선물해보세요
-          </p>
-          <Link to="/list" className="cta" style={{ top: "calc(50% - 200px)" }}>
+          </h2>
+          <Link to="/list" className="cta cta--01">
             지금 참여하기
             <img src="src/assets/icons/ic-arrow.svg" />
           </Link>
@@ -250,19 +262,15 @@ function Landing() {
               mixBlendMode: "screen",
             }}
           />
-          <p className="slide-02">
+          <h2 className="slide-02__title">
             크레딧으로
             <br />
             쉽게 후원해요
-            <Link
-              to="/list"
-              className="cta"
-              style={{ top: "calc(50% + 128px)" }}
-            >
-              30,000 크레딧 받고 시작하기
-              <img src="src/assets/icons/ic-arrow.svg" />
-            </Link>
-          </p>
+          </h2>
+          <Link to="/list" className="cta cta--02">
+            30,000 크레딧 받고 시작하기
+            <img src="src/assets/icons/ic-arrow.svg" />
+          </Link>
         </S.SlideContainer>
         <S.SlideContainer index={3}>
           <motion.video
@@ -286,8 +294,8 @@ function Landing() {
               opacity: 0.5,
             }}
           />
-          <p
-            className="slide-03"
+          <h2
+            className="slide-03__title"
             style={{
               zIndex: 0,
             }}
@@ -295,8 +303,8 @@ function Landing() {
             좋아하는 아티스트를
             <br />
             이달의 아이돌로 만들어주세요
-          </p>
-          <Link to="/list" className="cta" style={{ top: "calc(50% + 120px)" }}>
+          </h2>
+          <Link to="/list" className="cta cta--03">
             지금 참여하러 가기
             <img src="src/assets/icons/ic-arrow.svg" />
           </Link>
@@ -306,8 +314,6 @@ function Landing() {
             className={`images img-profile-01`}
             style={{
               scale: E_1_S,
-              x: "-700px",
-              y: "-200px",
             }}
             src={`src/assets/images/landing/img-landing-profile-01.png`}
             alt=""
@@ -316,8 +322,6 @@ function Landing() {
             className={`images img-profile-02`}
             style={{
               scale: E_2_S,
-              x: "700px",
-              y: "-300px",
             }}
             src={`src/assets/images/landing/img-landing-profile-02.png`}
             alt=""
@@ -326,8 +330,6 @@ function Landing() {
             className={`images img-profile-03`}
             style={{
               scale: E_3_S,
-              x: "-200px",
-              y: "-350px",
             }}
             src={`src/assets/images/landing/img-landing-profile-03.png`}
             alt=""
@@ -336,8 +338,6 @@ function Landing() {
             className={`images img-profile-04`}
             style={{
               scale: E_4_S,
-              x: "-400px",
-              y: "350px",
             }}
             src={`src/assets/images/landing/img-landing-profile-04.png`}
             alt=""
@@ -346,8 +346,6 @@ function Landing() {
             className={`images img-profile-05`}
             style={{
               scale: E_5_S,
-              x: "300px",
-              y: "350px",
             }}
             src={`src/assets/images/landing/img-landing-profile-05.png`}
             alt=""
@@ -356,28 +354,26 @@ function Landing() {
             className={`images img-profile-06`}
             style={{
               scale: E_6_S,
-              x: "650px",
-              y: "200px",
             }}
             src={`src/assets/images/landing/img-landing-profile-06.png`}
             alt=""
           />
-          <p className="slide-04">
+          <h2 className="slide-04__title">
             관심있는 아티스트를
             <br />한 곳에 모아보세요
-          </p>
-          <Link to="/list" className="cta" style={{ top: "calc(50% + 128px)" }}>
+          </h2>
+          <Link to="/list" className="cta cta--04">
             구경하기
             <img src="src/assets/icons/ic-arrow.svg" />
           </Link>
         </S.SlideContainer>
         <S.SlideContainer index={5}>
-          <p className="slide-05">
+          <h2 className="slide-05__title">
             준비 되셨나요?
             <br />
             지금 바로 시작해봐요!
-          </p>
-          <Link to="/list" className="cta" style={{ top: "calc(50% + 128px)" }}>
+          </h2>
+          <Link to="/list" className="cta cta--05">
             30,000 크레딧 받고 시작하기
             <img src="src/assets/icons/ic-arrow.svg" />
           </Link>

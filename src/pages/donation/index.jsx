@@ -34,7 +34,6 @@ async function getting(idolId) {
 function Donation() {
   const [item, setItem] = useState(null);
   const { id } = useParams();
-  const loadingMsg = "Loading...";
   const [dday, setDday] = useState(null);
 
   useEffect(() => {
@@ -80,15 +79,10 @@ function Donation() {
                   ? `url(${item.idol.profilePicture}) 50% 50% / cover no-repeat`
                   : "#eee",
                 backgroundColor: "#eee",
-                width: "480px",
-                height: "480px",
               }}
             />
           ) : (
-            <div
-              className="skeleton"
-              style={{ width: "480px", height: "480px" }}
-            />
+            <div className="skeleton skeleton--main-img" />
           )}
           <DonateContainer item={item} dday={dday} />{" "}
         </div>
