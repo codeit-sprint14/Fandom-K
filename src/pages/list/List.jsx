@@ -1,4 +1,4 @@
-window. localStorage.setItem("30000", 30000);
+window.localStorage.setItem("credit", 30000);
 
 function List() {
   return <>List</>;
