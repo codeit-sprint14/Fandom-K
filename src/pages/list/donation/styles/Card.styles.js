@@ -41,7 +41,7 @@ export const Progress = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 100%
+  width: 100%;
   height: 25px;
   padding: 4px 12px 4px 8px;
   border-radius: 100px;
@@ -54,12 +54,27 @@ export const Progress = styled.div`
   backdrop-filter: blur(40px);
 `;
 
-export const CheckIcon = styled.img`
+// 원형 그래프 + 진행률 wrapper
+export const ProgressWrapper = styled.div`
   position: absolute;
   top: 8px;
-  right: 8px;
-  width: 28px;
-  height: 28px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 8px;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(40px);
+`;
+
+// 진행률
+export const ProgressText = styled.span`
+  color: #f7f7f8;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0%;
 `;
 
 // 후원 목표 달성 여부 표시 (진행률 위)
@@ -69,7 +84,7 @@ export const GoalReached = styled.div`
   left: 50%;
   transform: translateX(-50%);
   font-size: 12px;
-  weight: 500;
+  font-weight: 500;
   line-height: 18px;
   letter-spacing: -0.17px;
   color: #e6e6e6;
@@ -108,7 +123,7 @@ export const InfoContainer = styled.div`
 // 후원 부제목 스타일
 export const Subtitle = styled.div`
   font-size: 16px;
-  weight: 400;
+  font-weight: 400;
   line-height: 18px;
   letter-spacing: -0.17px;
   color: #ffffff;

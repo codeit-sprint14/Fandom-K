@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import { fetchDonations } from "../../../../apis/donationApi";
 import Card from "./Card";
-import * as S from "../styles/DonationPage.styles";
+import * as S from "../styles/donation-page.styles";
 import BtnArrow from "../../../../components/buttons/BtnArrow";
 
-const ITEMS_PER_PAGE = 4; // 한 번에 보이는 카드 개수
-const CARD_WIDTH = 282.5 + 40;
+const itemsPerPage = 4; // 한 번에 보이는 카드 개수
+const cardWidth = 282.5 + 40;
 
 const DonationPage = () => {
   const [donations, setDonations] = useState([]); // API에서 불러온 후원 데이터
@@ -33,14 +33,14 @@ const DonationPage = () => {
   }, []);
 
   // 전체 페이지 수 계산
-  const totalPages = Math.ceil(donations.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(donations.length / itemsPerPage);
 
   // 왼쪽 버튼 클릭 시 (이전 4개)
   const prevSlide = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
         // 현재 스크롤 위치를 기준으로 특정 거리만큼 이동하는 기능의 메서드
-        left: -CARD_WIDTH * ITEMS_PER_PAGE, // 왼쪽으로 4개 이동
+        left: -cardWidth * itemsPerPage, // 왼쪽으로 4개 이동
         behavior: "smooth",
       });
       setCurrentPage((prev) => prev - 1);
@@ -51,7 +51,7 @@ const DonationPage = () => {
   const nextSlide = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
-        left: CARD_WIDTH * ITEMS_PER_PAGE, // 오른쪽으로 4개 이동
+        left: cardWidth * itemsPerPage, // 오른쪽으로 4개 이동
         behavior: "smooth",
       });
       setCurrentPage((prev) => prev + 1);
@@ -64,12 +64,12 @@ const DonationPage = () => {
       <S.CarouselContainer>
         {currentPage > 0 && <BtnArrow onClick={prevSlide} />}
         <S.CardGrid
-          $cardWidth={CARD_WIDTH}
-          $itemsPerPage={ITEMS_PER_PAGE}
+          $cardWidth={cardWidth}
+          $itemsPerPage={itemsPerPage}
           ref={carouselRef}
         >
           {loading ? (
-            Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
+            Array.from({ length: itemsPerPage }).map((_, index) => (
               <Card key={index} isLoading={true} />
             ))
           ) : donations.length > 0 ? (

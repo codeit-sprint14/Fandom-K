@@ -34,17 +34,17 @@ export const CarouselContainer = styled.div`
   position: relative;
 `;
 
-const ITEMS_PER_PAGE = 4; // 한 번에 보이는 카드 개수
-const CARD_WIDTH = 282.5 + 40;
-const TOTAL_CAROUSEL_WIDTH = CARD_WIDTH * ITEMS_PER_PAGE;
+const itemsPerPage = 4; // 한 번에 보이는 카드 개수
+const cardWidth = 282.5 + 40;
+const totalCarouselWidth = cardWidth * itemsPerPage;
 
 // 개별 후원 카드들을 배치하는 그리드 (수평 스크롤)
 export const CardGrid = styled.div`
   display: flex;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  max-width: ${TOTAL_CAROUSEL_WIDTH}px;
-  width: ${TOTAL_CAROUSEL_WIDTH}px;
+  max-width: ${totalCarouselWidth}px;
+  width: ${totalCarouselWidth}px;
   padding: 20px;
   &::-webkit-scrollbar {
     display: none;

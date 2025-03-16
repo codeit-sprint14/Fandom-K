@@ -1,4 +1,5 @@
-import * as S from "../styles/Card.styles";
+import * as S from "../styles/card.styles";
+import CircularProgressBar from "./CircularProgressBar";
 
 const Card = ({ donation, isLoading }) => {
   if (isLoading) {
@@ -27,7 +28,10 @@ const Card = ({ donation, isLoading }) => {
     <S.CardContainer>
       <S.ImageWrapper>
         <S.DonationImage src={donation.image} alt={donation.subtitle} />
-        <S.Progress>{donation.progress}%</S.Progress>
+        <S.ProgressWrapper>
+          <CircularProgressBar progress={donation.progress} />
+          <S.ProgressText>{donation.progress}%</S.ProgressText>
+        </S.ProgressWrapper>
         {isGoalReached && (
           <S.GoalReached>후원 목표를 달성했어요!</S.GoalReached>
         )}
