@@ -9,15 +9,14 @@ import {
   DeleteButtonWrapper,
   Name,
   Group,
+  EmptyMessage,
 } from "./style";
 
 function ListedProfiles({ idols, onRemove }) {
   return (
     <ListedContainer>
       {idols.length === 0 ? (
-        <div style={{ textAlign: "center", padding: "20px", color: "#aaa" }}>
-          관심 있는 아이돌을 추가해 보세요!
-        </div>
+        <EmptyMessage>관심 있는 아이돌을 추가해 보세요!</EmptyMessage>
       ) : (
         <List>
           {idols.map((idol) => (

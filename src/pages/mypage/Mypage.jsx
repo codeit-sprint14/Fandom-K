@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useIdol } from "../../hooks/Mypage/useIdol.js";
 import ListedProfiles from "./components/ListedProfiles/index.jsx";
 import ProfileList from "./components/ProfileList";
 import Btn from "../../components/buttons/Btn.jsx";
 import CheckIcon from "../../assets/icons/ic-check.svg";
+import Toast from "../../components/modals/Toast";
 import * as S from "./Mypage.styles";
 import {
   getStoredIdols,
@@ -12,13 +13,58 @@ import {
 
 function Mypage() {
   // useIdol 훅 호출 (favoriteIdols 제거)
-  const { idols, favoriteIdols, setFavoriteIdols, removeIdol, addIdol } =
-    useIdol();
+  const {
+    idols,
+    favoriteIdols,
+    setFavoriteIdols,
+    removeIdol,
+    addIdol,
+    cursor,
+    pageSize,
+    keyword,
+    setPage,
+    hasMore,
+  } = useIdol();
 
   // 선택된 아이돌 상태
   const [selectedIdols, setSelectedIdols] = useState([]);
 
-  // 관심 아이돌이 아닌 목록만 ProfileList에 표시
+  // 토스트 메시지 상태 추가
+  const [toastMsg, setToastMsg] = useState("");
+
+  const observer = useRef(null);
+  const lastElementRef = useRef(null);
+
+  useEffect(() => {
+    if (!hasMore) return;
+
+    observer.current = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setPage((prevPage) => prevPage + 1);
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    if (lastElementRef.current) {
+      observer.current.observe(lastElementRef.current);
+    }
+
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    };
+  }, [hasMore]);
+
+  useEffect(() => {
+    if (toastMsg) {
+      const timer = setTimeout(() => setToastMsg(""), 3000);
+      return () => clearTimeout(timer); // 메모리 누수 방지
+    }
+  }, [toastMsg]);
+
   const availableIdols = idols.filter(
     (idol) => !favoriteIdols.some((fav) => fav.id === idol.id)
   );
@@ -35,6 +81,7 @@ function Mypage() {
   // 관심 아이돌 저장
   const handleSaveIdols = () => {
     if (selectedIdols.length === 0) {
+      setToastMsg("관심 아이돌을 선택해 주세요 🥲");
       return;
     }
 
@@ -44,6 +91,8 @@ function Mypage() {
     setFavoriteIdols(updatedIdols);
 
     setSelectedIdols([]); // 선택 목록 초기화
+
+    setToastMsg("관심 아이돌을 수정했어요 ✨");
   };
 
   // 관심 아이돌 삭제
@@ -51,8 +100,16 @@ function Mypage() {
     removeIdol(idolId);
   };
 
+  // 100개 이상의 데이터가 존재하는 경우, 더 불러오기 위한 함수
+  const getMoreIdolList = () => {
+    if (cursor !== null) {
+      getIdolList({ pageSize, cursor, keyword });
+    }
+  };
+
   return (
     <S.Container>
+      {toastMsg && <Toast msg={toastMsg} />}
       <S.Section>
         <S.Title>내가 관심있는 아이돌</S.Title>
         <ListedProfiles idols={favoriteIdols} onRemove={handleRemoveIdol} />
@@ -65,7 +122,14 @@ function Mypage() {
         <ProfileList
           idols={availableIdols} // favoriteIdols 제거, 전체 아이돌 목록 사용
           selectedIdols={selectedIdols}
-          onSelect={handleSelectIdol}
+          // onSelect={handleSelectIdol}
+          onSelect={(idol) =>
+            setSelectedIdols((prev) =>
+              prev.some((selected) => selected.id === idol.id)
+                ? prev.filter((selected) => selected.id !== idol.id)
+                : [...prev, idol]
+            )
+          }
         />
       </S.Section>
 
@@ -85,13 +149,6 @@ function Mypage() {
           }
           onClick={handleSaveIdols}
         />
-        {/* <button
-          onClick={() => {
-            handleSaveIdols();
-          }}
-        >
-          저장하기
-        </button> */}
       </S.ButtonContainer>
     </S.Container>
   );

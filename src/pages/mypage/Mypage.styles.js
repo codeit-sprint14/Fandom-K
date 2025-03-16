@@ -57,7 +57,9 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 78px 0;
+  max-width: 295px;
+  margin: 0 auto;
+  padding: 20px 0;
 
   span {
     display: flex;

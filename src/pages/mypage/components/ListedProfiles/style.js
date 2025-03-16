@@ -74,3 +74,18 @@ export const Title = styled.h2`
   font-weight: bold;
   margin-bottom: 20px;
 `;
+
+export const EmptyMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #aaa;
+  padding: 20px;
+  margin: 0 auto;
+`;

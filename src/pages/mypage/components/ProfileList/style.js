@@ -1,6 +1,22 @@
 import styled, { css } from "styled-components";
 import typography from "../../../../utils/typography";
 
+export const ScrollContainer = styled.div`
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+
+  /* 스크롤바 숨기기 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+`;
+
 const ListedContainer = styled.div`
   display: flex;
   gap: 20px;
