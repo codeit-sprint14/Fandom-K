@@ -11,12 +11,21 @@ export const fetchDonations = async (cursor = 0, pageSize = 8) => {
       params: { cursor, pageSize }, // 요청 시, 시작위치와 한 번에 가져올 개수를 쿼리 파라미터로
     });
 
-    console.log("후원 목록 가져오기 성공:", response.data);
+    // console.log("후원 목록 가져오기 성공:", response.data);
+    // console.log("📌 API 응답 데이터 확인:", response.data);
+    // console.log("📌 각 후원 진행률 데이터:", response.data.list);
+    console.log(response.data);
 
     return {
       nextCursor: response.data.nextCursor, // 다음 요청 시 사용할 cursor 값
-      list:
-        response.data.list.map((donation) => ({
+      list: response.data.list.map((donation) => {
+        const progress =
+          donation.targetDonation && donation.receivedDonations
+            ? Math.floor(
+                (donation.receivedDonations / donation.targetDonation) * 100
+              )
+            : 0; // 진행률 계산
+        return {
           id: donation.id, // 후원 ID
           idolId: donation.idolId, // 아이돌 ID
           title: donation.title, // 후원 제목
@@ -26,6 +35,19 @@ export const fetchDonations = async (cursor = 0, pageSize = 8) => {
           deadline: donation.deadline, // 조공 마감일
           createdAt: donation.createdAt, // 후원 생성일 ($date-time)
           status: donation.status, // 후원 진행 상태
+          isGoalReached: progress >= 100, // 100% 이상이면 목표 달성
+          progress, // 후원 진행률 저장
+          daysLeft:
+            donation.deadline && !isNaN(new Date(donation.deadline))
+              ? Math.max(
+                  0,
+                  Math.ceil(
+                    (new Date(donation.deadline) - new Date()) /
+                      (1000 * 60 * 60 * 24)
+                  )
+                )
+              : "∞", // 날짜가 없거나 이상할 경우 무한대 처리
+          image: donation.idol?.profilePicture || "/default-image.jpg", // 기본 이미지 설정
           idol: {
             id: donation.idol?.id, // 아이돌 id
             name: donation.idol?.name, // 아이돌 이름
@@ -34,7 +56,8 @@ export const fetchDonations = async (cursor = 0, pageSize = 8) => {
             profilePicture: donation.idol?.profilePicture, // 아이돌 프로필 사진
             totalVotes: donation.idol?.totalVotes, // 아이돌 총 투표 수
           },
-        })) || [], // 후원 목록 데이터 (없을 경우 빈 배열 반환)
+        };
+      }),
     };
   } catch (error) {
     console.error(

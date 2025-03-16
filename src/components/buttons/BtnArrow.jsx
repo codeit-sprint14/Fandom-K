@@ -35,8 +35,8 @@ function BtnArrow({ isRight = false, onClick }) {
         ) : (
           <path
             d="M25 28.2128L16.1861 36.9892C15.5318 37.6406 15.5318 38.6998 16.1861 39.3512L25 48.1277"
-            stroke-width="3"
-            stroke-linecap="round"
+            strokeWidth="3"
+            strokeLinecap="round"
           />
         )}
       </Svg>
