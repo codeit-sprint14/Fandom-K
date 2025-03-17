@@ -33,7 +33,7 @@ function DonateContainer({ item, dday }) {
       console.log("Donation successful:", response.data);
 
       const credit = Number(window.localStorage.getItem("credit") || 0);
-      window.localStorage.setItem("credit", credit + quantity);
+      window.localStorage.setItem("credit", credit - quantity);
       handleToast(`${quantity.toLocaleString()} 크레딧을 후원했어요 🥳`);
     } catch (error) {
       console.error(

@@ -167,6 +167,7 @@ function Landing() {
           </Link>
         </S.SlideContainer>
         <S.SlideContainer index={1} className="slide-01">
+          <div className="dimmer" />
           <motion.img
             className={`images img-card-01`}
             initial={{ x: "-50%" }}

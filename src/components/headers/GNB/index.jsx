@@ -1,17 +1,32 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Toast from "../../modals/Toast";
 import ModalCharge from "../../modals/ModalCharge";
 
 import * as S from "./style";
 
+import ModalVote from "../../modals/ModalVote";
 import creditIcon from "../../../assets/icons/ic-credit.svg";
 import logoIcon from "../../../assets/icons/logo.svg";
-import ModalVote from "../../modals/ModalVote";
+import profileIcon from "../../../assets/icons/ic-profile.svg";
+import plusIcon from "../../../assets/icons/btn-plus.svg";
 
 function GNB() {
   const [showToast, setShowToast] = useState(0);
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [winSize, setWinSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleWinSize = () => {
+      setWinSize(window.innerWidth);
+    };
+
+    handleWinSize();
+
+    window.addEventListener("resize", handleWinSize);
+
+    return () => window.removeEventListener("resize", handleWinSize);
+  }, []);
 
   const handleToast = (msg) => {
     if (!showToast) {
@@ -27,11 +42,41 @@ function GNB() {
     setModalOpen(isOpen);
   };
 
+  if (winSize <= 768) {
+    return (
+      <>
+        {showToast && <Toast msg={showToast} />}
+        {modalOpen && (
+          <ModalCharge onClick={handleToast} onOpen={handleModal} />
+        )}
+
+        <S.GNBContainer>
+          <div className="container">
+            <Link to="/list" className="center">
+              <img src={logoIcon} alt="" srcSet="" />
+            </Link>
+            <div className="left" onClick={() => handleModal(true)}>
+              <img src={creditIcon} alt="" srcSet="" />
+              <span>
+                {Number(window.localStorage.getItem("credit")).toLocaleString()}
+              </span>
+              <img src={plusIcon} alt="" srcSet="" className="ico-plus" />
+            </div>
+            <Link to="/mypage" className="right">
+              <img src={profileIcon} alt="" />
+            </Link>
+          </div>
+        </S.GNBContainer>
+        <S.Ambient />
+      </>
+    );
+  }
+
   return (
     <>
       {showToast && <Toast msg={showToast} />}
-      {/* {modalOpen && <ModalCharge onClick={handleToast} onOpen={handleModal} />} */}
-      {modalOpen && <ModalVote onOpen={handleModal} />}
+      {modalOpen && <ModalCharge onClick={handleToast} onOpen={handleModal} />}
+      {/* {modalOpen && <ModalVote onOpen={handleModal} />} */}
 
       <S.GNBContainer>
         <div className="container">
@@ -40,15 +85,17 @@ function GNB() {
             <span>
               {Number(window.localStorage.getItem("credit")).toLocaleString()}
             </span>
+            <img src={plusIcon} alt="" srcSet="" className="ico-plus" />
           </div>
           <Link to="/list" className="center">
             <img src={logoIcon} alt="" srcSet="" />
           </Link>
           <Link to="/mypage" className="right">
-            <div>
+            <img src={profileIcon} alt="" />
+            {/* <div>
               <span className="group">NJZ</span>
-              <span className="nickname">행복한 사자12</span>
-            </div>
+              <span className="nickname">내 관심 아이돌</span>
+            </div> */}
           </Link>
         </div>
         {/* <div className="group-img" /> */}

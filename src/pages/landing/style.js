@@ -136,6 +136,7 @@ const SlideContainer = styled.div `
         text-shadow: 0 0 50px black;
         background: #00000040;
         backdrop-filter: blur(30px);
+        z-index: 1;
         
         img {
             color: gray;
@@ -187,8 +188,29 @@ const SlideContainer = styled.div `
         }
     }
 
-    .slide-01 {
+    &.slide-01 {
         position: relative;
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 150vh;
+            z-index: 0;
+            background: linear-gradient(90deg, rgba(97, 69, 255, 0.30) 0%, rgba(242, 0, 165, 0.30) 100%);
+            filter: blur(300px);
+        }
+        .dimmer{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 20vh;
+            z-index: 5;
+            background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        }
     }
 
     .slide-00__title{
@@ -208,7 +230,7 @@ const SlideContainer = styled.div `
         font-size: 60px;
         line-height: 1.4;
 
-        &.slide-01__title{ margin-top: -60vh; }
+        &.slide-01__title{ margin-top: -60vh; z-index: 1; }
         &.slide-02__title{
             margin-right: 200px;
             text-align: left;
@@ -243,10 +265,12 @@ const SlideContainer = styled.div `
         bottom: 0;
     }
     .img-card-04{
+        z-index: 1;
         left: calc(50%);
         bottom: 0;
     }
     .img-card-05{
+        z-index: 1;
         left: calc(50%);
         bottom: 0;
     }
