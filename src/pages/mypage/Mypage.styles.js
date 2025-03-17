@@ -8,8 +8,9 @@ export const Container = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start; /* 내부 요소 왼쪽 정렬 */
+  justify-content: center;
+  overflow-x: hidden;
+  align-items: center; /* 내부 요소 왼쪽 정렬 */
 `;
 
 export const Section = styled.div`
@@ -36,20 +37,28 @@ export const Divider = styled.div`
   width: 100%;
   height: 1px;
   background-color: rgba(255, 255, 255, 0.2);
-  margin: 40px 40px; /* 중앙 정렬 */
-  display: block;
+  margin: 40px auto; /* 중앙 정렬 */
+  // display: block;
+
+  @media (max-width: 768px) {
+    margin: 24px auto;
+  }
 `;
 
 export const ProfileListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   max-width: 1237px;
   width: 100%;
   margin-left: 0;
   gap: 24px; /* 프로필 간격 */
   padding: 0 20px; /* 창 줄여도 좌우 여백 유지 */
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -67,8 +76,3 @@ export const ButtonContainer = styled.div`
     gap: 4px;
   }
 `;
-
-// export const CheckIcon = styled.img`
-//   width: 20px;
-//   height: 20px;
-// `;

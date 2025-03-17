@@ -1,23 +1,39 @@
 import styled, { css } from "styled-components";
 import typography from "../../../../utils/typography";
 
-export const ListedContainer = styled.div`
+export const ScrollContainer = styled.div`
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
   display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  max-width: 1237px;
-  width: 100%;
-  padding-left: 20px;
-  margin-left: 0;
+  gap: 10px;
+  padding: 10px;
+  white-space: nowrap;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  @media (min-width: 1024px) {
+    padding: 20px;
+  }
 `;
 
-export const List = styled.div`
+export const ListedContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  flex-wrap: nowrap;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+    padding-left: 10px;
+  }
 `;
 
 export const ProfileWrapper = styled.div`
@@ -29,6 +45,12 @@ export const ProfileWrapper = styled.div`
   justify-content: space-between;
   position: relative;
   text-align: center;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 90px;
+    height: 130px;
+  }
 `;
 
 export const ProfileIcoContainer = styled.div`
@@ -40,6 +62,17 @@ export const ProfileIcoContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-ft: cover;
+  }
+
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 export const DeleteButtonWrapper = styled.div`
@@ -55,6 +88,10 @@ export const Name = styled.p`
     ${typography("b16")};
     color: white;
   `}
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const Group = styled.p`
@@ -63,6 +100,10 @@ export const Group = styled.p`
     color: white;
     opacity: 0.6;
   `}
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 export const Loading = styled.div`
   text-align: center;
