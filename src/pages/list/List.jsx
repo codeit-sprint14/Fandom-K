@@ -18,7 +18,6 @@ function List() {
     <>
       <GlobalStyle />
       <DonationPage />
-      <ListChart />
     </>
   );
 }
