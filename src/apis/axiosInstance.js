@@ -13,12 +13,14 @@ const ERR_DATA = {
 };
 
 // 팀명
-const teamName = "14-3";
+// const teamName = "14-3";
 
 // axios 기본 설정
 const instance = axios.create({
-  baseURL: `https://fandom-k-api.vercel.app/${teamName}`, // 통신할 서버 URL 기본값
-  timeout: 1000, // 10초 제한
+  // baseURL: `https://fandom-k-api.vercel.app/${teamName}`, // 통신할 서버 URL 기본값
+  baseURL: "/api/14-3",
+  timeout: 5000,
+  // timeout: 1000, // 10초 제한
   headers: {
     // 서버가 요청을 이해할 수 있도록 정보 추가
     "Content-Type": "application/json", // JSON 데이터 형식 사용
@@ -33,7 +35,7 @@ const retryRequest = async (error, retries = 3) => {
   }
   console.warn(`요청 실패, ${retries}회 남음. 재시도 중..`); // 경고 메시지 출력
 
-  await new Promise((resolve) => setTimeout(resolve, 1000)); // 1초 대기 후 재요청
+  await new Promise((resolve) => setTimeout(resolve, 10000)); // 10초 대기 후 재요청
 
   return instance(error.config) // 재요청
     .then((response) => response)
