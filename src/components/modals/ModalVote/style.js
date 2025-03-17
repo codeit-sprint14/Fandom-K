@@ -45,6 +45,13 @@ const Container = styled.div`
   z-index: 100;
   animation: ${(props) => (props.isExiting ? popOut : popIn)} 0.4s
     cubic-bezier(0, 0.6, 0.4, 1) 0s 1 alternate both;
+  
+    @media (max-width: 768px) {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      z-index: 999990;
+    }
 
   header {
     width: calc(100% + 40px);
@@ -115,6 +122,11 @@ const ModalChargeQuantity = styled.ul`
     margin-bottom: 8px;
   }
 
+  @media (max-width: 768px) {
+      height: 70vh;
+      box-sizing: border-box;
+    }
+
   .edge {
     box-sizing: border-box;
     width: 100%;
@@ -131,6 +143,11 @@ const ModalChargeQuantity = styled.ul`
       rgba(24, 29, 38, 0) 95%,
       rgba(24, 29, 38, 1) 100%
     );
+
+    @media (max-width: 768px) {
+      height: 70vh;
+      top: 12.28vh;
+    }
   }
 
   &::-webkit-scrollbar {

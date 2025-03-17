@@ -103,6 +103,9 @@ h1 {
     font-weight: 800;
     margin: 14px 0 58px 0;
     text-align: center;
+    line-height: 1.2;
+
+    @media screen and (max-width: 1024px){font-size: 32px;}
 }
 h2 {
     font-size: 48px;
@@ -133,10 +136,45 @@ h4,h5,h6 {
     display: flex;
     gap: 92px;
     width: 960px;
+
+    @media screen and (max-width: 1024px){
+        flex-direction: column;
+        width: 100%;
+        padding: 0 52px;
+        box-sizing: border-box;
+        justify-content: center;
+    }
 }
 
 .main-img{
     border-radius: 8px;
+    width: 480px;
+    height: 480px;
+    box-sizing: border-box;
+    aspect-ratio: 1;
+
+    @media screen and (max-width: 1024px){
+        margin: auto;
+        box-sizing: border-box;
+        width: 70vw;
+        height: 70vw;
+        aspect-ratio: 1;
+        
+        /* padding: 52px; */
+    }
+}
+
+.skeleton--main-img{
+    width: 480px;
+    height: 480px;
+
+    @media screen and (max-width: 1024px){
+        margin: auto;
+        box-sizing: border-box;
+        width: 70vw;
+        height: 70vw;
+        aspect-ratio: 1;
+    }
 }
 
 .small-info-container{
@@ -178,8 +216,6 @@ h4,h5,h6 {
 
     .detail-left {
         color: var(--white-whtie_F7F7F8,hsl(0, 0.00%, 85%));
-        width: 800px;
-
         h1,h2 {
             font-family: "Pretendard Variable";
             font-size: 24px;
@@ -202,11 +238,18 @@ h4,h5,h6 {
             line-height: 1.7;
             text-align: justify;
         }
+
+        @media screen and (max-width: 1024px){
+            width: 100%;
+            padding: 0 64px;
+        }
     }
 
     .donate-sidebar{
         position: sticky;
         top: 128px;
+        width: 400px;
+        min-width: 400px;
         height: 580px;
         border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.20);
@@ -216,12 +259,17 @@ h4,h5,h6 {
         color: ${colors("whiteLight")};
 
         h2 {
-            
             font-size: 32px;
             font-weight: 800;
         }
         h4 {
             ${typography("m14")}
+        }
+
+        @media screen and (max-width: 1024px){
+            position: fixed;
+            background: #02000E;
+            width: 100vw;
         }
     }
 }
