@@ -1,33 +1,98 @@
 import { useState, useEffect } from "react";
-
-const STORAGE_KEY = "favoriteIdols"; // localStorage 키 값
+import { fetchIdols } from "../../apis/idolApi";
+import { getStoredIdols, saveIdolsToStorage } from "../../utils/localStorage";
 
 export function useIdol() {
-  const [favoriteIdols, setFavoriteIdols] = useState([]);
+  const [idols, setIdols] = useState([]);
+  const [favoriteIdols, setFavoriteIdols] = useState(getStoredIdols());
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
-  // localStorage에서 관심 아이돌 불러오기
+  // 전체 아이돌 불러오기 (페이지네이션 추가)
   useEffect(() => {
-    const storedIdols = localStorage.getItem(STORAGE_KEY);
-    if (storedIdols) {
-      setFavoriteIdols(JSON.parse(storedIdols)); // 문자열을 배열로 변환
-    }
-  }, []);
+    const loadIdols = async () => {
+      try {
+        const response = await fetchIdols(150, page);
+        console.log("API 응답 데이터:", response); // 원본 데이터 확인
+
+        if (response.length > 0) {
+          const mappedIdols = response.map((idol) => ({
+            id: idol.id,
+            name: idol.name,
+            gender: idol.gender,
+            image: idol.profilePicture, // 이미지가 실제로 설정되는지 확인
+            group: idol.group,
+          }));
+
+          console.log("매핑된 아이돌 목록:", mappedIdols); // 최종 상태 확인
+
+          setIdols((prevIdols) => {
+            const uniqueIdols = [...prevIdols, ...mappedIdols].filter(
+              (idol, index, self) =>
+                index === self.findIndex((i) => i.id === idol.id)
+            );
+            return uniqueIdols;
+          });
+        } else {
+          setHasMore(false);
+        }
+      } catch (error) {
+        console.error("아이돌 목록 불러오기 실패: ", error);
+      }
+    };
+
+    loadIdols();
+  }, [page]);
+
+  // 전체 아이돌 불러오기 (API 호출)
+  // useEffect(() => {
+  //   const loadIdols = async () => {
+  //     try {
+  //       const response = await fetchIdols();
+  //       if (response) {
+  //         setIdols(
+  //           response.map((idol) => ({
+  //             id: idol.id,
+  //             name: idol.name,
+  //             gender: idol.gender,
+  //             image: idol.profilePicture,
+  //             group: idol.group,
+  //           }))
+  //         );
+  //       }
+  //     } catch (error) {
+  //       console.error("아이돌 목록 불러오기 실패: ", error);
+  //     }
+  //   };
+
+  //   loadIdols();
+  // }, []);
+
+  // LocalStorage 변경 감지 후 상태 업데이트
+  useEffect(() => {
+    setFavoriteIdols(getStoredIdols());
+  }, [localStorage.getItem("favoriteIdols")]);
 
   // 관심 아이돌 추가 함수
   const addIdol = (idol) => {
-    if (!favoriteIdols.some((fav) => fav.id === idol.id)) {
-      const updatedIdols = [...favoriteIdols, idol];
-      setFavoriteIdols(updatedIdols);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedIdols));
-    }
+    const updated = [...favoriteIdols, idol];
+    saveIdolsToStorage(updated);
+    setFavoriteIdols(updated);
   };
 
-  // 관심 아이돌 삭제 함수
   const removeIdol = (idolId) => {
     const updatedIdols = favoriteIdols.filter((idol) => idol.id !== idolId);
     setFavoriteIdols(updatedIdols);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedIdols)); // localStorage 업데이트
+    saveIdolsToStorage(updatedIdols);
   };
 
-  return { favoriteIdols, addIdol, removeIdol };
+  return {
+    idols,
+    favoriteIdols,
+    setFavoriteIdols,
+    addIdol,
+    removeIdol,
+    setPage,
+    hasMore,
+  };
 }

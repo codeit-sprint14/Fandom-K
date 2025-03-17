@@ -55,4 +55,4 @@ const Checked = styled.div`
   z-index: 2;
 `;
 
-export {Ring, CheckedBackground, Img, Svg, Checked};
+export { Ring, CheckedBackground, Img, Svg, Checked };

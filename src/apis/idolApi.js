@@ -3,11 +3,11 @@ import instance from "./axiosInstance";
 const BASE_URL = "/idols";
 
 // [GET] 아이돌 목록 가져오기
-export const fetchIdols = async (pageSize = 20) => {
+export const fetchIdols = async (pageSize = 150, page = 1) => {
   try {
     // API에 GET 요청 (아이돌 목록 가져오기 : GET /idols?pageSize=20)
     const response = await instance.get(BASE_URL, {
-      params: { pageSize }, // 페이지 크기를 쿼리 파라미터로 전달
+      params: { pageSize, page }, // 페이지 크기를 쿼리 파라미터로 전달
     });
 
     console.log("아이돌 목록 가져오기 성공:", response.data);
