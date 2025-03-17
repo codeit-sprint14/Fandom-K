@@ -2,11 +2,16 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Toast from "../../modals/Toast";
 import ModalCharge from "../../modals/ModalCharge";
+
 import * as S from "./style";
+
+import creditIcon from "../../../assets/icons/ic-credit.svg";
+import logoIcon from "../../../assets/icons/logo.svg";
+import ModalVote from "../../modals/ModalVote";
 
 function GNB() {
   const [showToast, setShowToast] = useState(0);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(true);
 
   const handleToast = (msg) => {
     if (!showToast) {
@@ -25,18 +30,19 @@ function GNB() {
   return (
     <>
       {showToast && <Toast msg={showToast} />}
-      {modalOpen && <ModalCharge onClick={handleToast} onOpen={handleModal} />}
+      {/* {modalOpen && <ModalCharge onClick={handleToast} onOpen={handleModal} />} */}
+      {modalOpen && <ModalVote onOpen={handleModal} />}
 
       <S.GNBContainer>
         <div className="container">
           <div className="left" onClick={() => handleModal(true)}>
-            <img src="src/assets/icons/ic-credit.svg" alt="" srcSet="" />
+            <img src={creditIcon} alt="" srcSet="" />
             <span>
               {Number(window.localStorage.getItem("credit")).toLocaleString()}
             </span>
           </div>
           <Link to="/list" className="center">
-            <img src="src/assets/icons/logo.svg" alt="" srcSet="" />
+            <img src={logoIcon} alt="" srcSet="" />
           </Link>
           <Link to="/mypage" className="right">
             <div>
@@ -45,7 +51,7 @@ function GNB() {
             </div>
           </Link>
         </div>
-        <div className="group-img" />
+        {/* <div className="group-img" /> */}
       </S.GNBContainer>
       <S.Ambient />
     </>

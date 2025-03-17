@@ -15,10 +15,10 @@ const HeaderContainer = styled.div`
     showBorder ? "1px solid rgba(255, 255, 255, 0.1)" : "none"};
   box-sizing: border-box;
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     flex-direction: column;
     padding: 8px 16px;
-  }
+  } */
 `;
 
 const HandleBar = styled.div`
@@ -29,9 +29,9 @@ const HandleBar = styled.div`
   margin-bottom: 8px;
   display: none;
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     display: block;
-  }
+  } */
 `;
 
 const Title = styled.h2`

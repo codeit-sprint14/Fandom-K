@@ -26,8 +26,31 @@ const popOut = keyframes`
 	}
 `;
 
+const popInMobile = keyframes`
+	0% {
+		opacity: 0.7;
+    transform: translateX(-50%) translateY(50%);
+	}
+
+  100% {
+    transform: translateX(-50%) translateY(0%);
+	}
+`;
+
+const popOutMobile = keyframes`
+	0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0%);
+  }
+  
+  100% {
+      opacity: 0;
+    transform: translateX(-50%) translateY(50%);
+	}
+`;
+
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -45,6 +68,17 @@ const Container = styled.div`
   z-index: 100;
   animation: ${(props) => (props.isExiting ? popOut : popIn)} 0.4s
     cubic-bezier(0, 0.6, 0.4, 1) 0s 1 alternate both;
+
+  @media (max-width: 768px) {
+    animation: ${(props) => (props.isExiting ? popOutMobile : popInMobile)} 0.4s
+    cubic-bezier(0, 0.6, 0.4, 1) 0s 1 alternate both;
+
+    width: 100%;
+    box-sizing: border-box;
+    top: unset;
+    bottom: 0;
+    border-radius: 20px  / 20px 20px 0 0 ;
+  }
 `;
 
 const ModalChargeQuantity = styled.ul`
@@ -94,7 +128,7 @@ const CreditIco = styled.span`
 `;
 
 const Shade = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 
