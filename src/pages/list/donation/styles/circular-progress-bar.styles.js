@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  rotate: -90deg;
 `;
 
 // 기본 원형 그래프 배경색

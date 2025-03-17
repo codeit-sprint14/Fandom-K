@@ -33,9 +33,9 @@ const Card = ({ donation, isLoading }) => {
           <CircularProgressBar progress={donation.progress} />
           <S.ProgressText>{donation.progress}%</S.ProgressText>
         </S.ProgressWrapper>
-        {isGoalReached && (
+        {/* {isGoalReached && (
           <S.GoalReached>후원 목표를 달성했어요!</S.GoalReached>
-        )}
+        )} */}
       </S.ImageWrapper>
       <S.InfoContainer>
         <S.TextContainer>
@@ -44,14 +44,12 @@ const Card = ({ donation, isLoading }) => {
         </S.TextContainer>
         <S.DaysLeft $isUrgent={isUrgent}>D-{donation.daysLeft}</S.DaysLeft>
       </S.InfoContainer>
-      <S.Button>
-        <Link
-          to={`/donation/${donation.idolId}`}
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          {buttonLabel}
-        </Link>
-      </S.Button>
+      <Link
+        to={`/donation/${donation.idolId}`}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <S.Button>{buttonLabel}</S.Button>
+      </Link>
     </S.CardContainer>
   );
 };

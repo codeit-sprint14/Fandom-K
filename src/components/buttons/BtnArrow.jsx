@@ -22,9 +22,9 @@ const Svg = styled.svg`
   stroke: currentColor;
 `;
 
-function BtnArrow({ isRight = false, onClick }) {
+function BtnArrow({ isRight = false, onClick, style }) {
   return (
-    <Button onClick={onClick}>
+    <Button onClick={onClick} style={style}>
       <Svg width="40" height="78" viewBox="0 0 40 78" fill="none">
         {isRight ? (
           <path

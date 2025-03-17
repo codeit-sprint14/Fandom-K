@@ -11,9 +11,8 @@ export const CardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  flex-shrink: 0;
 
-  @media (max-width: 1023px) {
+  /* @media (max-width: 1023px) {
     width: 282px;
     height: 402px;
     padding: 24px 16px;
@@ -23,7 +22,7 @@ export const CardContainer = styled.div`
     width: 158px;
     height: 303px;
     padding: 16px 8px;
-  }
+  } */
 `;
 
 // 후원 이미지 감싸는 컨테이너 (포지셔닝 목적)
@@ -34,10 +33,21 @@ export const ImageWrapper = styled.div`
   border-radius: 8px;
   overflow: hidden;
 
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background: linear-gradient(0deg, rgba(2,0,14,1) 0%, rgba(2,0,14,0) 80%);;
+  }
+/* 
   @media (max-width: 767px) {
     width: 158px;
     height: 206px;
-  }
+  } */
 `;
 
 // 후원 이미지 스타일
@@ -70,10 +80,10 @@ export const Progress = styled.div`
   text-align: right;
   line-height: 100%;
   backdrop-filter: blur(40px);
-
+/* 
   @media (max-width: 767px) {
     font-size: 10.5px;
-  }
+  } */
 `;
 
 // 원형 그래프 + 진행률 wrapper
@@ -98,9 +108,9 @@ export const ProgressText = styled.span`
   line-height: 100%;
   letter-spacing: 0%;
 
-  @media (max-width: 767px) {
+  /* @media (max-width: 767px) {
     font-size: 10.5px;
-  }
+  } */
 `;
 
 // 후원 목표 달성 여부 표시 (진행률 위)
@@ -125,9 +135,9 @@ export const GoalReached = styled.div`
   justify-content: center;
   max-width: fit-content;
 
-  @media (max-width: 767px) {
+  /* @media (max-width: 767px) {
     font-size: 9x;
-  }
+  } */
 `;
 
 // Subtitle + Title을 묶는 컨테이너 (왼쪽 정렬)
@@ -139,11 +149,11 @@ export const TextContainer = styled.div`
   gap: 8px;
   flex-grow: 1;
   min-height: auto;
-
+/* 
   @media (max-width: 767px) {
     padding: 10px 0 20px 0;
     gap: 6px;
-  }
+  } */
 `;
 
 // TextContainer + D-Day (좌우 배치)
@@ -167,9 +177,9 @@ export const Subtitle = styled.div`
   color: #ffffff;
   opacity: 0.4;
 
-  @media (max-width: 767px) {
+  /* @media (max-width: 767px) {
     font-size: 12px;
-  }
+  } */
 `;
 
 // 후원 제목 스타일
@@ -187,10 +197,10 @@ export const Title = styled.div`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-
+/* 
   @media (max-width: 767px) {
     font-size: 14px;
-  }
+  } */
 `;
 
 // 후원 마감일 표시 (D-Day)
@@ -204,9 +214,9 @@ export const DaysLeft = styled.div`
   margin-bottom: 40px;
   white-space: nowrap; // 한 줄 유지
 
-  @media (max-width: 767px) {
+  /* @media (max-width: 767px) {
     font-size: 8px;
-  }
+  } */
 `;
 
 // 후원하기 버튼 스타일 (일반/추가 후원)
@@ -225,13 +235,14 @@ export const Button = styled.button`
   line-height: 26px;
   letter-spacing: 2%;
   text-align: center;
+  transition: all 0.1s ease-out;
   cursor: pointer;
   white-space: nowrap;
   &:hover {
     opacity: 0.8;
   }
 
-  @media (max-width: 1023px) {
+  /* @media (max-width: 1023px) {
     width: 100%;
     height: 40px;
     min-width: 234px;
@@ -241,7 +252,7 @@ export const Button = styled.button`
     width: 100%;
     height: 31px;
     min-width: 142px;
-  }
+  } */
 `;
 
 const shimmer = keyframes`

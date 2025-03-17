@@ -77,7 +77,11 @@ const DonationPage = () => {
         <S.Header>후원을 기다리는 조공</S.Header>
         <S.CarouselContainer>
           {!isMobile && currentPage > 0 ? (
-            <BtnArrow onClick={prevSlide} />
+            <BtnArrow
+              className="btn-arrow"
+              style={{ zIndex: 5, position: "absolute", left: "-48px" }}
+              onClick={prevSlide}
+            />
           ) : (
             <div style={{ width: "40px", height: "40px" }}></div>
           )}
@@ -99,7 +103,12 @@ const DonationPage = () => {
             )}
           </S.CardGrid>
           {!isMobile && currentPage < totalPages - 1 && (
-            <BtnArrow isRight onClick={nextSlide} />
+            <BtnArrow
+              isRight
+              className="btn-arrow"
+              style={{ zIndex: 5, position: "absolute", right: "-48px" }}
+              onClick={nextSlide}
+            />
           )}
         </S.CarouselContainer>
       </S.PageContainer>

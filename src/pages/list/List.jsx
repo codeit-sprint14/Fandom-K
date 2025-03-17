@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${colors("whiteLight")};
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
   }
 `;
 
