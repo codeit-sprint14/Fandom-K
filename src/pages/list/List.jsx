@@ -1,7 +1,7 @@
 import DonationPage from "./donation/components/DonationPage";
+import ListChart from "./charts/components/ListChart";
 import { createGlobalStyle } from "styled-components";
 import colors from "../../utils/colors";
-import ListChart from "./ListChart";
 
 window.localStorage.setItem("credit", 30000);
 
@@ -19,8 +19,8 @@ function List() {
   return (
     <>
       <GlobalStyle />
-      {/* <DonationPage /> */}
-      {/* <ListChart /> */}
+      <DonationPage />
+      <ListChart />
     </>
   );
 }

@@ -12,7 +12,20 @@ const DonationPage = () => {
   const [cursor, setCursor] = useState(0); // 페이지네이션을 위한 커서 값
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 상태
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1023);
   const carouselRef = useRef(null); //useRef 훅을 사용해 carouselRef라는 참조 생성 -> <S.CardGrid> 요소 참조
+
+  // 화면 크기 감지 및 상태 업데이트
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1023);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   // API 호출 -> 후원 목록 가져오기
   useEffect(() => {
@@ -60,11 +73,14 @@ const DonationPage = () => {
 
   return (
     <>
-      <S.GlobalStyle />
       <S.PageContainer>
         <S.Header>후원을 기다리는 조공</S.Header>
         <S.CarouselContainer>
-          {currentPage > 0 && <BtnArrow onClick={prevSlide} />}
+          {!isMobile && currentPage > 0 ? (
+            <BtnArrow onClick={prevSlide} />
+          ) : (
+            <div style={{ width: "40px", height: "40px" }}></div>
+          )}
           <S.CardGrid
             $cardWidth={cardWidth}
             $itemsPerPage={itemsPerPage}
@@ -82,7 +98,7 @@ const DonationPage = () => {
               <p>등록된 후원이 없습니다.</p>
             )}
           </S.CardGrid>
-          {currentPage < totalPages - 1 && (
+          {!isMobile && currentPage < totalPages - 1 && (
             <BtnArrow isRight onClick={nextSlide} />
           )}
         </S.CarouselContainer>
