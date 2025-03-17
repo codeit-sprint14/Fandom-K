@@ -1,6 +1,8 @@
 import DonationPage from "./donation/components/DonationPage";
 import { createGlobalStyle } from "styled-components";
 import colors from "../../utils/colors";
+import ListChart from "./ListChart";
+
 window.localStorage.setItem("credit", 30000);
 
 // 전역 스타일
@@ -17,8 +19,8 @@ function List() {
   return (
     <>
       <GlobalStyle />
-      <DonationPage />
-      <ListChart />
+      {/* <DonationPage /> */}
+      {/* <ListChart /> */}
     </>
   );
 }

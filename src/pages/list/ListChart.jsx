@@ -21,7 +21,7 @@ async function getIdolList(gender) {
   }
 }
 
-function List() {
+function ListChart() {
   const [isFemale, setIsFemale] = useState(true);
   const [idols, setIdols] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,9 +52,15 @@ function List() {
         <S.TitleBtn>
           <S.Title>이달의 차트</S.Title>
           <div style={{ width: "148px" }}>
-            <BtnIco text="차트 투표하기" icon="ic-chart.svg" onClick={() => setIsModalOpen(true)} />
+            <BtnIco
+              text="차트 투표하기"
+              icon="ic-chart.svg"
+              onClick={() => setIsModalOpen(true)}
+            />
           </div>
-          {isModalOpen && <ModalVote onOpen={setIsModalOpen} onClick={(msg) => alert(msg)} />}
+          {isModalOpen && (
+            <ModalVote onOpen={setIsModalOpen} onClick={(msg) => alert(msg)} />
+          )}
         </S.TitleBtn>
 
         <S.ButtonGroup>
@@ -73,11 +79,15 @@ function List() {
             idols.slice(0, displayCount).map((idol, index) => (
               <S.RankingItem key={idol.id}>
                 <S.ProfileIcoContainer>
-                  <ProfileIco img={idol.profilePicture}/>
+                  <ProfileIco img={idol.profilePicture} />
                 </S.ProfileIcoContainer>
                 <S.RankingNumber>{index + 1}</S.RankingNumber>
-                <S.IdolText>{idol.group} {idol.name}</S.IdolText>
-                <S.VoteCount>{idol.totalVotes.toLocaleString("ko-KR")}표</S.VoteCount>
+                <S.IdolText>
+                  {idol.group} {idol.name}
+                </S.IdolText>
+                <S.VoteCount>
+                  {idol.totalVotes.toLocaleString("ko-KR")}표
+                </S.VoteCount>
               </S.RankingItem>
             ))
           )}
@@ -95,4 +105,4 @@ function List() {
   );
 }
 
-export default List;
+export default ListChart;

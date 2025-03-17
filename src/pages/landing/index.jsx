@@ -368,7 +368,7 @@ function Landing() {
             <img src="src/assets/icons/ic-arrow.svg" />
           </Link>
         </S.SlideContainer>
-        <S.SlideContainer index={5}>
+        <S.SlideContainer index={5} className="slide-05">
           <h2 className="slide-05__title">
             준비 되셨나요?
             <br />
@@ -378,6 +378,16 @@ function Landing() {
             30,000 크레딧 받고 시작하기
             <img src="src/assets/icons/ic-arrow.svg" />
           </Link>
+          <video
+            src="src/assets/videos/vid-carousel.mp4"
+            muted
+            playsInline
+            loop
+            preload="auto"
+            disableRemotePlayback
+            autoPlay
+            disablePictureInPicture
+          />
         </S.SlideContainer>
       </S.PageContainer>
     </>

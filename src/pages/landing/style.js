@@ -213,6 +213,20 @@ const SlideContainer = styled.div `
         }
     }
 
+    &.slide-05 {
+        position: relative;
+        h2 {z-index: 1;}
+
+        video {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0;
+            height: 100%;
+            opacity: 0.1;
+        }
+    }
+
     .slide-00__title{
         font-size: 120px;
         line-height: 1.2;
