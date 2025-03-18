@@ -11,7 +11,7 @@ import ModalVote from "../../modals/ModalVote";
 
 function GNB() {
   const [showToast, setShowToast] = useState(0);
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleToast = (msg) => {
     if (!showToast) {

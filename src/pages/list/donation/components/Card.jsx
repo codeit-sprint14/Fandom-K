@@ -1,4 +1,5 @@
-import * as S from "../styles/card.styles";
+import { Link } from "react-router-dom";
+import * as S from "../styles/Card.styles";
 import CircularProgressBar from "./CircularProgressBar";
 
 const Card = ({ donation, isLoading }) => {
@@ -43,7 +44,14 @@ const Card = ({ donation, isLoading }) => {
         </S.TextContainer>
         <S.DaysLeft $isUrgent={isUrgent}>D-{donation.daysLeft}</S.DaysLeft>
       </S.InfoContainer>
-      <S.Button>{buttonLabel}</S.Button>
+      <S.Button>
+        <Link
+          to={`/donation/${donation.idolId}`}
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          {buttonLabel}
+        </Link>
+      </S.Button>
     </S.CardContainer>
   );
 };
