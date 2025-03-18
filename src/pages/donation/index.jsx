@@ -89,7 +89,7 @@ function Donation() {
         <div className="hr" />
         <div className="details">
           {item ? (
-            <TempDetails />
+            <TempDetails id={item.idolId} />
           ) : (
             <div
               className="skeleton"

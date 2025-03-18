@@ -19,8 +19,8 @@ const ERR_DATA = {
 const instance = axios.create({
   // baseURL: `https://fandom-k-api.vercel.app/${teamName}`, // 통신할 서버 URL 기본값
   baseURL: "/api/14-3",
-  timeout: 5000,
-  // timeout: 1000, // 10초 제한
+  timeout: 10000,
+  // timeout: 10000, // 10초 제한
   headers: {
     // 서버가 요청을 이해할 수 있도록 정보 추가
     "Content-Type": "application/json", // JSON 데이터 형식 사용

@@ -7,7 +7,7 @@ function CircularProgressBar({ progress }) {
   return (
     <S.Container>
       {isOver100 ? (
-        <S.CheckImage src={checkIcon} alt="진행률 100% 완료" />
+        <svg width="16" height="16" src={checkIcon} alt="진행률 100% 완료" />
       ) : (
         <svg width="16" height="16" viewBox="0 0 36 36">
           <S.CircleBackground cx="18" cy="18" r="15.915" />
