@@ -12,7 +12,7 @@ const GNBContainer = styled.nav`
   overflow: hidden;
   backdrop-filter: blur(50px);
   background: rgba(0, 0, 0, 0.6);
-  z-index: 99999;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;

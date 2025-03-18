@@ -157,11 +157,18 @@ function ModalVote({ onClick, onOpen }) {
                 .fill(null)
                 .map(() => <Skeletons />)}
         </S.ModalChargeQuantity>
-        <Btn text="투표하기" onClick={handleClick} />
+        <Btn
+          text={
+            Number(window.localStorage.getItem("credit")) < 1000
+              ? "크레딧이 부족해요"
+              : "투표하기"
+          }
+          onClick={handleClick}
+          disabled={Number(window.localStorage.getItem("credit")) < 1000}
+        />
         <span className="description">
           투표에 <strong>1,000 크레딧</strong>을 사용해요
         </span>
-        {/* <S.Btn onClick={handleClick}>투표하기</S.Btn> */}
       </S.Container>
       <S.Shade isExiting={isExiting} onClick={() => setIsExiting(true)} />
     </>

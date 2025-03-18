@@ -15,6 +15,17 @@ function GNB() {
   const [showToast, setShowToast] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [winSize, setWinSize] = useState(window.innerWidth);
+  const [credit, setCredit] = useState(
+    Number(window.localStorage.getItem("credit"))
+  );
+
+  useEffect(() => {
+    const handleCredit = () => {
+      setCredit(Number(window.localStorage.getItem("credit")));
+    };
+
+    handleCredit();
+  }, [Number(window.localStorage.getItem("credit"))]);
 
   useEffect(() => {
     const handleWinSize = () => {
@@ -57,9 +68,7 @@ function GNB() {
             </Link>
             <div className="left" onClick={() => handleModal(true)}>
               <img src={creditIcon} alt="" srcSet="" />
-              <span>
-                {Number(window.localStorage.getItem("credit")).toLocaleString()}
-              </span>
+              <span>{credit.toLocaleString()}</span>
               <img src={plusIcon} alt="" srcSet="" className="ico-plus" />
             </div>
             <Link to="/mypage" className="right">
@@ -74,8 +83,12 @@ function GNB() {
 
   return (
     <>
-      {showToast && <Toast msg={showToast} />}
-      {modalOpen && <ModalCharge onClick={handleToast} onOpen={handleModal} />}
+      {showToast ? <Toast msg={showToast} /> : ""}
+      {modalOpen ? (
+        <ModalCharge onClick={handleToast} onOpen={handleModal} />
+      ) : (
+        ""
+      )}
       {/* {modalOpen && <ModalVote onOpen={handleModal} />} */}
 
       <S.GNBContainer>
@@ -92,13 +105,8 @@ function GNB() {
           </Link>
           <Link to="/mypage" className="right">
             <img src={profileIcon} alt="" />
-            {/* <div>
-              <span className="group">NJZ</span>
-              <span className="nickname">내 관심 아이돌</span>
-            </div> */}
           </Link>
         </div>
-        {/* <div className="group-img" /> */}
       </S.GNBContainer>
       <S.Ambient />
     </>

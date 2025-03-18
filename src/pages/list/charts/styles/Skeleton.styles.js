@@ -16,17 +16,18 @@ const skeletonGradient = keyframes`
 
 // 스켈레톤 컴포넌트 스타일
 export const LoadingSkeleton = styled.div`
-    .skeleton {
-        width: 560px;
-        height: 76px;
-        gap: 0px;
-        column-gap: 20px;
-        animation: ${skeletonGradient} 1.8s infinite ease-in-out;
-        border-radius: 8px;
-    }
+    width: 8em;
+    height: 1em;
+    animation: ${skeletonGradient} 1.8s infinite ease-in-out;
+    border-radius: 8px;
 
-    .element {
-        overflow: hidden;
-        position: relative;
+    &.skeleton--number{
+        width: 1em;
+    }
+    
+    &.skeleton--img{
+        width: 100%;
+        height: 100%;
+        border-radius: 100px;
     }
 `;

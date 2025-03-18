@@ -160,7 +160,10 @@ function DonateContainer({ item, dday }) {
             </div>
             <Btn
               text="후원하기"
-              disabled={invalidInput}
+              disabled={
+                invalidInput ||
+                Number(window.localStorage.getItem("credit")) < 1
+              }
               onClick={() => handleDonate(Number(donate))}
             />
           </>
