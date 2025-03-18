@@ -27,6 +27,18 @@ const DonationPage = () => {
     };
   }, []);
 
+  // 화면 크기 감지 및 상태 업데이트
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1023);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   // API 호출 -> 후원 목록 가져오기
   useEffect(() => {
     const loadDonations = async () => {

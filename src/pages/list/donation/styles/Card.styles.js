@@ -7,6 +7,9 @@ export const CardContainer = styled.div`
   width: 282px;
   height: 402px;
   padding: 32px 12px;
+  width: 282px;
+  height: 402px;
+  padding: 32px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,6 +33,7 @@ export const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 293px;
+  height: 293px;
   border-radius: 8px;
   overflow: hidden;
 
@@ -52,6 +56,10 @@ export const ImageWrapper = styled.div`
 
 // 후원 이미지 스타일
 export const DonationImage = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -147,6 +155,8 @@ export const TextContainer = styled.div`
   align-items: flex-start;
   padding: 12px 0 24px 0;
   gap: 8px;
+  padding: 12px 0 24px 0;
+  gap: 8px;
   flex-grow: 1;
   min-height: auto;
 /* 
@@ -163,11 +173,14 @@ export const InfoContainer = styled.div`
   width: 100%;
   align-items: center;
   padding: 0 10px;
+  padding: 0 10px;
   gap: 8px;
 `;
 
 // 후원 부제목 스타일
 export const Subtitle = styled.div`
+  margin: 0;
+  padding: 0;
   margin: 0;
   padding: 0;
   font-size: 16px;
@@ -184,6 +197,8 @@ export const Subtitle = styled.div`
 
 // 후원 제목 스타일
 export const Title = styled.div`
+  margin: 0;
+  padding: 0;
   margin: 0;
   padding: 0;
   font-size: 18px;
@@ -230,6 +245,7 @@ export const Button = styled.button`
   gap: 10px;
   background: linear-gradient(90deg, #f96d69, #fe5493);
   color: #ffffff;
+  font-size: 13px;
   font-size: 13px;
   font-weight: 700;
   line-height: 26px;
