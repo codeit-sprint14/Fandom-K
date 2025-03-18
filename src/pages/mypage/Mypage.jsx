@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useIdol } from "../../hooks/Mypage/useIdol.js";
 import ListedProfiles from "./components/ListedProfiles/index.jsx";
 import ProfileList from "./components/ProfileList";
@@ -6,67 +6,46 @@ import Btn from "../../components/buttons/Btn.jsx";
 import CheckIcon from "../../assets/icons/ic-check.svg";
 import Toast from "../../components/modals/Toast";
 import * as S from "./Mypage.styles";
-import {
-  getStoredIdols,
-  saveIdolsToStorage,
-} from "../../utils/localStorage.js";
+import { saveIdolsToStorage } from "../../utils/localStorage.js";
 import Skeleton from "../mypage/components/Skeleton.jsx";
 
+// 아이돌 배열 랜덤 섞기 함수
+const shuffleArray = (array) => {
+  return [...array]
+    .map((idol) => ({ ...idol, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ sort, ...idol }) => idol); // sort 키 제거
+};
+
 function Mypage() {
-  // useIdol 훅 호출 (favoriteIdols 제거)
   const {
     idols,
     favoriteIdols,
     setFavoriteIdols,
     removeIdol,
     addIdol,
-    setPage,
-    hasMore,
     isLoading,
   } = useIdol();
 
-  // 선택된 아이돌 상태
   const [selectedIdols, setSelectedIdols] = useState([]);
-
-  // 토스트 메시지 상태 추가
   const [toastMsg, setToastMsg] = useState("");
+  const [shuffledIdols, setShuffledIdols] = useState([]);
 
-  const observer = useRef(null);
-  const lastElementRef = useRef(null);
-
+  // 관심 있는 아이돌 제외 후, 리스트를 랜덤하게 정렬
   useEffect(() => {
-    if (!hasMore) return;
-
-    observer.current = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setPage((prevPage) => prevPage + 1);
-        }
-      },
-      { threshold: 1.0 }
+    const availableIdols = idols.filter(
+      (idol) => !favoriteIdols.some((fav) => fav.id === idol.id)
     );
 
-    if (lastElementRef.current) {
-      observer.current.observe(lastElementRef.current);
-    }
-
-    return () => {
-      if (observer.current) {
-        observer.current.disconnect();
-      }
-    };
-  }, [hasMore]);
+    setShuffledIdols(shuffleArray(availableIdols));
+  }, [idols, favoriteIdols]);
 
   useEffect(() => {
     if (toastMsg) {
       const timer = setTimeout(() => setToastMsg(""), 3000);
-      return () => clearTimeout(timer); // 메모리 누수 방지
+      return () => clearTimeout(timer);
     }
   }, [toastMsg]);
-
-  const availableIdols = idols.filter(
-    (idol) => !favoriteIdols.some((fav) => fav.id === idol.id)
-  );
 
   // 관심 아이돌 선택 & 해제
   const handleSelectIdol = (idol) => {
@@ -84,12 +63,10 @@ function Mypage() {
       return;
     }
 
-    selectedIdols.forEach((idol) => addIdol(idol));
     const updatedIdols = [...favoriteIdols, ...selectedIdols];
     saveIdolsToStorage(updatedIdols);
     setFavoriteIdols(updatedIdols);
-
-    setSelectedIdols([]); // 선택 목록 초기화
+    setSelectedIdols([]);
 
     setToastMsg("관심 아이돌을 수정했어요 ✨");
   };
@@ -102,6 +79,8 @@ function Mypage() {
   return (
     <S.Container>
       {toastMsg && <Toast msg={toastMsg} />}
+
+      {/* 관심 있는 아이돌 */}
       <S.InterestSection>
         <S.Title>내가 관심있는 아이돌</S.Title>
         {isLoading ? (
@@ -127,26 +106,21 @@ function Mypage() {
 
       <S.Divider />
 
+      {/* 관심 있는 아이돌 추가 */}
       <S.AddInterestSection>
         <S.Title>관심 있는 아이돌을 추가해 보세요.</S.Title>
-
         {isLoading ? (
           <Skeleton width="100%" height="50px" borderRadius="10px" />
         ) : (
           <ProfileList
-            idols={availableIdols}
+            idols={shuffledIdols}
             selectedIdols={selectedIdols}
-            onSelect={(idol) =>
-              setSelectedIdols((prev) =>
-                prev.some((selected) => selected.id === idol.id)
-                  ? prev.filter((selected) => selected.id !== idol.id)
-                  : [...prev, idol]
-              )
-            }
+            onSelect={handleSelectIdol}
           />
         )}
       </S.AddInterestSection>
 
+      {/* 저장하기 버튼 */}
       <S.ButtonContainer>
         <Btn
           variant="primary"
