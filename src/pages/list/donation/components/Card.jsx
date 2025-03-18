@@ -33,9 +33,6 @@ const Card = ({ donation, isLoading }) => {
           <CircularProgressBar progress={donation.progress} />
           <S.ProgressText>{donation.progress}%</S.ProgressText>
         </S.ProgressWrapper>
-        {/* {isGoalReached && (
-          <S.GoalReached>후원 목표를 달성했어요!</S.GoalReached>
-        )} */}
       </S.ImageWrapper>
       <S.InfoContainer>
         <S.TextContainer>

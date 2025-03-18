@@ -33,7 +33,6 @@ export const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 293px;
-  height: 293px;
   border-radius: 8px;
   overflow: hidden;
 
@@ -60,12 +59,10 @@ export const DonationImage = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   border-radius: 8px;
 `;
 

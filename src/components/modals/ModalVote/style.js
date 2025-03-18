@@ -27,7 +27,7 @@ const popOut = keyframes`
 `;
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -42,7 +42,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  z-index: 100;
+  z-index: 999;
   animation: ${(props) => (props.isExiting ? popOut : popIn)} 0.4s
     cubic-bezier(0, 0.6, 0.4, 1) 0s 1 alternate both;
   
@@ -229,7 +229,7 @@ const ProfileIcoContainer = styled.div`
 `;
 
 const Shade = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background: hsla(0, 0%, 0%, 0.8);
