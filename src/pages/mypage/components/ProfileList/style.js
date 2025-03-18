@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
 import typography from "../../../../utils/typography";
 
 export const ScrollContainer = styled.div`
@@ -33,7 +34,7 @@ const ListedContainer = styled.div`
   padding-left: 20px;
 `;
 
-const ProfileWrapper = styled.div`
+const ProfileWrapper = styled(motion.div)`
   width: 128px;
   height: 181px;
   display: flex;
@@ -43,6 +44,7 @@ const ProfileWrapper = styled.div`
   margin: 0px;
   position: relative;
   text-align: center;
+  transition: transform 0.2s ease-in-out;
 
   @media (max-width: 768px) {
     width: 90px;

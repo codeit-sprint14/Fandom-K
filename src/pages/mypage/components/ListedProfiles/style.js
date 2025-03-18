@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
 import typography from "../../../../utils/typography";
 
 export const ScrollContainer = styled.div`
@@ -26,7 +27,7 @@ export const ListedContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
   gap: 20px;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding-left: 20px;
 
@@ -36,7 +37,7 @@ export const ListedContainer = styled.div`
   }
 `;
 
-export const ProfileWrapper = styled.div`
+export const ProfileWrapper = styled(motion.div)`
   width: 128px;
   height: 181px;
   display: flex;
@@ -46,6 +47,7 @@ export const ProfileWrapper = styled.div`
   position: relative;
   text-align: center;
   flex-shrink: 0;
+  transition: transform 0.2s ease-in-out;
 
   @media (max-width: 768px) {
     width: 90px;
@@ -66,7 +68,7 @@ export const ProfileIcoContainer = styled.div`
   img {
     width: 100%;
     height: 100%;
-    object-ft: cover;
+    object-fit: cover;
   }
 
   @media (max-width: 768px) {
@@ -124,9 +126,15 @@ export const EmptyMessage = styled.div`
   text-align: center;
   width: 100%;
   max-width: 500px;
-  font-size: 18px;
-  font-weight: 500;
-  color: #aaa;
-  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 40px;
   margin: 0 auto;
+  opacity: 0.6;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    padding: 20px;
+  }
 `;

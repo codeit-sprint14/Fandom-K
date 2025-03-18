@@ -7,10 +7,12 @@ export function useIdol() {
   const [favoriteIdols, setFavoriteIdols] = useState(getStoredIdols());
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   // 전체 아이돌 불러오기 (페이지네이션 추가)
   useEffect(() => {
     const loadIdols = async () => {
+      setIsLoading(true);
       try {
         const response = await fetchIdols(150, page);
 
@@ -35,6 +37,8 @@ export function useIdol() {
         }
       } catch (error) {
         console.error("아이돌 목록 불러오기 실패: ", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -67,5 +71,6 @@ export function useIdol() {
     removeIdol,
     setPage,
     hasMore,
+    isLoading,
   };
 }

@@ -10,6 +10,7 @@ import {
   getStoredIdols,
   saveIdolsToStorage,
 } from "../../utils/localStorage.js";
+import Skeleton from "../mypage/components/Skeleton.jsx";
 
 function Mypage() {
   // useIdol 훅 호출 (favoriteIdols 제거)
@@ -19,11 +20,9 @@ function Mypage() {
     setFavoriteIdols,
     removeIdol,
     addIdol,
-    cursor,
-    pageSize,
-    keyword,
     setPage,
     hasMore,
+    isLoading,
   } = useIdol();
 
   // 선택된 아이돌 상태
@@ -100,37 +99,52 @@ function Mypage() {
     removeIdol(idolId);
   };
 
-  // 100개 이상의 데이터가 존재하는 경우, 더 불러오기 위한 함수
-  const getMoreIdolList = () => {
-    if (cursor !== null) {
-      getIdolList({ pageSize, cursor, keyword });
-    }
-  };
-
   return (
     <S.Container>
       {toastMsg && <Toast msg={toastMsg} />}
       <S.Section>
         <S.Title>내가 관심있는 아이돌</S.Title>
-        <ListedProfiles idols={favoriteIdols} onRemove={handleRemoveIdol} />
+        {isLoading ? (
+          <>
+            <Skeleton width="100%" height="80px" borderRadius="10px" />
+            <Skeleton
+              width="90%"
+              height="80px"
+              borderRadius="10px"
+              style={{ marginTop: "10px" }}
+            />
+            <Skeleton
+              width="85%"
+              height="80px"
+              borderRadius="10px"
+              style={{ marginTop: "10px " }}
+            />
+          </>
+        ) : (
+          <ListedProfiles idols={favoriteIdols} onRemove={handleRemoveIdol} />
+        )}
       </S.Section>
 
       <S.Divider />
 
       <S.Section>
         <S.Title>관심 있는 아이돌을 추가해 보세요.</S.Title>
-        <ProfileList
-          idols={availableIdols} // favoriteIdols 제거, 전체 아이돌 목록 사용
-          selectedIdols={selectedIdols}
-          // onSelect={handleSelectIdol}
-          onSelect={(idol) =>
-            setSelectedIdols((prev) =>
-              prev.some((selected) => selected.id === idol.id)
-                ? prev.filter((selected) => selected.id !== idol.id)
-                : [...prev, idol]
-            )
-          }
-        />
+
+        {isLoading ? (
+          <Skeleton width="100%" height="50px" borderRadius="10px" />
+        ) : (
+          <ProfileList
+            idols={availableIdols}
+            selectedIdols={selectedIdols}
+            onSelect={(idol) =>
+              setSelectedIdols((prev) =>
+                prev.some((selected) => selected.id === idol.id)
+                  ? prev.filter((selected) => selected.id !== idol.id)
+                  : [...prev, idol]
+              )
+            }
+          />
+        )}
       </S.Section>
 
       <S.ButtonContainer>
