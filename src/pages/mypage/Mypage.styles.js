@@ -14,36 +14,63 @@ const fadeIn = keyframes`
 `;
 
 export const Container = styled.div`
-  padding-top: 80px;
-  background-color: #02000e;
   min-height: 100vh;
+  background-color: #02000e;
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   overflow-x: hidden;
-  align-items: center; /* 내부 요소 왼쪽 정렬 */
+  align-items: center; /* 내부 요소 정렬 */
 
   animation: ${fadeIn} 0.6s ease-out;
 `;
 
-export const Section = styled.div`
-  margin: 40px auto;
+export const InterestSection = styled.div`
+  margin: 100px auto 40px auto;
   max-width: 1200px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* 왼쪽 정렬 */
+  align-items: flex-start;
   justify-content: flex-start;
   padding: 0 20px;
+
+  @media (max-width: 768px) {
+    margin-top: 74px; /* 모바일에서는 여백 줄이기 */
+    margin-bottom: 24px;
+  }
+`;
+
+export const AddInterestSection = styled.div`
+  margin: 16px auto;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 24px;
+  }
 `;
 
 export const Title = styled.h2`
-  ${typography("sb18")};
+  font-family: "Pretendard", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
   color: white;
   text-align: left;
   margin-bottom: 28px;
   padding-left: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    line-height: 26px;
+  }
 `;
 
 export const Divider = styled.div`
@@ -51,11 +78,11 @@ export const Divider = styled.div`
   width: 100%;
   height: 1px;
   background-color: rgba(255, 255, 255, 0.2);
-  margin: 40px auto; /* 중앙 정렬 */
+  margin: 6px auto; /* 중앙 정렬 */
   // display: block;
 
   @media (max-width: 768px) {
-    margin: 24px auto;
+    margin: 12px auto;
   }
 `;
 
@@ -67,11 +94,11 @@ export const ProfileListContainer = styled.div`
   max-width: 1237px;
   width: 100%;
   margin-left: 0;
-  gap: 24px; /* 프로필 간격 */
+  gap: 12px; /* 프로필 간격 */
   padding: 0 20px; /* 창 줄여도 좌우 여백 유지 */
 
   @media (max-width: 768px) {
-    gap: 10px;
+    gap: 8px;
   }
 `;
 
@@ -82,7 +109,17 @@ export const ButtonContainer = styled.div`
   width: 100%;
   max-width: 295px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 10px 0;
+  margin-top: 10px;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 296px;
+  }
 
   span {
     display: flex;

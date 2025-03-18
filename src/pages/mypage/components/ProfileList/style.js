@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import typography from "../../../../utils/typography";
 
 export const ScrollContainer = styled.div`
-  max-height: 550px;
+  max-width: 1400px;
+  max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
@@ -20,17 +21,18 @@ export const ScrollContainer = styled.div`
   scrollbar-width: none;
 
   @media (max-width: 768px) {
+    max-height: 280px;
     padding: 0 10px;
   }
 `;
 
 const ListedContainer = styled.div`
   display: flex;
-  gap: 24px;
+  gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  max-width: 1237px;
+  max-width: 1400px;
   padding-left: 20px;
 `;
 

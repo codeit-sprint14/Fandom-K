@@ -26,7 +26,7 @@ export const ScrollContainer = styled.div`
 export const ListedContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  gap: 20px;
+  gap: 16px;
   justify-content: center;
   align-items: center;
   padding-left: 20px;
@@ -38,26 +38,27 @@ export const ListedContainer = styled.div`
 `;
 
 export const ProfileWrapper = styled(motion.div)`
-  width: 128px;
-  height: 181px;
+  width: 98px;
+  height: 151px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
   text-align: center;
   flex-shrink: 0;
   transition: transform 0.2s ease-in-out;
+  gap: 2px;
 
   @media (max-width: 768px) {
-    width: 90px;
+    width: 80px;
     height: 130px;
   }
 `;
 
 export const ProfileIcoContainer = styled.div`
-  width: 128px;
-  height: 128px;
+  width: 98px;
+  height: 98px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
@@ -79,8 +80,8 @@ export const ProfileIcoContainer = styled.div`
 
 export const DeleteButtonWrapper = styled.div`
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 2px;
+  right: 2px;
   z-index: 10;
   cursor: pointer;
 `;

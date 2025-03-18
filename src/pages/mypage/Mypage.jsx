@@ -102,32 +102,32 @@ function Mypage() {
   return (
     <S.Container>
       {toastMsg && <Toast msg={toastMsg} />}
-      <S.Section>
+      <S.InterestSection>
         <S.Title>내가 관심있는 아이돌</S.Title>
         {isLoading ? (
           <>
-            <Skeleton width="100%" height="80px" borderRadius="10px" />
+            <Skeleton width="100%" height="80px" $borderRadius="10px" />
             <Skeleton
               width="90%"
               height="80px"
-              borderRadius="10px"
+              $borderRadius="10px"
               style={{ marginTop: "10px" }}
             />
             <Skeleton
               width="85%"
               height="80px"
-              borderRadius="10px"
+              $borderRadius="10px"
               style={{ marginTop: "10px " }}
             />
           </>
         ) : (
           <ListedProfiles idols={favoriteIdols} onRemove={handleRemoveIdol} />
         )}
-      </S.Section>
+      </S.InterestSection>
 
       <S.Divider />
 
-      <S.Section>
+      <S.AddInterestSection>
         <S.Title>관심 있는 아이돌을 추가해 보세요.</S.Title>
 
         {isLoading ? (
@@ -145,7 +145,7 @@ function Mypage() {
             }
           />
         )}
-      </S.Section>
+      </S.AddInterestSection>
 
       <S.ButtonContainer>
         <Btn
