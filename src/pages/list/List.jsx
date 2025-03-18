@@ -2,6 +2,7 @@ import DonationPage from "./donation/components/DonationPage";
 import ListChart from "./charts/components/ListChart";
 import { createGlobalStyle } from "styled-components";
 import colors from "../../utils/colors";
+import Footer from "../../components/footers";
 
 window.localStorage.setItem("credit", 30000);
 
@@ -22,6 +23,7 @@ function List() {
       <GlobalStyle />
       <DonationPage />
       <ListChart />
+      <Footer />
     </>
   );
 }
