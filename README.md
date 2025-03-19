@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # ✨ Fandom-K
 
@@ -39,15 +40,49 @@
 ## 📂 폴더 구조 (Folder Structure)
 
 ```bash
-/
-├── src
-│   ├── api          # Axios 요청 관리
-│   ├── components   # 공통 컴포넌트
-│   ├── pages        # 각 화면별 컴포넌트
-│   ├── styles       # GlobalStyle & Theme 관리
-│   ├── router       # 라우팅 설정
-│   ├── assets       # 이미지, 아이콘 등 정적 자원
-│   └── App.jsx      # 메인 엔트리
+codeit-FE14-Fandom-K
+│
+├── .github          # Github 설정
+│
+├── public/          # 정적 파일들을 저장
+│    └── vite.svg			
+│
+├── src/             # 소스 코드를 저장하는 디렉터리
+│    ├── apis/       # API 요청
+│    │
+│    ├── assets/     # 이미지, 폰트 등 저장
+│    │    ├── icons/
+│    │    └── images/
+│    │
+│    ├── components/ # 재사용 가능한 UI 컴포넌트
+│    │    ├── custom_button/
+│    │    ├── error/
+│    │    ├── footer/
+│    │    ├── header/
+│    │    ├── idol/
+│    │    ├── layout/
+│    │    └── modal/
+│    │
+│    ├── costants/   # 상수 값 관리
+│    │
+│    ├── contexts/   # React Context API 관련 파일
+│    │
+│    ├── hooks/      # 커스텀 훅
+│    │
+│    ├── pages/      # 라우트 단위 페이지 컴포넌트
+│    │    ├── landing_page/
+│    │    ├── list/
+│    │    ├── mypage/
+│    │    └── not_found_page/
+│    │
+│    ├── styles/     # 공통 GlolbalStyle & Theme 관리
+│    │
+│    └── utils/      # 유틸리티 함수 모음
+│
+├── package-lock.json
+│
+├── package.json
+│
 └── README.md
 ```
 
@@ -189,3 +224,17 @@ Related to: #8
 8. 리뷰 완료 후 develop에 머지
 
 ---
+=======
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+>>>>>>> dadb482 (Feature/project)
