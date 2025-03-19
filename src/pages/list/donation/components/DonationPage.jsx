@@ -3,6 +3,7 @@ import { fetchDonations } from "../../../../apis/donationApi";
 import Card from "./Card";
 import * as S from "../styles/donation-page.styles";
 import BtnArrow from "../../../../components/buttons/BtnArrow";
+import { useDonationData } from "../../../../contexts/DonationContext";
 
 const itemsPerPage = 4; // 한 번에 보이는 카드 개수
 const cardWidth = 282 + 40;
@@ -10,10 +11,11 @@ const cardWidth = 282 + 40;
 const DonationPage = () => {
   const [donations, setDonations] = useState([]); // API에서 불러온 후원 데이터
   const [cursor, setCursor] = useState(0); // 페이지네이션을 위한 커서 값
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 상태
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1023);
   const carouselRef = useRef(null); //useRef 훅을 사용해 carouselRef라는 참조 생성 -> <S.CardGrid> 요소 참조
+  const { donationData } = useDonationData();
 
   // 화면 크기 감지 및 상태 업데이트
   useEffect(() => {
@@ -29,24 +31,11 @@ const DonationPage = () => {
 
   // API 호출 -> 후원 목록 가져오기
   useEffect(() => {
-    const loadDonations = async () => {
-      try {
-        setLoading(true);
-        const { list, nextCursor } = await fetchDonations(cursor, 200); // 200개 페이지 가져오기
-        setDonations(list);
-        setCursor(nextCursor || 0); // 다음 커서 값 저장 (없으면 0 유지)
-      } catch (error) {
-        console.error("후원 데이터를 불러오지 못했습니다.", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadDonations();
-  }, []);
+    setDonations(donationData);
+  }, [donationData]);
 
   // 전체 페이지 수 계산
-  const totalPages = Math.ceil(donations.length / itemsPerPage);
+  const totalPages = Math.ceil(donations?.length / itemsPerPage);
 
   // 왼쪽 버튼 클릭 시 (이전 4개)
   const prevSlide = () => {
@@ -94,8 +83,8 @@ const DonationPage = () => {
               Array.from({ length: itemsPerPage }).map((_, index) => (
                 <Card key={index} isLoading={true} />
               ))
-            ) : donations.length > 0 ? (
-              donations.map((donation) => (
+            ) : donations?.length > 0 ? (
+              donations?.map((donation) => (
                 <Card key={donation.id} donation={donation} />
               ))
             ) : (

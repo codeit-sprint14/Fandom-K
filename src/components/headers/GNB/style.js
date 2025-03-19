@@ -136,7 +136,7 @@ const Ambient = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 0;
+  z-index: 5;
   width: 250px;
   height: 250px;
   transform: translateX(-30%) translateY(-20%);
