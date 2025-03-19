@@ -31,7 +31,7 @@ function ListedProfiles({ idols, onRemove }) {
                 onClick={() => onRemove(idol.id)}
               >
                 <ProfileIcoContainer>
-                  <ProfileIco img={idol.image} />
+                  <ProfileIco img={idol.profilePicture} />
                 </ProfileIcoContainer>
                 <DeleteButtonWrapper>
                   <BtnDelete />

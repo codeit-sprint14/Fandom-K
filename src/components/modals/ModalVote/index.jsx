@@ -7,6 +7,7 @@ import BtnX from "../../buttons/BtnX";
 import Btn from "../../buttons/Btn";
 import { MODAL_TYPES, useModal } from "../../../contexts/ModalContext";
 import { useToast } from "../../../contexts/ToastContext";
+import { useIdolData } from "../../../contexts/IdolContext";
 
 function Skeletons() {
   return (
@@ -17,21 +18,11 @@ function Skeletons() {
   );
 }
 
-async function getting(gender) {
-  try {
-    const response = await axios.get(
-      "https://fandom-k-api.vercel.app/14-3/idols?pageSize=200"
-    );
-    const lists = response.data.list;
-    // console.log("성공:", lists);
-    const filtered = lists.filter((e) => e.gender === gender);
-    return filtered;
-  } catch (error) {
-    console.error(
-      "실패:",
-      error.response ? error.response.data : error.message
-    );
-  }
+function getting(gender, datas) {
+  const response = datas;
+  const filtered = response?.filter((e) => e.gender === gender);
+  console.log("받았음", filtered);
+  return filtered;
 }
 
 async function vote(id) {
@@ -60,6 +51,7 @@ function ModalVote({ onClick, onOpen }) {
   const { closeModal } = useModal();
   const { showToast } = useToast();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { idolData } = useIdolData();
 
   useEffect(() => {
     if (isExiting) {
@@ -80,12 +72,12 @@ function ModalVote({ onClick, onOpen }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getting(gender);
+      const result = getting(gender, idolData);
       setData(result);
     };
 
     fetchData();
-  }, [gender]);
+  }, [gender, idolData]);
 
   const QuantityList = ({ children, id, data, rank }) => {
     const handleCheck = (e) => {
