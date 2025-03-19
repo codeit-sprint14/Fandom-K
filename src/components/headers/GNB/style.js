@@ -29,6 +29,12 @@ const GNBContainer = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 768px) {
+      .left{order: 2;}
+      .center{order: 1;}
+      .right{order: 3;}
+    }
   }
 
   .left {

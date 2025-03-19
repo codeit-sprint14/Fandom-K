@@ -269,15 +269,23 @@ export const Button = styled.button`
 `;
 
 const shimmer = keyframes`
-  0% { background-position: -200px 0; }
-  100% { background-position: 200px 0; }
+  0% {
+      background-color: rgba(165, 165, 165, 0.1);
+  }
+
+  50% {
+      background-color: rgba(165, 165, 165, 0.3);
+  }
+
+  100% {
+      background-color: rgba(165, 165, 165, 0.1);
+  }
 `;
 
 const SkeletonBase = styled.div`
-  background: linear-gradient(90deg, #3a3a3a 25%, #4a4a4a 50%, #3a3a3a 75%);
   background-size: 200% 100%;
-  animation: ${shimmer} 1.5s infinite linear;
-  border-radius: 4px;
+  animation: ${shimmer} 1.8s infinite ease-in-out;
+  border-radius: 8px;
 `;
 
 export const SkeletonImage = styled(SkeletonBase)`

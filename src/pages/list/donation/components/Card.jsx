@@ -21,7 +21,6 @@ const Card = ({ donation, isLoading }) => {
     );
   }
 
-  const isGoalReached = donation.isGoalReached || donation.progress >= 100;
   const buttonLabel = donation.isGoalReached ? "추가 후원하기" : "후원하기";
   const isUrgent = donation.daysLeft <= 7;
 

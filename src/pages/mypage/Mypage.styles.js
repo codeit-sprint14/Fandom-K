@@ -14,14 +14,16 @@ const fadeIn = keyframes`
 `;
 
 export const Container = styled.div`
-  min-height: 100vh;
+width: 100vw;
+  height: 100vh;
   background-color: #02000e;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow-x: hidden;
+  overflow: hidden;
   align-items: center; /* 내부 요소 정렬 */
+  overscroll-behavior: none;
 
   animation: ${fadeIn} 0.6s ease-out;
 `;
@@ -29,6 +31,8 @@ export const Container = styled.div`
 export const InterestSection = styled.div`
   margin: 100px auto 40px auto;
   max-width: 1200px;
+  z-index: 3;
+  /* background: #02000E; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -44,16 +48,30 @@ export const InterestSection = styled.div`
 
 export const AddInterestSection = styled.div`
   margin: 16px auto;
-  max-width: 1200px;
+  /* margin-top: 100px; */
+  max-width: 1250px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   padding: 0 20px;
+  box-sizing: border-box;
+  /* position: relative; */
 
   @media (max-width: 768px) {
     margin-bottom: 24px;
+  }
+  
+    &::after{
+    content: "";
+    width: 100vw;
+    height: 240px;
+    background: linear-gradient(0deg, rgba(2,0,14,1) 20%, rgba(2,0,14,0) 100%);
+    z-index: 3;
+    position: fixed;
+    bottom: 0;
+    left: 0;
   }
 `;
 
@@ -66,19 +84,32 @@ export const Title = styled.h2`
   text-align: left;
   margin-bottom: 28px;
   padding-left: 20px;
+  position: sticky;
+  z-index: 3;
+  position: relative;
 
   @media (max-width: 768px) {
     font-size: 16px;
     line-height: 26px;
   }
+
+  &.lists::before{
+    content: "";
+    width: 100vw;
+    height: 48px;
+    background: linear-gradient(180deg, rgba(2,0,14,1) 0%, rgba(2,0,14,0) 100%);
+    z-index: 2;
+    position: fixed;
+    left: 0;
+    margin-top: 54px;
+  }
 `;
 
-export const Divider = styled.div`
-  max-width: 1237px; /* 아이돌 리스트와 동일한 너비 */
-  width: 100%;
+export const Divider = styled.hr`
+  width: 100vw;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
-  margin: 6px auto; /* 중앙 정렬 */
+  opacity: 0.2;
+  margin: 0 auto 48px; /* 중앙 정렬 */
   // display: block;
 
   @media (max-width: 768px) {
@@ -104,21 +135,23 @@ export const ProfileListContainer = styled.div`
 
 export const ButtonContainer = styled.div`
   display: flex;
+  position: fixed;
+  bottom: 108px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 295px;
+  width: 280px;
   margin: 0 auto;
   padding: 10px 0;
   margin-top: 10px;
 
   @media (max-width: 768px) {
-    position: fixed;
-    bottom: 48px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 40px);
-    max-width: 296px;
+    bottom: 32px;
+    width: 100%;
+    padding: 10px 48px;
+    box-sizing: border-box;
   }
 
   span {

@@ -7,6 +7,8 @@ import ArrowIcon from "../../../assets/icons/ic-arrow.svg";
 
 import * as S from "./style";
 import ModalHeader from "../ModalHeader";
+import { MODAL_TYPES, useModal } from "../../../contexts/ModalContext";
+import { useToast } from "../../../contexts/ToastContext";
 
 const QuantityList = ({ children, onClick, value }) => {
   const [e, i] = value;
@@ -27,20 +29,22 @@ const QuantityList = ({ children, onClick, value }) => {
 
 function ModalCharge({ onClick, onOpen }) {
   const [isExiting, setIsExiting] = useState(false);
+  const { closeModal } = useModal();
+  const { showToast } = useToast();
 
   useEffect(() => {
     if (isExiting) {
       setTimeout(() => {
-        onOpen(false);
+        closeModal(MODAL_TYPES.CHARGE);
       }, 400);
     }
   }, [isExiting, onOpen]);
 
   const handleClick = (e) => {
-    const credit = window.localStorage.getItem("credit");
+    const credit = window.localStorage.getItem("credit") ?? 0;
     const quantity = e.target.value;
     window.localStorage.setItem("credit", +credit + quantity);
-    onClick(`${quantity.toLocaleString()} 크레딧을 충전했어요 🎉`);
+    showToast(`${quantity.toLocaleString()} 크레딧을 충전했어요 🎉`);
 
     setIsExiting(true);
   };
@@ -53,7 +57,7 @@ function ModalCharge({ onClick, onOpen }) {
           onClose={() => setIsExiting(true)}
         />
         <S.ModalChargeQuantity>
-          {[100, 500, 1000].map((e, i) => (
+          {[1000, 3000, 10000].map((e, i) => (
             <QuantityList value={[e, i]} key={i} onClick={handleClick}>
               {`${e.toLocaleString()}개`}
             </QuantityList>

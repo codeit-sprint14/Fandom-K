@@ -16,31 +16,31 @@ import {
 function ListedProfiles({ idols, onRemove }) {
   return (
     <ScrollContainer>
-      <ListedContainer>
+      <ListedContainer layout>
         {idols.length === 0 ? (
           <EmptyMessage>관심 있는 아이돌을 추가해 보세요!</EmptyMessage>
         ) : (
-          <AnimatePresence mode="popLayout">
+          <>
             {idols.map((idol) => (
               <ProfileWrapper
                 key={idol.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
+                layout
+                transition={{
+                  layout: { duration: 0.1, ease: "easeOut" },
+                }}
+                onClick={() => onRemove(idol.id)}
               >
                 <ProfileIcoContainer>
                   <ProfileIco img={idol.image} />
                 </ProfileIcoContainer>
                 <DeleteButtonWrapper>
-                  <BtnDelete clickHandler={() => onRemove(idol.id)} />
+                  <BtnDelete />
                 </DeleteButtonWrapper>
                 <Name>{idol.name}</Name>
                 <Group>{idol.group}</Group>
               </ProfileWrapper>
             ))}
-          </AnimatePresence>
+          </>
         )}
       </ListedContainer>
     </ScrollContainer>

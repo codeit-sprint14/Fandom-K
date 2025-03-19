@@ -4,16 +4,16 @@ import * as S from "../styles/index";
 import BtnIco from "../../../../components/buttons/BtnIco";
 import BtnBasic from "../../../../components/buttons/BtnBasic";
 import ProfileIco from "../../../../components/profiles/ProfileIco/index";
-import ModalVote from "../../../../components/modals/ModalVote/index";
 import Toast from "../../../../components/modals/Toast";
+import { MODAL_TYPES, useModal } from "../../../../contexts/ModalContext";
 
 function ListChart() {
   const [isFemale, setIsFemale] = useState(true);
   const [idols, setIdols] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [displayCount, setDisplayCount] = useState(10); // 기본 10위
   const [showToast, setShowToast] = useState(0);
+  const { openModal } = useModal();
 
   // 성별 변경 시 아이돌 목록 새로 불러오기
   useEffect(() => {
@@ -67,11 +67,6 @@ function ListChart() {
   return (
     <>
       {showToast ? <Toast msg={showToast} /> : ""}
-      {isModalOpen ? (
-        <ModalVote onClick={handleToast} onOpen={setIsModalOpen} />
-      ) : (
-        ""
-      )}
       <S.StyledSection>
         <S.Title>
           <S.TitleText>이달의 차트</S.TitleText>
@@ -79,7 +74,7 @@ function ListChart() {
             <BtnIco
               text="차트 투표하기"
               icon="ic-chart.svg"
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => openModal(MODAL_TYPES.VOTE)}
             />
           </S.TitleBtn>
         </S.Title>

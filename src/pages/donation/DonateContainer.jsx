@@ -45,7 +45,7 @@ function DonateContainer({ item, dday }) {
   };
 
   const handleInput = (e) => {
-    const value = Number(e.target.value);
+    const value = Number(e.target.value.replaceAll(",", ""));
     const isInvalid = value > Number(window.localStorage.getItem("credit"));
     setInvalidInput(isInvalid);
     setDonate(Number(value) >= 0 ? Number(value) : 0);
@@ -123,7 +123,7 @@ function DonateContainer({ item, dday }) {
                 placeholder="얼마나 후원할까요?"
                 onChange={handleInput}
                 invalid={invalidInput}
-                value={donate > 0 ? donate : ""} // Q. donate.toLocalString()을 하면 5자리 이상 수에서 끊김
+                value={donate > 0 ? donate.toLocaleString() : ""} // Q. donate.toLocalString()을 하면 5자리 이상 수에서 끊김
               />{" "}
               <img src={CreditIcon} />
             </div>
