@@ -14,7 +14,7 @@ const shuffleArray = (array) => {
   return [...array]
     .map((idol) => ({ ...idol, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
-    .map(({ sort, ...idol }) => idol); // sort 키 제거
+    .map(({ sort, ...idol }) => idol);
 };
 
 function Mypage() {
