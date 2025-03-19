@@ -9,6 +9,7 @@ import * as S from "./style";
 import ModalHeader from "../ModalHeader";
 import { MODAL_TYPES, useModal } from "../../../contexts/ModalContext";
 import { useToast } from "../../../contexts/ToastContext";
+import { useCredit } from "../../../contexts/CreditContext";
 
 const QuantityList = ({ children, onClick, value }) => {
   const [e, i] = value;
@@ -31,6 +32,7 @@ function ModalCharge({ onClick, onOpen }) {
   const [isExiting, setIsExiting] = useState(false);
   const { closeModal } = useModal();
   const { showToast } = useToast();
+  const { credit, setCredit } = useCredit();
 
   useEffect(() => {
     if (isExiting) {
@@ -41,9 +43,10 @@ function ModalCharge({ onClick, onOpen }) {
   }, [isExiting, onOpen]);
 
   const handleClick = (e) => {
-    const credit = window.localStorage.getItem("credit") ?? 0;
-    const quantity = e.target.value;
-    window.localStorage.setItem("credit", +credit + quantity);
+    console.log("event: ", e);
+    const quantity = Number(e.currentTarget.value);
+    console.log("quan: ", quantity);
+    setCredit((prevState) => Number(prevState) + quantity);
     showToast(`${quantity.toLocaleString()} 크레딧을 충전했어요 🎉`);
 
     setIsExiting(true);

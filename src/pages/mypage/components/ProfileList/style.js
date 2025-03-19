@@ -24,8 +24,7 @@ export const ScrollContainer = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
 
-   
-/* 
+  /* 
   @media (max-width: 768px) {
     max-height: 280px;
     padding: 0 10px;
@@ -60,7 +59,7 @@ const ProfileWrapper = styled(motion.div)`
     height: 140px;
   }
 
-  &:hover{
+  &:hover {
     transform: scale(1.04);
   }
 `;

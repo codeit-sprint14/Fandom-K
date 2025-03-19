@@ -6,24 +6,31 @@ import BtnBasic from "../../../../components/buttons/BtnBasic";
 import ProfileIco from "../../../../components/profiles/ProfileIco/index";
 import Toast from "../../../../components/modals/Toast";
 import { MODAL_TYPES, useModal } from "../../../../contexts/ModalContext";
+import { useIdolData } from "../../../../contexts/IdolContext";
+import crownIcon from "../../../../assets/icons/crown.svg";
 
 function ListChart() {
   const [isFemale, setIsFemale] = useState(true);
-  const [idols, setIdols] = useState([]);
+  const [idols, setIdols] = useState(null);
   const [loading, setLoading] = useState(false);
   const [displayCount, setDisplayCount] = useState(10); // 기본 10위
   const [showToast, setShowToast] = useState(0);
   const { openModal } = useModal();
+  const { idolData } = useIdolData();
 
   // 성별 변경 시 아이돌 목록 새로 불러오기
+  const loadIdols = () => {
+    console.log("실행함");
+    const gender = isFemale ? "female" : "male";
+    const filteredIdolData = idolData?.filter((e) => e.gender === gender);
+    setIdols(filteredIdolData);
+    console.log("끝");
+  };
+
   useEffect(() => {
     loadIdols();
-  }, [isFemale]);
-
-  // 여자/남자 아이돌 버튼 클릭시 1023px 이하일 때 5, 이상일 때 10
-  useEffect(() => {
     setDisplayCount(10);
-  }, [isFemale]);
+  }, [isFemale, idolData]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -39,13 +46,6 @@ function ListChart() {
   }, []);
 
   // 아이돌 데이터를 불러오는 역할
-  const loadIdols = async () => {
-    setLoading(true);
-    const gender = isFemale ? "female" : "male";
-    const idolData = await getIdolList(gender);
-    setIdols(idolData);
-    setLoading(false);
-  };
 
   // 더보기 버튼 클릭 시 5개 또는 10개씩 증가
   const loadMoreIdols = () => {
@@ -114,10 +114,16 @@ function ListChart() {
                     </S.VoteCount>
                   </S.RankingItem>
                 ))
-            : idols.slice(0, displayCount).map((idol, index) => (
+            : idols?.slice(0, displayCount).map((idol, index) => (
                 <S.RankingItem key={idol.id}>
                   <S.ProfileIcoContainer>
                     <ProfileIco img={idol.profilePicture} />
+                    {index === 0 && ( // 1위일 때만 표시
+                      <S.CrownIcon>
+                        {" "}
+                        <img src={crownIcon} alt="" />{" "}
+                      </S.CrownIcon>
+                    )}
                   </S.ProfileIcoContainer>
                   <S.RankingNumber>{index + 1}</S.RankingNumber>
                   <S.IdolText>
@@ -131,7 +137,7 @@ function ListChart() {
               ))}
         </S.RankingGrid>
 
-        {displayCount < idols.length && !loading && (
+        {displayCount < idols?.length && !loading && (
           <S.BasicParent>
             <div style={{ width: "327px" }}>
               <BtnBasic onClick={loadMoreIdols}>더 보기</BtnBasic>

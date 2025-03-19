@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import ProfileIco from "../../profiles/ProfileIco";
+import Arrow from "../../../assets/icons/ic-arrow.svg";
 import * as S from "./style";
 import BtnX from "../../buttons/BtnX";
 import Btn from "../../buttons/Btn";
 import { MODAL_TYPES, useModal } from "../../../contexts/ModalContext";
 import { useToast } from "../../../contexts/ToastContext";
+import { useIdolData } from "../../../contexts/IdolContext";
+import { useCredit } from "../../../contexts/CreditContext";
 
 function Skeletons() {
   return (
@@ -17,21 +20,11 @@ function Skeletons() {
   );
 }
 
-async function getting(gender) {
-  try {
-    const response = await axios.get(
-      "https://fandom-k-api.vercel.app/14-3/idols?pageSize=200"
-    );
-    const lists = response.data.list;
-    // console.log("성공:", lists);
-    const filtered = lists.filter((e) => e.gender === gender);
-    return filtered;
-  } catch (error) {
-    console.error(
-      "실패:",
-      error.response ? error.response.data : error.message
-    );
-  }
+function getting(gender, datas) {
+  const response = datas;
+  const filtered = response?.filter((e) => e.gender === gender);
+  console.log("받았음", filtered);
+  return filtered;
 }
 
 async function vote(id) {
@@ -60,6 +53,8 @@ function ModalVote({ onClick, onOpen }) {
   const { closeModal } = useModal();
   const { showToast } = useToast();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { idolData } = useIdolData();
+  const { credit, setCredit } = useCredit();
 
   useEffect(() => {
     if (isExiting) {
@@ -71,8 +66,7 @@ function ModalVote({ onClick, onOpen }) {
 
   const handleClick = () => {
     vote(select);
-    const credit = window.localStorage.getItem("credit");
-    window.localStorage.setItem("credit", +credit - 1000);
+    setCredit((prev) => prev - 1000);
     showToast(`투표했어요! 좋은 결과 나오길 바라요 💘`);
 
     setIsExiting(true);
@@ -80,12 +74,12 @@ function ModalVote({ onClick, onOpen }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getting(gender);
+      const result = getting(gender, idolData);
       setData(result);
     };
 
     fetchData();
-  }, [gender]);
+  }, [gender, idolData]);
 
   const QuantityList = ({ children, id, data, rank }) => {
     const handleCheck = (e) => {
@@ -135,20 +129,30 @@ function ModalVote({ onClick, onOpen }) {
               </div>
               {isDropdownOpen && (
                 <S.SelectOptions>
-                  <S.SelectOption onClick={() => setGender("female")}>
-                    이달의 여자 아이돌
-                  </S.SelectOption>
-                  <S.SelectOption onClick={() => setGender("male")}>
-                    이달의 남자 아이돌
-                  </S.SelectOption>
+                  {gender == "male" ? (
+                    <S.SelectOption onClick={() => setGender("female")}>
+                      이달의 여자 아이돌
+                    </S.SelectOption>
+                  ) : (
+                    <S.SelectOption onClick={() => setGender("male")}>
+                      이달의 남자 아이돌
+                    </S.SelectOption>
+                  )}
                 </S.SelectOptions>
               )}
+              <img
+                src={Arrow}
+                style={{
+                  opacity: 0.5,
+                  transition: "all 0.1s ease-out",
+                  transform: isDropdownOpen
+                    ? "scaleX(-80%) scaleY(80%) rotate(-90deg)"
+                    : "scaleX(-80%) scaleY(80%) rotate(0deg)",
+                }}
+              />
             </S.SelectContainer>
             <span className="description">
-              내 크래딧:{" "}
-              <strong>
-                {Number(window.localStorage.getItem("credit")).toLocaleString()}
-              </strong>{" "}
+              내 크래딧: <strong>{credit.toLocaleString()}</strong>{" "}
             </span>
           </div>
           <BtnX clickHandler={() => setIsExiting(true)} />
@@ -172,13 +176,9 @@ function ModalVote({ onClick, onOpen }) {
                 .map(() => <Skeletons />)}
         </S.ModalChargeQuantity>
         <Btn
-          text={
-            Number(window.localStorage.getItem("credit")) < 1000
-              ? "크레딧이 부족해요"
-              : "투표하기"
-          }
+          text={credit < 1000 ? "크레딧이 부족해요" : "투표하기"}
           onClick={handleClick}
-          disabled={Number(window.localStorage.getItem("credit")) < 1000}
+          disabled={credit < 1000}
         />
         <span className="description">
           투표에 <strong>1,000 크레딧</strong>을 사용해요

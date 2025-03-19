@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -7,44 +6,32 @@ import DonateContainer from "./DonateContainer";
 import DonateSidebar from "./DonateSidebar";
 import TempDetails from "./TempDetails";
 import DonationPage from "../list/donation/components/DonationPage";
+import { useDonationData } from "../../contexts/DonationContext";
 
-async function getting(idolId, navigate) {
-  try {
-    const response = await axios.get(
-      `https://fandom-k-api.vercel.app/14-3/donations?pageSize=20`
-    );
-    const lists = response.data.list;
-    const filtered = lists.filter((e) => e.idolId == idolId);
+function getting(idolId, datas, navigate) {
+  const response = datas;
+  const filtered = response?.filter((e) => e.idolId == idolId);
+  console.log("response", filtered);
 
-    if (filtered.length > 0) {
-      console.log("후원:", filtered[0]);
-      return filtered[0];
-    } else {
-      navigate("/notfound");
-      return null;
-    }
-  } catch (error) {
-    console.error(
-      "error:",
-      error.response ? error.response.data : error.message
-    );
+  if (filtered?.length > 0) {
+    return filtered[0];
+  } else {
+    // navigate("/notfound");
     return null;
   }
 }
 
 function Donation() {
+  const { donationData } = useDonationData();
   const [item, setItem] = useState(null);
   const { id } = useParams();
   const [dday, setDday] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getting(id, navigate);
-      setItem(data);
-    };
-    fetchData();
-  }, [id]);
+    const data = getting(id, donationData, navigate);
+    setItem(data);
+  }, [id, donationData]);
 
   useEffect(() => {
     if (item && item.deadline) {

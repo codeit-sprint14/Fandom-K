@@ -16,7 +16,7 @@ import {
 function ListedProfiles({ idols, onRemove }) {
   return (
     <ScrollContainer>
-      <ListedContainer layout>
+      <ListedContainer>
         {idols.length === 0 ? (
           <EmptyMessage>관심 있는 아이돌을 추가해 보세요!</EmptyMessage>
         ) : (
@@ -31,7 +31,7 @@ function ListedProfiles({ idols, onRemove }) {
                 onClick={() => onRemove(idol.id)}
               >
                 <ProfileIcoContainer>
-                  <ProfileIco img={idol.image} />
+                  <ProfileIco img={idol.profilePicture} />
                 </ProfileIcoContainer>
                 <DeleteButtonWrapper>
                   <BtnDelete />
