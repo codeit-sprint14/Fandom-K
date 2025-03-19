@@ -108,7 +108,7 @@ function Mypage() {
 
       {/* 관심 있는 아이돌 추가 */}
       <S.AddInterestSection>
-        <S.Title className="lists">관심 있는 아이돌을 추가해 보세요.</S.Title>
+        <S.Title className="lists">관심 있는 아이돌을 추가해 보세요</S.Title>
         {isLoading ? (
           <Skeleton width="100%" height="50px" borderRadius="10px" />
         ) : (

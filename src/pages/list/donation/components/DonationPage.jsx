@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import { fetchDonations } from "../../../../apis/donationApi";
 import Card from "./Card";
 import * as S from "../styles/donation-page.styles";
 import BtnArrow from "../../../../components/buttons/BtnArrow";
@@ -10,7 +9,6 @@ const cardWidth = 282 + 40;
 
 const DonationPage = () => {
   const [donations, setDonations] = useState([]); // API에서 불러온 후원 데이터
-  const [cursor, setCursor] = useState(0); // 페이지네이션을 위한 커서 값
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 상태
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1023);

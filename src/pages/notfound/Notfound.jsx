@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Btn from "../../components/buttons/Btn";
 import { Link } from "react-router-dom";
 import typography from "../../utils/typography";
+import NotfoundImg from "../../assets/images/img-notfound.jpg";
 
 function NotFound() {
   const PageContainer = styled.div`
@@ -28,7 +29,7 @@ function NotFound() {
 
   return (
     <PageContainer>
-      <img src="src/assets/images/img-notfound.jpg" alt="" />
+      <img src={NotfoundImg} alt="" />
       <p>
         길을 잃으셨나요?
         <br />

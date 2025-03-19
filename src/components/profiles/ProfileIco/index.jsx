@@ -1,4 +1,5 @@
 import * as S from "./style.js";
+import CheckImg from "../../../assets/icons/ic-check.svg";
 
 function ProfileIco({ checked = false, onMouseEnter, onMouseLeave, img }) {
   return (
@@ -6,7 +7,7 @@ function ProfileIco({ checked = false, onMouseEnter, onMouseLeave, img }) {
       {checked && (
         <S.Checked>
           <S.CheckedBackground />
-          <S.Svg src="src/assets/icons/ic-check.svg" />
+          <S.Svg src={CheckImg} />
         </S.Checked>
       )}
       <S.Img img={img} />

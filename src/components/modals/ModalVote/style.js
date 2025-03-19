@@ -1,6 +1,8 @@
 import styled, { keyframes } from "styled-components";
 import colors from "../../../utils/colors";
 import typography from "../../../utils/typography";
+// import heartIco from "src/assets/icons/btn-heart.svg";
+// import checkedHeartIco from "src/assets/icons/btn-heart-checked.svg";
 
 const popIn = keyframes`
 	0% {
@@ -90,7 +92,7 @@ const Container = styled.div`
 
   }
   .description {
-      margin-left: 4px;
+      margin-left: 14px;
       ${typography("m12")};
       color: ${colors("whiteLight")};
 
@@ -205,14 +207,14 @@ const ModalChargeQuantity = styled.ul`
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background-color: ${colors("whiteLight")};
+      /* background-color: ${colors("whiteLight")}; */
       transition: all 0.3s ease;
-      background: url("src/assets/icons/btn-heart.svg");
+      background-image: url("src/assets/icons/btn-heart.svg");
     }
   }
 
   input[type="radio"]:checked + label:before {
-    background: url("src/assets/icons/btn-heart-checked.svg");
+    background-image: url("src/assets/icons/btn-heart-checked.svg");
   }
 `;
 
@@ -331,38 +333,50 @@ const SelectContainer = styled.div`
   width: 100%;
   background-color: ${colors("blackLight")};
   padding: 4px;
+  padding-left: 12px;
   cursor: pointer;
   ${typography("sb18")};
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 8px;
+  transition: all 0.1s ease-out;
 
   .selected {
     flex-grow: 1;
+  }
+
+  &:hover{
+    background-color: rgba(255,255,255, 10%);
   }
 `;
 
 const SelectOptions = styled.div`
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: ${colors("blackLight")};
+  bottom: -38px;
+  left: 4px;
   overflow: hidden;
   z-index: 10;
-  border-top: 1px solid ${colors("whiteLight")};
-`;
+  background-color: rgba(255,255,255, 70%);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  transition: all 0.06s ease-out;
+  padding: 3px 3px;
+  box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.8);
+  `;
 
 const SelectOption = styled.div`
-  padding: 8px 4px;
-  border-top: 1px solid #FFFFFF1A;
+  transition: all 0.1s ease-out;
+  padding: 4px 12px;
+  /* box-sizing: border-box; */
   ${typography("m16")};
-  color: #FFFFFF6A;
+  color: black;
+  border-radius: 6px;
   cursor: pointer;
 
   &:hover {
-    background-color: ${colors("blackDark")};
-    color: #FFFFFF9A;
+    background-color: ${colors("gray")};
+    color: white;
   }
 `;
 
