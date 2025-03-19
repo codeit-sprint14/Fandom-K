@@ -27,7 +27,10 @@ const Card = ({ donation, isLoading }) => {
   return (
     <S.CardContainer>
       <S.ImageWrapper>
-        <S.DonationImage src={donation.image} alt={donation.subtitle} />
+        <S.DonationImage
+          src={donation.idol.profilePicture}
+          alt={donation.subtitle}
+        />
         <S.ProgressWrapper>
           <CircularProgressBar progress={donation.progress} />
           <S.ProgressText>{donation.progress}%</S.ProgressText>
