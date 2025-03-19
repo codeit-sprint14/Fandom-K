@@ -114,6 +114,7 @@ const ModalChargeQuantity = styled.ul`
   overflow-y: scroll;
   scroll-behavior: smooth;
   position: relative;
+  z-index: 1;
 
   > :nth-child(2) {
     margin-top: 8px;
@@ -324,4 +325,45 @@ width: 100%;
   }
 `;
 
-export {Container, ModalChargeQuantity, ProfileContainer, ProfileIcoContainer, Shade, Btn, Rank, Votes , InfoContainer ,Skeleton};
+
+const SelectContainer = styled.div`
+  position: relative;
+  width: 100%;
+  background-color: ${colors("blackLight")};
+  padding: 4px;
+  cursor: pointer;
+  ${typography("sb18")};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .selected {
+    flex-grow: 1;
+  }
+`;
+
+const SelectOptions = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: ${colors("blackLight")};
+  overflow: hidden;
+  z-index: 10;
+  border-top: 1px solid ${colors("whiteLight")};
+`;
+
+const SelectOption = styled.div`
+  padding: 8px 4px;
+  border-top: 1px solid #FFFFFF1A;
+  ${typography("m16")};
+  color: #FFFFFF6A;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${colors("blackDark")};
+    color: #FFFFFF9A;
+  }
+`;
+
+export {SelectContainer, SelectOptions, SelectOption, Container, ModalChargeQuantity, ProfileContainer, ProfileIcoContainer, Shade, Btn, Rank, Votes , InfoContainer ,Skeleton};
