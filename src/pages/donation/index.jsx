@@ -29,7 +29,6 @@ function Donation() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("hhh", donationData);
     const data = getting(id, donationData, navigate);
     setItem(data);
   }, [id, donationData]);

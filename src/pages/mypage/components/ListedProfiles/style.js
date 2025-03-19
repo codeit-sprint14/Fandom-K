@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import typography from "../../../../utils/typography";
+import colors from "../../../../utils/colors";
 
 export const ScrollContainer = styled.div`
   width: 100%;
@@ -136,8 +137,8 @@ export const EmptyMessage = styled.div`
   width: 100%;
   max-width: 500px;
   font-size: 20px;
-  font-weight: bold;
-  color: white;
+  font-weight: 400;
+  color: ${colors("gray")};
   padding: 40px;
   margin: 0 auto;
   opacity: 0.6;

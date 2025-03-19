@@ -11,9 +11,13 @@ function ProfileList({ idols, selectedIdols, onSelect }) {
         );
         return (
           <S.ProfileWrapper
+            layout
             key={`${idol.id}-${index}`}
             onClick={() => onSelect(idol)}
-            transition={{ duration: 0.2 }}
+            transition={{
+              duration: 0.2,
+              layout: { duration: 0.1, ease: "easeOut" },
+            }}
           >
             <ProfileIco img={idol.profilePicture} checked={isChecked} />
             <S.Name>{idol.name}</S.Name>

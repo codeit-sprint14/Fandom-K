@@ -7,8 +7,9 @@ export const FooterContainer = styled.footer`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  /* height: 100px; */
   max-width: 900px;
-  margin: 0 auto;
+  margin: 48px auto 90px auto;
   padding: 20px;
   color: ${colors("grayLight")};
   ${typography("m14")};
