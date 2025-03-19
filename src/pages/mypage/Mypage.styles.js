@@ -76,7 +76,6 @@ export const AddInterestSection = styled.div`
     position: fixed;
     bottom: 0;
     left: 0;
-    pointer-events: none;
   }
 `;
 
