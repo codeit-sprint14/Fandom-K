@@ -14,7 +14,7 @@ const fadeIn = keyframes`
 `;
 
 export const Container = styled.div`
-width: 100vw;
+  width: 100vw;
   height: 100vh;
   background-color: #02000e;
   color: white;
@@ -62,16 +62,21 @@ export const AddInterestSection = styled.div`
   @media (max-width: 768px) {
     margin-bottom: 24px;
   }
-  
-    &::after{
+
+  &::after {
     content: "";
     width: 100vw;
     height: 240px;
-    background: linear-gradient(0deg, rgba(2,0,14,1) 20%, rgba(2,0,14,0) 100%);
+    background: linear-gradient(
+      0deg,
+      rgba(2, 0, 14, 1) 20%,
+      rgba(2, 0, 14, 0) 100%
+    );
     z-index: 3;
     position: fixed;
     bottom: 0;
     left: 0;
+    pointer-events: none;
   }
 `;
 
@@ -93,11 +98,15 @@ export const Title = styled.h2`
     line-height: 26px;
   }
 
-  &.lists::before{
+  &.lists::before {
     content: "";
     width: 100vw;
     height: 48px;
-    background: linear-gradient(180deg, rgba(2,0,14,1) 0%, rgba(2,0,14,0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(2, 0, 14, 1) 0%,
+      rgba(2, 0, 14, 0) 100%
+    );
     z-index: 2;
     position: fixed;
     left: 0;
