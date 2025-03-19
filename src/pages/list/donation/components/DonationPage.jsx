@@ -5,7 +5,7 @@ import * as S from "../styles/donation-page.styles";
 import BtnArrow from "../../../../components/buttons/BtnArrow";
 
 const itemsPerPage = 4; // 한 번에 보이는 카드 개수
-const cardWidth = 282.5 + 40;
+const cardWidth = 282 + 40;
 
 const DonationPage = () => {
   const [donations, setDonations] = useState([]); // API에서 불러온 후원 데이터
@@ -14,18 +14,6 @@ const DonationPage = () => {
   const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 상태
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1023);
   const carouselRef = useRef(null); //useRef 훅을 사용해 carouselRef라는 참조 생성 -> <S.CardGrid> 요소 참조
-
-  // 화면 크기 감지 및 상태 업데이트
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 1023);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   // 화면 크기 감지 및 상태 업데이트
   useEffect(() => {
@@ -66,7 +54,7 @@ const DonationPage = () => {
       carouselRef.current.scrollBy({
         // 현재 스크롤 위치를 기준으로 특정 거리만큼 이동하는 기능의 메서드
         left: -cardWidth * itemsPerPage, // 왼쪽으로 4개 이동
-        behavior: "smooth",
+        // behavior: "smooth",
       });
       setCurrentPage((prev) => prev - 1);
     }
@@ -77,7 +65,7 @@ const DonationPage = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
         left: cardWidth * itemsPerPage, // 오른쪽으로 4개 이동
-        behavior: "smooth",
+        // behavior: "smooth",
       });
       setCurrentPage((prev) => prev + 1);
     }

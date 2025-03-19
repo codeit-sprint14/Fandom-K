@@ -3,15 +3,19 @@ import { motion } from "framer-motion";
 import typography from "../../../../utils/typography";
 
 export const ScrollContainer = styled.div`
-  max-width: 1400px;
-  max-height: 400px;
-  overflow-y: auto;
+  max-width: 1500px;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
   overflow-x: hidden;
+  overscroll-behavior: none;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 24px;
   padding: 10px;
   white-space: nowrap;
+  position: relative;
 
   /* 스크롤바 숨기기 */
   &::-webkit-scrollbar {
@@ -20,10 +24,12 @@ export const ScrollContainer = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
 
+   
+/* 
   @media (max-width: 768px) {
     max-height: 280px;
     padding: 0 10px;
-  }
+  } */
 `;
 
 const ListedContainer = styled.div`
@@ -32,8 +38,8 @@ const ListedContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  max-width: 1400px;
-  padding-left: 20px;
+  width: 100%;
+  /* padding-left: 20px; */
 `;
 
 const ProfileWrapper = styled(motion.div)`
@@ -46,11 +52,16 @@ const ProfileWrapper = styled(motion.div)`
   margin: 0px;
   position: relative;
   text-align: center;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.1s ease-out;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     width: 90px;
     height: 140px;
+  }
+
+  &:hover{
+    transform: scale(1.04);
   }
 `;
 

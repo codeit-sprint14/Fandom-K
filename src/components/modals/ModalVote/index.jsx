@@ -5,6 +5,8 @@ import ProfileIco from "../../profiles/ProfileIco";
 import * as S from "./style";
 import BtnX from "../../buttons/BtnX";
 import Btn from "../../buttons/Btn";
+import { MODAL_TYPES, useModal } from "../../../contexts/ModalContext";
+import { useToast } from "../../../contexts/ToastContext";
 
 function Skeletons() {
   return (
@@ -55,12 +57,14 @@ function ModalVote({ onClick, onOpen }) {
   const [data, setData] = useState(null);
   const [isExiting, setIsExiting] = useState(false);
   const [gender, setGender] = useState("female");
+  const { closeModal } = useModal();
+  const { showToast } = useToast();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     if (isExiting) {
       setTimeout(() => {
-        onOpen(false);
+        closeModal(MODAL_TYPES.VOTE);
       }, 400);
     }
   }, [isExiting, onOpen]);
@@ -69,7 +73,7 @@ function ModalVote({ onClick, onOpen }) {
     vote(select);
     const credit = window.localStorage.getItem("credit");
     window.localStorage.setItem("credit", +credit - 1000);
-    onClick(`투표했어요! 좋은 결과 나오길 바라요 💘`);
+    showToast(`투표했어요! 좋은 결과 나오길 바라요 💘`);
 
     setIsExiting(true);
   };
@@ -121,12 +125,22 @@ function ModalVote({ onClick, onOpen }) {
       <S.Container isExiting={isExiting}>
         <header>
           <div className="left">
-            <S.SelectContainer onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-              <div className="selected">{gender === "female" ? "이달의 여자 아이돌" : "이달의 남자 아이돌"}</div>
+            <S.SelectContainer
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              <div className="selected">
+                {gender === "female"
+                  ? "이달의 여자 아이돌"
+                  : "이달의 남자 아이돌"}
+              </div>
               {isDropdownOpen && (
                 <S.SelectOptions>
-                  <S.SelectOption onClick={() => setGender("female")}>이달의 여자 아이돌</S.SelectOption>
-                  <S.SelectOption onClick={() => setGender("male")}>이달의 남자 아이돌</S.SelectOption>
+                  <S.SelectOption onClick={() => setGender("female")}>
+                    이달의 여자 아이돌
+                  </S.SelectOption>
+                  <S.SelectOption onClick={() => setGender("male")}>
+                    이달의 남자 아이돌
+                  </S.SelectOption>
                 </S.SelectOptions>
               )}
             </S.SelectContainer>

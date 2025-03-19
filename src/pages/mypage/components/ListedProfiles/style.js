@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import typography from "../../../../utils/typography";
 
 export const ScrollContainer = styled.div`
+  width: 100%;
   max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
@@ -10,6 +11,7 @@ export const ScrollContainer = styled.div`
   gap: 10px;
   padding: 10px;
   white-space: nowrap;
+  position: sticky;
 
   &::-webkit-scrollbar {
     display: none;
@@ -23,13 +25,14 @@ export const ScrollContainer = styled.div`
   }
 `;
 
-export const ListedContainer = styled.div`
+export const ListedContainer = styled(motion.div)`
   display: flex;
   flex-wrap: nowrap;
   gap: 16px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding-left: 20px;
+  width: 100%;
 
   @media (max-width: 768px) {
     gap: 10px;
@@ -47,8 +50,13 @@ export const ProfileWrapper = styled(motion.div)`
   position: relative;
   text-align: center;
   flex-shrink: 0;
-  transition: transform 0.2s ease-in-out;
+  transition: filter 0.1s ease-out;
   gap: 2px;
+  cursor: pointer;
+
+  &:hover{
+    filter: brightness(0.8);
+  }
 
   @media (max-width: 768px) {
     width: 80px;
