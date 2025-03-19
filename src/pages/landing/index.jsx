@@ -151,7 +151,7 @@ function Landing() {
                     translateY: A_1_Y,
                   }}
                   center
-                  src={`src/assets/images/landing/img-landing-0${i + 1}.png`}
+                  src={`images/landing/img-landing-0${i + 1}.png`}
                   alt=""
                 />
               );
@@ -176,7 +176,7 @@ function Landing() {
               width: B_1_S,
               filter: B_1_B,
             }}
-            src={`src/assets/images/landing/img-landing-card-01.png`}
+            src={`/images/landing/img-landing-card-01.png`}
             alt=""
           />
           <motion.img
@@ -189,7 +189,7 @@ function Landing() {
               width: B_1_S,
               filter: B_1_B,
             }}
-            src={`src/assets/images/landing/img-landing-card-02.png`}
+            src={`/images/landing/img-landing-card-02.png`}
             alt=""
           />
           <motion.img
@@ -202,7 +202,7 @@ function Landing() {
               width: B_1_S,
               filter: B_1_B,
             }}
-            src={`src/assets/images/landing/img-landing-card-03.png`}
+            src={`images/landing/img-landing-card-03.png`}
             alt=""
           />
           <motion.img
@@ -215,7 +215,7 @@ function Landing() {
               width: B_1_S,
               filter: B_1_B,
             }}
-            src={`src/assets/images/landing/img-landing-card-04.png`}
+            src={`images/landing/img-landing-card-04.png`}
             alt=""
           />
           <motion.img
@@ -228,7 +228,7 @@ function Landing() {
               width: B_1_S,
               filter: B_1_B,
             }}
-            src={`src/assets/images/landing/img-landing-card-05.png`}
+            src={`images/landing/img-landing-card-05.png`}
             alt=""
           />
           <h2 className="slide-01__title">
@@ -257,7 +257,7 @@ function Landing() {
               setVideoDuration(e.target.duration);
             }}
             className="vid-credit"
-            src="src/assets/videos/vid-credit.mp4"
+            src="videos/vid-credit.mp4"
             style={{
               translateY: C_1_Y,
               mixBlendMode: "screen",
@@ -286,7 +286,7 @@ function Landing() {
               setVideoDuration(e.target.duration);
             }}
             className="vid-crown"
-            src="src/assets/videos/vid-crown.mp4"
+            src="videos/vid-crown.mp4"
             style={{
               mixBlendMode: "screen",
               translateY: D_1_Y,
@@ -316,7 +316,7 @@ function Landing() {
             style={{
               scale: E_1_S,
             }}
-            src={`src/assets/images/landing/img-landing-profile-01.png`}
+            src={`images/landing/img-landing-profile-01.png`}
             alt=""
           />
           <motion.img
@@ -324,7 +324,7 @@ function Landing() {
             style={{
               scale: E_2_S,
             }}
-            src={`src/assets/images/landing/img-landing-profile-02.png`}
+            src={`images/landing/img-landing-profile-02.png`}
             alt=""
           />
           <motion.img
@@ -332,7 +332,7 @@ function Landing() {
             style={{
               scale: E_3_S,
             }}
-            src={`src/assets/images/landing/img-landing-profile-03.png`}
+            src={`images/landing/img-landing-profile-03.png`}
             alt=""
           />
           <motion.img
@@ -340,7 +340,7 @@ function Landing() {
             style={{
               scale: E_4_S,
             }}
-            src={`src/assets/images/landing/img-landing-profile-04.png`}
+            src={`images/landing/img-landing-profile-04.png`}
             alt=""
           />
           <motion.img
@@ -348,7 +348,7 @@ function Landing() {
             style={{
               scale: E_5_S,
             }}
-            src={`src/assets/images/landing/img-landing-profile-05.png`}
+            src={`images/landing/img-landing-profile-05.png`}
             alt=""
           />
           <motion.img
@@ -356,7 +356,7 @@ function Landing() {
             style={{
               scale: E_6_S,
             }}
-            src={`src/assets/images/landing/img-landing-profile-06.png`}
+            src={`images/landing/img-landing-profile-06.png`}
             alt=""
           />
           <h2 className="slide-04__title">
@@ -379,7 +379,7 @@ function Landing() {
             <img src="src/assets/icons/ic-arrow.svg" />
           </Link>
           <video
-            src="src/assets/videos/vid-carousel.mp4"
+            src="videos/vid-carousel.mp4"
             muted
             playsInline
             loop

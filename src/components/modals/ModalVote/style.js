@@ -47,13 +47,13 @@ const Container = styled.div`
   z-index: 999;
   animation: ${(props) => (props.isExiting ? popOut : popIn)} 0.4s
     cubic-bezier(0, 0.6, 0.4, 1) 0s 1 alternate both;
-  
-    @media (max-width: 768px) {
-      width: 100%;
-      height: 100%;
-      box-sizing: border-box;
-      z-index: 999990;
-    }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 999990;
+  }
 
   header {
     width: calc(100% + 40px);
@@ -89,18 +89,17 @@ const Container = styled.div`
         border: none;
       }
     }
-
   }
   .description {
-      margin-left: 14px;
-      ${typography("m12")};
-      color: ${colors("whiteLight")};
+    margin-left: 14px;
+    ${typography("m12")};
+    color: ${colors("whiteLight")};
 
-      strong {
-        color: ${colors("primaryOrange")};
-        font-weight: 600;
-      }
+    strong {
+      color: ${colors("primaryOrange")};
+      font-weight: 600;
     }
+  }
 `;
 
 const ModalChargeQuantity = styled.ul`
@@ -126,9 +125,9 @@ const ModalChargeQuantity = styled.ul`
   }
 
   @media (max-width: 768px) {
-      height: 70vh;
-      box-sizing: border-box;
-    }
+    height: 70vh;
+    box-sizing: border-box;
+  }
 
   .edge {
     box-sizing: border-box;
@@ -209,7 +208,7 @@ const ModalChargeQuantity = styled.ul`
       border-radius: 50%;
       /* background-color: ${colors("whiteLight")}; */
       transition: all 0.3s ease;
-      background-image: url("src/assets/icons/btn-heart.svg");
+      background-image: url("icons/btn-heart.svg");
     }
   }
 
@@ -287,7 +286,6 @@ const InfoContainer = styled.div`
   }
 `;
 
-
 const skeletonGradient = keyframes`
   0% {
       background-color: rgba(165, 165, 165, 0.1);
@@ -303,7 +301,7 @@ const skeletonGradient = keyframes`
 `;
 
 const Skeleton = styled.div`
-width: 100%;
+  width: 100%;
   height: 82px;
   display: flex;
   justify-content: center;
@@ -327,7 +325,6 @@ width: 100%;
   }
 `;
 
-
 const SelectContainer = styled.div`
   position: relative;
   width: 100%;
@@ -346,8 +343,8 @@ const SelectContainer = styled.div`
     flex-grow: 1;
   }
 
-  &:hover{
-    background-color: rgba(255,255,255, 10%);
+  &:hover {
+    background-color: rgba(255, 255, 255, 10%);
   }
 `;
 
@@ -357,13 +354,13 @@ const SelectOptions = styled.div`
   left: 4px;
   overflow: hidden;
   z-index: 10;
-  background-color: rgba(255,255,255, 70%);
+  background-color: rgba(255, 255, 255, 70%);
   backdrop-filter: blur(10px);
   border-radius: 8px;
   transition: all 0.06s ease-out;
   padding: 3px 3px;
   box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.8);
-  `;
+`;
 
 const SelectOption = styled.div`
   transition: all 0.1s ease-out;
@@ -380,4 +377,18 @@ const SelectOption = styled.div`
   }
 `;
 
-export {SelectContainer, SelectOptions, SelectOption, Container, ModalChargeQuantity, ProfileContainer, ProfileIcoContainer, Shade, Btn, Rank, Votes , InfoContainer ,Skeleton};
+export {
+  SelectContainer,
+  SelectOptions,
+  SelectOption,
+  Container,
+  ModalChargeQuantity,
+  ProfileContainer,
+  ProfileIcoContainer,
+  Shade,
+  Btn,
+  Rank,
+  Votes,
+  InfoContainer,
+  Skeleton,
+};

@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import Credit01 from "../../../assets/images/img-credits-01.jpeg";
-import Credit02 from "../../../assets/images/img-credits-02.jpeg";
-import Credit03 from "../../../assets/images/img-credits-03.jpeg";
 import CreditIcon from "../../../assets/icons/ic-credit.svg";
 import ArrowIcon from "../../../assets/icons/ic-arrow.svg";
 
@@ -13,7 +10,11 @@ import { useCredit } from "../../../contexts/CreditContext";
 
 const QuantityList = ({ children, onClick, value }) => {
   const [e, i] = value;
-  const creditImages = [Credit01, Credit02, Credit03];
+  const creditImages = [
+    "/images/img-credits-01.jpeg",
+    "/images/img-credits-02.jpeg",
+    "/images/img-credits-03.jpeg",
+  ];
 
   return (
     <li onClick={onClick} value={e}>

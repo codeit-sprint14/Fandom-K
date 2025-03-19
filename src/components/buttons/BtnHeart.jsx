@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import btnHeartUrl from "../../assets/icons/btn-heart.svg";
-import btnHeartHoverUrl from "../../assets/icons/btn-heart-hover.svg";
-import btnHeartCheckedUrl from "../../assets/icons/btn-heart-checked.svg";
-import btnHeartCheckedHoverUrl from "../../assets/icons/btn-heart-checked-hover.svg";
+
+const btnHeartUrl = `${import.meta.env.BASE_URL}icons/btn-heart.svg`;
+const btnHeartHoverUrl = `${import.meta.env.BASE_URL}icons/btn-heart-hover.svg`;
+const btnHeartCheckedUrl = `${
+  import.meta.env.BASE_URL
+}icons/btn-heart-checked.svg`;
+const btnHeartCheckedHoverUrl = `${
+  import.meta.env.BASE_URL
+}icons/btn-heart-checked-hover.svg`;
 
 const FillHeartBtn = styled.button`
   background: none;
