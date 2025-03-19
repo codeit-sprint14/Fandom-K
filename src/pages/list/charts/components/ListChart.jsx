@@ -9,6 +9,8 @@ import { MODAL_TYPES, useModal } from "../../../../contexts/ModalContext";
 import { useIdolData } from "../../../../contexts/IdolContext";
 import crownIcon from "../../../../assets/icons/crown.svg";
 
+const chartIconUrl = `${import.meta.env.BASE_URL}icons/ic-chart.svg`;
+
 function ListChart() {
   const [isFemale, setIsFemale] = useState(true);
   const [idols, setIdols] = useState(null);
@@ -73,7 +75,7 @@ function ListChart() {
           <S.TitleBtn>
             <BtnIco
               text="차트 투표하기"
-              icon="ic-chart.svg"
+              icon={chartIconUrl}
               onClick={() => openModal(MODAL_TYPES.VOTE)}
             />
           </S.TitleBtn>
