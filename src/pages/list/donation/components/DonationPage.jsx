@@ -46,7 +46,7 @@ const DonationPage = () => {
                 Math.floor(
                   (donation.receivedDonations / donation.targetDonation) * 100
                 )
-              )``
+              )
             : 0;
 
         return {
