@@ -27,9 +27,37 @@ const DonationPage = () => {
     };
   }, []);
 
-  // API 호출 -> 후원 목록 가져오기
+  // API 호출 -> 후원 목록 가져오기 -> 디데이 및 퍼센트 계산 후 저장
   useEffect(() => {
-    setDonations(donationData);
+    if (donationData?.length > 0) {
+      const processedDonations = donationData.map((donation) => {
+        // D-day
+        const today = new Date();
+        const deadline = new Date(donation.deadline);
+        const daysLeft = isNaN(deadline)
+          ? "∞"
+          : Math.max(0, Math.ceil((deadline - today) / (1000 * 60 * 60 * 24)));
+
+        // 진행률 계산
+        const progress =
+          donation.targetDonation && donation.receivedDonations
+            ? Math.min(
+                100,
+                Math.floor(
+                  (donation.receivedDonations / donation.targetDonation) * 100
+                )
+              )``
+            : 0;
+
+        return {
+          ...donation,
+          daysLeft, // D-Day 값 추가
+          progress, // 진행률 값 추가
+        };
+      });
+
+      setDonations(processedDonations);
+    }
   }, [donationData]);
 
   // 전체 페이지 수 계산

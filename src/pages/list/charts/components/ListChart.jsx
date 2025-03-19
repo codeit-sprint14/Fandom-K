@@ -7,7 +7,7 @@ import ProfileIco from "../../../../components/profiles/ProfileIco/index";
 import Toast from "../../../../components/modals/Toast";
 import { MODAL_TYPES, useModal } from "../../../../contexts/ModalContext";
 import { useIdolData } from "../../../../contexts/IdolContext";
-import crownIcon from "../../../../assets/icons/crown.svg"
+import crownIcon from "../../../../assets/icons/crown.svg";
 
 function ListChart() {
   const [isFemale, setIsFemale] = useState(true);
@@ -119,7 +119,10 @@ function ListChart() {
                   <S.ProfileIcoContainer>
                     <ProfileIco img={idol.profilePicture} />
                     {index === 0 && ( // 1위일 때만 표시
-                      <S.CrownIcon> <img src={crownIcon} alt="" /> </S.CrownIcon>
+                      <S.CrownIcon>
+                        {" "}
+                        <img src={crownIcon} alt="" />{" "}
+                      </S.CrownIcon>
                     )}
                   </S.ProfileIcoContainer>
                   <S.RankingNumber>{index + 1}</S.RankingNumber>

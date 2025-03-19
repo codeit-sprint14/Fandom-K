@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/Fandom-K/",
   plugins: [react()],
   server: {
     proxy: {
@@ -13,5 +14,6 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
+    historyApiFallback: true,
   },
 });
