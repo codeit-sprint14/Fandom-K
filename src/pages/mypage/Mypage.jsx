@@ -33,7 +33,7 @@ function Mypage() {
 
   // 관심 있는 아이돌 제외 후, 리스트를 랜덤하게 정렬
   useEffect(() => {
-    const availableIdols = idols.filter(
+    const availableIdols = idols?.filter(
       (idol) => !favoriteIdols.some((fav) => fav.id === idol.id)
     );
 

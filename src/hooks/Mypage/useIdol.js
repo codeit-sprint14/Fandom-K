@@ -1,62 +1,25 @@
-import { useState, useEffect } from "react";
-import { fetchIdols } from "../../apis/idolApi";
+import { useState, useEffect, useCallback } from "react";
 import { getStoredIdols, saveIdolsToStorage } from "../../utils/localStorage";
+import { useIdolData } from "../../contexts/IdolContext";
 
 export function useIdol() {
-  const [idols, setIdols] = useState([]);
+  // ✅ IdolContext 에서 idolData 와 별개로 favoriteIdols state 만 관리
   const [favoriteIdols, setFavoriteIdols] = useState(getStoredIdols());
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
+  const { idolData } = useIdolData(); // ✅ IdolContext 에서 idolData 만 가져오기 (gettingIdols 는 불필요)
 
-  // 전체 아이돌 불러오기 (페이지네이션 추가)
-  useEffect(() => {
-    const loadIdols = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetchIdols(150, page);
-
-        if (response.length > 0) {
-          const mappedIdols = response.map((idol) => ({
-            id: idol.id,
-            name: idol.name,
-            gender: idol.gender,
-            image: idol.profilePicture, // 이미지가 실제로 설정되는지 확인
-            group: idol.group,
-          }));
-
-          setIdols((prevIdols) => {
-            const uniqueIdols = [...prevIdols, ...mappedIdols].filter(
-              (idol, index, self) =>
-                index === self.findIndex((i) => i.id === idol.id)
-            );
-            return uniqueIdols;
-          });
-        } else {
-          setHasMore(false);
-        }
-      } catch (error) {
-        console.error("아이돌 목록 불러오기 실패: ", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadIdols();
-  }, [page]);
-
-  // LocalStorage 변경 감지 후 상태 업데이트
+  // LocalStorage 변경 감지 후 상태 업데이트 (기존 코드 유지)
   useEffect(() => {
     setFavoriteIdols(getStoredIdols());
   }, [localStorage.getItem("favoriteIdols")]);
 
-  // 관심 아이돌 추가 함수
+  // 관심 아이돌 추가 함수 (기존 코드 유지)
   const addIdol = (idol) => {
     const updated = [...favoriteIdols, idol];
     saveIdolsToStorage(updated);
     setFavoriteIdols(updated);
   };
 
+  // 관심 아이돌 제거 함수 (기존 코드 유지)
   const removeIdol = (idolId) => {
     const updatedIdols = favoriteIdols.filter((idol) => idol.id !== idolId);
     setFavoriteIdols(updatedIdols);
@@ -64,13 +27,13 @@ export function useIdol() {
   };
 
   return {
-    idols,
+    // ✅ idols state 제거! IdolContext 의 idolData 를 직접 사용!
+    idols: idolData, // 🌟 IdolContext 의 idolData 를 idols 로 반환!
     favoriteIdols,
     setFavoriteIdols,
     addIdol,
     removeIdol,
-    setPage,
-    hasMore,
-    isLoading,
+    isLoading: false,
+    // setPage, hasMore, isLoading 제거! 페이지네이션 및 로딩 관리는 IdolContext 에서!
   };
 }
