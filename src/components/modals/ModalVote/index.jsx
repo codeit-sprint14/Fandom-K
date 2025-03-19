@@ -55,6 +55,7 @@ function ModalVote({ onClick, onOpen }) {
   const [data, setData] = useState(null);
   const [isExiting, setIsExiting] = useState(false);
   const [gender, setGender] = useState("female");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     if (isExiting) {
@@ -120,16 +121,15 @@ function ModalVote({ onClick, onOpen }) {
       <S.Container isExiting={isExiting}>
         <header>
           <div className="left">
-            <select
-              id=""
-              onChange={(e) => {
-                setGender(e.target.value);
-                setData(null);
-              }}
-            >
-              <option value="female">이달의 여자 아이돌</option>
-              <option value="male">이달의 남자 아이돌</option>
-            </select>
+            <S.SelectContainer onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+              <div className="selected">{gender === "female" ? "이달의 여자 아이돌" : "이달의 남자 아이돌"}</div>
+              {isDropdownOpen && (
+                <S.SelectOptions>
+                  <S.SelectOption onClick={() => setGender("female")}>이달의 여자 아이돌</S.SelectOption>
+                  <S.SelectOption onClick={() => setGender("male")}>이달의 남자 아이돌</S.SelectOption>
+                </S.SelectOptions>
+              )}
+            </S.SelectContainer>
             <span className="description">
               내 크래딧:{" "}
               <strong>
@@ -161,7 +161,6 @@ function ModalVote({ onClick, onOpen }) {
         <span className="description">
           투표에 <strong>1,000 크레딧</strong>을 사용해요
         </span>
-        {/* <S.Btn onClick={handleClick}>투표하기</S.Btn> */}
       </S.Container>
       <S.Shade isExiting={isExiting} onClick={() => setIsExiting(true)} />
     </>
