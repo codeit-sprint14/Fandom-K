@@ -6,11 +6,13 @@ import CreditIcon from "../../assets/icons/ic-credit.svg";
 import { formatDate } from "../../utils/dateUtils.js";
 import { DonateInput } from "./style.js";
 import Toast from "../../components/modals/Toast";
+import { useCredit } from "../../contexts/CreditContext.jsx";
 
 function DonateContainer({ item, dday }) {
   const [donate, setDonate] = useState(0);
   const [invalidInput, setInvalidInput] = useState(false);
   const [showToast, setShowToast] = useState(0);
+  const { credit, setCredit } = useCredit();
 
   const handleToast = (msg) => {
     if (!showToast) {
@@ -23,6 +25,9 @@ function DonateContainer({ item, dday }) {
   };
 
   const handleDonate = async (quantity) => {
+    handleToast(`${quantity.toLocaleString()} 크레딧을 후원했어요 🥳`);
+    setCredit((prev) => prev - quantity);
+    setDonate(0);
     try {
       const response = await axios.put(
         `https://fandom-k-api.vercel.app/14-3/donations/${item.id}/contribute`,
@@ -31,29 +36,24 @@ function DonateContainer({ item, dday }) {
         }
       );
       console.log("Donation successful:", response.data);
-
-      const credit = Number(window.localStorage.getItem("credit") || 0);
-      window.localStorage.setItem("credit", credit - quantity);
-      handleToast(`${quantity.toLocaleString()} 크레딧을 후원했어요 🥳`);
     } catch (error) {
       console.error(
         "Donation failed:",
         error.response ? error.response.data : error.message
       );
-      handleToast(`다시 시도해주세요`);
+      // handleToast(`다시 시도해주세요`);
     }
   };
 
   const handleInput = (e) => {
     const value = Number(e.target.value.replaceAll(",", ""));
-    const isInvalid = value > Number(window.localStorage.getItem("credit"));
+    const isInvalid = value > credit;
     setInvalidInput(isInvalid);
     setDonate(Number(value) >= 0 ? Number(value) : 0);
   };
 
   const handleClick = (quantity) => {
-    const isInvalid =
-      Number(donate) + quantity > Number(window.localStorage.getItem("credit"));
+    const isInvalid = Number(donate) + quantity > credit;
     setInvalidInput(isInvalid);
     setDonate(Number(donate) + quantity);
   };
@@ -110,12 +110,7 @@ function DonateContainer({ item, dday }) {
         </div>
         {item ? (
           <>
-            <h6>
-              내 크레딧:{" "}
-              {Number(
-                window.localStorage.getItem("credit") || 0
-              ).toLocaleString()}
-            </h6>
+            <h6>내 크레딧: {credit.toLocaleString()}</h6>
             <div className="input-container">
               <DonateInput
                 className="donate-input"
@@ -123,7 +118,7 @@ function DonateContainer({ item, dday }) {
                 placeholder="얼마나 후원할까요?"
                 onChange={handleInput}
                 invalid={invalidInput}
-                value={donate > 0 ? donate.toLocaleString() : ""} // Q. donate.toLocalString()을 하면 5자리 이상 수에서 끊김
+                value={donate > 0 ? donate.toLocaleString() : ""}
               />{" "}
               <img src={CreditIcon} />
             </div>
@@ -151,7 +146,7 @@ function DonateContainer({ item, dday }) {
               </BtnQuantity>
               <BtnQuantity
                 clickHandler={() => {
-                  setDonate(Number(window.localStorage.getItem("credit") || 0));
+                  setDonate(credit);
                   setInvalidInput(false);
                 }}
               >
@@ -160,10 +155,7 @@ function DonateContainer({ item, dday }) {
             </div>
             <Btn
               text="후원하기"
-              disabled={
-                invalidInput ||
-                Number(window.localStorage.getItem("credit")) < 1
-              }
+              disabled={invalidInput || credit < 1}
               onClick={() => handleDonate(Number(donate))}
             />
           </>

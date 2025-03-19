@@ -4,8 +4,6 @@ import { createGlobalStyle } from "styled-components";
 import colors from "../../utils/colors";
 import Footer from "../../components/footers";
 
-window.localStorage.setItem("credit", 30000);
-
 // 전역 스타일
 export const GlobalStyle = createGlobalStyle`
   body {

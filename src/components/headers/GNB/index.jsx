@@ -8,11 +8,10 @@ import logoIcon from "../../../assets/icons/logo.svg";
 import profileIcon from "../../../assets/icons/ic-profile.svg";
 import plusIcon from "../../../assets/icons/btn-plus.svg";
 import { useModal, MODAL_TYPES } from "../../../contexts/ModalContext";
+import { useCredit } from "../../../contexts/CreditContext";
 
 function GNB() {
-  const [credit, setCredit] = useState(
-    Number(window.localStorage.getItem("credit"))
-  );
+  const { credit, setCredit } = useCredit();
 
   const { openModal } = useModal();
 
@@ -22,7 +21,7 @@ function GNB() {
     };
 
     handleCredit();
-  }, [window.localStorage.getItem("credit")]);
+  }, []);
 
   return (
     <>
