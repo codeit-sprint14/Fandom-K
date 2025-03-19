@@ -9,7 +9,7 @@ const cardWidth = 282 + 40;
 
 const DonationPage = () => {
   const [donations, setDonations] = useState([]); // API에서 불러온 후원 데이터
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 상태
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1023);
   const carouselRef = useRef(null); //useRef 훅을 사용해 carouselRef라는 참조 생성 -> <S.CardGrid> 요소 참조
