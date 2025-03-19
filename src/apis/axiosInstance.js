@@ -18,7 +18,7 @@ const ERR_DATA = {
 // axios 기본 설정
 const instance = axios.create({
   // baseURL: `https://fandom-k-api.vercel.app/${teamName}`, // 통신할 서버 URL 기본값
-  baseURL: "/api/14-3",
+  baseURL: "https://fandom-k-api.vercel.app/14-3",
   timeout: 10000,
   // timeout: 10000, // 10초 제한
   headers: {
