@@ -39,9 +39,9 @@
 
 ### 후원을 기다리는 조공 및 이달의 차트 페이지
 <img src="https://github.com/user-attachments/assets/154187b4-afe2-4bdb-aa86-8e396ed39151" width="700">
-![후원을 기다리는 조공 및 이달의 차트](https://github.com/user-attachments/assets/154187b4-afe2-4bdb-aa86-8e396ed39151)
 
 ### 크레딧 충전 모달
+<img src="https://github.com/user-attachments/assets/7ad4291a-e8c9-4511-a4c3-3293955591c0" width="700">
 
 ### 후원하기 상세 페이지
 
