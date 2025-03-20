@@ -35,7 +35,7 @@
 
 ## 📌 주요 기능
 ### 랜딩페이지
-<img src="https://github.com/user-attachments/assets/8311125d-a543-4493-9ef4-3105e53da374" width="80%">
+<img src="https://github.com/user-attachments/assets/8311125d-a543-4493-9ef4-3105e53da374" width="700">
 
 ![랜딩페이지](https://github.com/user-attachments/assets/8311125d-a543-4493-9ef4-3105e53da374)
 
