@@ -26,7 +26,7 @@
 ---
 
 ## 🔗 배포 주소
-[팬덤케이 바로가기](https://fandom-k-rho.vercel.app/)
+[팬덤케이 바로가기](https://fandom-k-eight.vercel.app/)
 
 ## 📅 프로젝트 기간
 2025년 3월 6일 ~ 2025년 3월 20일
