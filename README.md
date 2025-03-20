@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # ✨ Fandom-K
 
 > **"Fandom-K는 좋아하는 아이돌 후원, 투표, 차트 불러오기 기능을 제공하는 팬덤 플랫폼입니다."**
@@ -27,6 +25,9 @@
 
 ## 🔗 배포 주소
 [팬덤케이 바로가기](https://fandom-k-eight.vercel.app/)
+
+## 🚀 배포 환경
+- Vercel
 
 ## 📅 프로젝트 기간
 2025년 3월 6일 ~ 2025년 3월 20일
@@ -254,17 +255,3 @@ Related to: #8
 8. 리뷰 완료 후 develop에 머지
 
 ---
-=======
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> dadb482 (Feature/project)
