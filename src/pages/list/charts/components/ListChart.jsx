@@ -72,10 +72,47 @@ function ListChart() {
       <S.StyledSection>
         <S.Title>
           <S.TitleText>이달의 차트</S.TitleText>
-          <S.TitleBtn>
+          <S.TitleBtn style={{ position: "relative" }}>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "14px",
+                zIndex: 3,
+                transform: "translateY(-50%)",
+              }}
+            >
+              <path
+                d="M6 9L6 18"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12 12V18"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M18 6V18"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
             <BtnIco
               text="차트 투표하기"
-              icon={chartIconUrl}
+              icon="ic-chart.svg"
               onClick={() => openModal(MODAL_TYPES.VOTE)}
             />
           </S.TitleBtn>

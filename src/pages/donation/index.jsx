@@ -7,6 +7,7 @@ import DonateSidebar from "./DonateSidebar";
 import TempDetails from "./TempDetails";
 import DonationPage from "../list/donation/components/DonationPage";
 import { useDonationData } from "../../contexts/DonationContext";
+import Footer from "../../components/footers";
 
 function getting(idolId, datas, navigate) {
   const response = datas;
@@ -87,8 +88,8 @@ function Donation() {
           )}
           <DonateSidebar item={item} dday={dday} />
         </div>
-        <DonationPage />
       </S.DonateInfo>
+      <Footer />
     </>
   );
 }
