@@ -44,10 +44,13 @@
 ![크레딧 충전](https://github.com/user-attachments/assets/3cf51830-841d-4ccb-85c6-79c48bbc7896)
 
 ### 후원하기 상세 페이지
+![후원하기 상세 페이지](https://github.com/user-attachments/assets/98b8b0ff-51da-4155-92c7-24ed3fdcabb6)
 
 ### 이달의 여자/남자 아이돌 투표 모달창
+![이달의 여자,남자 아이돌 투표 모달창](https://github.com/user-attachments/assets/6b3c6b0c-3297-487d-9d0f-2fa49d8fde64)
 
 ### 마이페이지
+![마이페이지](https://github.com/user-attachments/assets/b28e0e33-ffa6-4242-9004-f9eeaccc93d7)
 
 
 ---
