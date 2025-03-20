@@ -25,6 +25,11 @@
 
 ---
 
+🔗 배포 주소
+[팬덤케이 바로가기](https://fandom-k-rho.vercel.app/)
+
+---
+
 ## 🛠️ 기술 스택 (Tech Stack)
 
 | 역할 | 사용 기술 |
