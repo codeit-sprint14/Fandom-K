@@ -238,7 +238,22 @@ function Landing() {
           </h2>
           <Link to="/list" className="cta cta--01">
             지금 참여하기
-            <img src="src/assets/icons/ic-arrow.svg" />
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ rotate: "180deg" }}
+            >
+              <path
+                d="M16 19L9 12L16 5"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </Link>
         </S.SlideContainer>
         <S.SlideContainer
@@ -270,7 +285,22 @@ function Landing() {
           </h2>
           <Link to="/list" className="cta cta--02">
             30,000 크레딧 받고 시작하기
-            <img src="src/assets/icons/ic-arrow.svg" />
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ rotate: "180deg" }}
+            >
+              <path
+                d="M16 19L9 12L16 5"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </Link>
         </S.SlideContainer>
         <S.SlideContainer index={3}>
@@ -307,7 +337,22 @@ function Landing() {
           </h2>
           <Link to="/list" className="cta cta--03">
             지금 참여하러 가기
-            <img src="src/assets/icons/ic-arrow.svg" />
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ rotate: "180deg" }}
+            >
+              <path
+                d="M16 19L9 12L16 5"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </Link>
         </S.SlideContainer>
         <S.SlideContainer index={4}>
@@ -365,7 +410,22 @@ function Landing() {
           </h2>
           <Link to="/list" className="cta cta--04">
             구경하기
-            <img src="src/assets/icons/ic-arrow.svg" />
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ rotate: "180deg" }}
+            >
+              <path
+                d="M16 19L9 12L16 5"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </Link>
         </S.SlideContainer>
         <S.SlideContainer index={5} className="slide-05">
@@ -376,7 +436,22 @@ function Landing() {
           </h2>
           <Link to="/list" className="cta cta--05">
             30,000 크레딧 받고 시작하기
-            <img src="src/assets/icons/ic-arrow.svg" />
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ rotate: "180deg" }}
+            >
+              <path
+                d="M16 19L9 12L16 5"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </Link>
           <video
             src="videos/vid-carousel.mp4"
