@@ -38,7 +38,7 @@
 ![랜딩페이지](https://github.com/user-attachments/assets/8311125d-a543-4493-9ef4-3105e53da374)
 
 ### 후원을 기다리는 조공 및 이달의 차트 페이지
-![후원을 기다리는 조공 및 이달의 차트](https://github.com/user-attachments/assets/5f7c873e-4282-458a-b405-5e34e62a648f)
+![후원을 기다리는 조공 및 이달의 차트](https://github.com/user-attachments/assets/154187b4-afe2-4bdb-aa86-8e396ed39151)
 
 ### 크레딧 충전 모달
 
