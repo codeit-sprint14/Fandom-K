@@ -216,6 +216,7 @@ h4,h5,h6 {
 
     .detail-left {
         color: var(--white-whtie_F7F7F8,hsl(0, 0.00%, 85%));
+        box-sizing: border-box;
         h1,h2 {
             font-family: "Pretendard Variable";
             font-size: 24px;

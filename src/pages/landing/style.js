@@ -346,7 +346,7 @@ const SlideContainer = styled.div `
     }
 
     .vid-credit, .vid-crown {
-        transform: 'translate3d(0,0,0)'; // gpu
+        transform: translate3d(0,0,0); // gpu
         backface-visibility: 'hidden';
         image-rendering: -webkit-optimize-contrast;
         transform: translateZ(0);

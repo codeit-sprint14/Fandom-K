@@ -9,8 +9,9 @@ export const FooterContainer = styled.footer`
   width: 100%;
   /* height: 100px; */
   max-width: 900px;
-  margin: 48px auto 90px auto;
-  padding: 20px;
+  margin: 0 auto;
+  margin-top: auto;
+  height: 200px;
   color: ${colors("grayLight")};
   ${typography("m14")};
 

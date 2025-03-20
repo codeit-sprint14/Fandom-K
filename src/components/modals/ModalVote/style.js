@@ -213,7 +213,7 @@ const ModalChargeQuantity = styled.ul`
   }
 
   input[type="radio"]:checked + label:before {
-    background-image: url("src/assets/icons/btn-heart-checked.svg");
+    background-image: url("icons/btn-heart-checked.svg");
   }
 `;
 
