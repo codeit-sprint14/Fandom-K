@@ -35,6 +35,8 @@
 
 ## 📌 주요 기능
 ### 랜딩페이지
+<img src="https://github.com/user-attachments/assets/8311125d-a543-4493-9ef4-3105e53da374" width="500">
+
 ![랜딩페이지](https://github.com/user-attachments/assets/8311125d-a543-4493-9ef4-3105e53da374)
 
 ### 후원을 기다리는 조공 및 이달의 차트 페이지
